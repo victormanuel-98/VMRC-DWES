@@ -24,7 +24,7 @@ console.log(volumen(cubo));*/
 
 // Recoger el resto de un objeto en la variable ‘rest’. Sólo hay que editar el código
 
-const yo = {
+/*const yo = {
     nombre1: 'Victor',
     nombre2: 'Manuel',
     apellido1: 'Ridao',
@@ -33,4 +33,4 @@ const yo = {
 };
 
 const {...rest} = yo;
-console.log(rest);
+console.log(rest);*/
