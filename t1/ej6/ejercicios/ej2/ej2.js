@@ -6,3 +6,4 @@
 • Cada nota será un fichero de texto, con extensión .note
 • Para editar una nota, habrá que imprimir la lista de notas disponibles y seleccionar una
 • Cuando se está escribiendo una nota, ha de permitir continuar su edición hasta introducir dos veces seguidas una linea en blanco*/
+
