@@ -9,7 +9,7 @@
    - Propiedades
    - Métodos
    - Eventos
-   - 
+
 ## Entregables
 
 ### En clase
