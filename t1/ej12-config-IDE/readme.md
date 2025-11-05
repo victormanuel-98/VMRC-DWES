@@ -1,3 +1,7 @@
+## Enlace de interés
+
+https://lenguajejs.com/javascript/calidad-de-codigo/eslint/
+
 ## Se pide:
 
 ### Ejercicio 1
