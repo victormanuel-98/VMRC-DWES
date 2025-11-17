@@ -17,48 +17,39 @@ Si no está definido, devolver la respuesta con el código 401 y un objeto.
 
 ![Resultado Header](./ejercicios/ej1-server/imagenes/ej1header.png)
 
----
-
 ![Resultado Header](./ejercicios/ej1-server/imagenes/ej1header2.png)
 
 ---
 
 ## 2. /params crear un parámetro llamado name en la ruta y devolver Hola ${name}
 
-Devuelve un saludo usando el parámetro de la ruta.
-
-Ejemplo:  
-`/params/Victor → "Hola Victor"`
-
-### 🔍 Resultado  
+### Resultado  
 ![Resultado Params](./ejercicios/ej1-server/imagenes/ej2params.png)
 
 ---
 
-## 📌 3. Ruta **/query**
+## 3. /query enviar un número n y devolver la suma de todos los números desde el 1 hasta el número recibido.
 
-Recibe un número *n* por query string y devuelve la suma del 1 al *n*.  
-Si no se envía, n = **100** por defecto.
+Si el número no se define, se tomará 100 por defecto.
 
-Ejemplo:  
-`/query?n=50`
-
-### 🔍 Resultado  
-![Resultado Query](ruta/a/imagen3.png)
+### Resultado  
+![Resultado Query](./ejercicios/ej1-server/imagenes/ej3query.png)
 
 ---
 
-## 📌 4. Ruta **/body**
+## 4. /body Imprimir todo el objeto entrante en una lista HTML en el que se muestren todos los parámetros: su clave y su valor.
 
 Recibe un objeto JSON mediante POST y devuelve como respuesta una lista `<ul>` con sus claves y valores.  
 Además, imprime el body por consola.
 
-### 🔍 Resultado  
-![Resultado Body](ruta/a/imagen4.png)
+### Resultado  
+![Resultado Body](./ejercicios/ej1-server/imagenes/ej4body1.png)
+
+![Resultado Body](./ejercicios/ej1-server/imagenes/ej4body2.png)
 
 ---
 
-## 📌 5. Router **/animals**
+## 5. '/animals' Crear un enrutador bajo dicha ruta establecer los siguientes endpoint:
 
 Incluye las rutas:
 
@@ -66,21 +57,28 @@ Incluye las rutas:
 - `/animals/cat` → `{ "grow": "miau" }`
 - `/animals/bird` → `{ "grow": "pio pio" }`
 
-### 🔍 Resultado  
-![Resultado Animals](ruta/a/imagen5.png)
+### Resultado  
+![Resultado Animals](./ejercicios/ej1-server/imagenes/ej5animal1.png)
+
+![Resultado Animals](./ejercicios/ej1-server/imagenes/ej5animal2.png)
 
 ---
 
-## 📌 6. Rutas no definidas (404)
+## 6. El resto de rutas, han de devolver el código 404 con un objeto en la respuesta:
 
-Cualquier ruta no contemplada devolverá:
-
-```json
+```
 {
   "code": 404,
   "error": "Not Found",
   "message": "Error: Path not found"
 }
+```
+
+### Resultado
+
+![Resultado rutas](./ejercicios/ej1-server/imagenes/ej6error1.png)
+
+![Resultado rutas](./ejercicios/ej1-server/imagenes/ej6error2.png)
 
 
 
