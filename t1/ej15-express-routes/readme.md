@@ -19,7 +19,7 @@ Si no está definido, devolver la respuesta con el código 401 y un objeto.
 
 ---
 
-![Resultado Header](ruta/a/imagen1.png)
+![Resultado Header](./ejercicios/ej1-server/imagenes/ej1header2.png)
 
 ---
 
@@ -81,4 +81,5 @@ Cualquier ruta no contemplada devolverá:
   "error": "Not Found",
   "message": "Error: Path not found"
 }
+
 
