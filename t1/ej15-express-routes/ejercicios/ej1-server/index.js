@@ -68,3 +68,33 @@ app.post('/body', (req, res) => {
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
 });
+
+// --------------------
+// 5. /animals router
+// --------------------
+const animalsRouter = express.Router();
+
+animalsRouter.get('/dog', (req, res) => {
+    res.json({ grow: "guau guau" });
+});
+
+animalsRouter.get('/cat', (req, res) => {
+    res.json({ grow: "miau" });
+});
+
+animalsRouter.get('/bird', (req, res) => {
+    res.json({ grow: "pio pio" });
+});
+
+// Usar el router bajo la ruta /animals
+app.use('/animals', animalsRouter);
+
+
+// 6. Manejo de rutas no encontradas (404)
+app.use((req, res) => {
+    res.status(404).json({
+        code: 404,
+        error: "Not Found",
+        message: "Error: Path not found"
+    });
+});
