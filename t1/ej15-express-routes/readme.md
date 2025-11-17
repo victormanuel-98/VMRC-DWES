@@ -23,7 +23,7 @@ Si no está definido, devolver la respuesta con el código 401 y un objeto.
 
 ---
 
-## 📌 2. Ruta **/params/:name**
+## 2. /params crear un parámetro llamado name en la ruta y devolver Hola ${name}
 
 Devuelve un saludo usando el parámetro de la ruta.
 
@@ -31,7 +31,7 @@ Ejemplo:
 `/params/Victor → "Hola Victor"`
 
 ### 🔍 Resultado  
-![Resultado Params](ruta/a/imagen2.png)
+![Resultado Params](./ejercicios/ej1-server/imagenes/ej2params.png)
 
 ---
 
@@ -81,5 +81,6 @@ Cualquier ruta no contemplada devolverá:
   "error": "Not Found",
   "message": "Error: Path not found"
 }
+
 
 
