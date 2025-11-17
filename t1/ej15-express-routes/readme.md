@@ -3,18 +3,19 @@
 Realizar un solo servidor en el que programar todos los ejercicios, separados por sus rutas:
 
 ## 1. '/header' recoger he imprimir por consola un parámetro llamado 'token'.
-## Si no está definido, devolver la respuesta con el código 401 y un objeto.
-´´´
+Si no está definido, devolver la respuesta con el código 401 y un objeto.
+
+```
 {
  "code": 401,
  "error": "Unauthorized",
  "message": "Error: Set a token to login"
 }
-´´´
+```
 
 ### Resultado  
 
-![Resultado Header](ruta/a/imagen1.png)
+![Resultado Header](./ejercicios/ej1-server/imagenes/ej1header.png)
 
 ---
 
@@ -80,3 +81,4 @@ Cualquier ruta no contemplada devolverá:
   "error": "Not Found",
   "message": "Error: Path not found"
 }
+
