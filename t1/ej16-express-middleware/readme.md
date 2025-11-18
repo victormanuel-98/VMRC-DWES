@@ -1,10 +1,12 @@
 ### Se debe:
 
 ## 1. Realizar un logger que imprima a distinto nivel y formato las peticiones con respuesta
+
+```
 – 2XX –> info
 – 4XX –> warn
 – 5XX –> error
-
+```
 ---
 
 ### Resultado
