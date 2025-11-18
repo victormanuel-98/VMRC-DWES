@@ -15,11 +15,7 @@
 
 ---
 
-![Resultado logger warn](ruta/a/imagen5.png)
-
----
-
-![Resultado logger error](ruta/a/imagen5.png)
+![Resultado logger info](./ejercicios/ej1-middleware/imagenes/ej1.2.png)
 
 ---
 
