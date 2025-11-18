@@ -11,7 +11,7 @@
 
 ### Resultado
 
-![Resultado logger info](./ej16-express-middleware/ejercicios/ej1-middleware/imagenes/ej1.1.png)
+![Resultado logger info](./ejercicios/ej1-middleware/imagenes/ej1.1.png)
 
 ---
 
