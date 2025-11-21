@@ -15,11 +15,11 @@ src
 
 ### Resultados
 ---
-Por navegador
+- Por navegador
 ![Resultado del endpoint ping por navegador](./ejercicios/ej1-ping/imagenes/ej1pong.png)
 
 ---
-Por terminal con bash
+- Por terminal con bash
 ![Resultado del endpoint ping por consola](./ejercicios/ej1-ping/imagenes/ej1pong2.png)
 
 ---
