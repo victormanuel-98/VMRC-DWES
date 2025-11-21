@@ -15,20 +15,20 @@ src
 
 ### Resultados
 ---
-![Resultado del endpoint ping por navegador](./img/ej1pong.png)
+![Resultado del endpoint ping por navegador](./imagenes/ej1pong.png)
 
 ---
 
-![Resultado del endpoint ping por consola](./img/ej1pong2.png)
+![Resultado del endpoint ping por consola](./imagenes/ej1pong2.png)
 
 ---
 
 ## 2. Crear un proyecto bien estructurado con la ruta /fibonacci realizando la correcta separación
 del código.
-- • controllers Contiene las llamadas a los distintos servicios si los requiere
-- • routes Contiene la definición de rutas y selección del controlador que emite la respuesta
-- • loaders Contiene el despliegue y configuracion del servidor
-- • utils (opcional) Contiene elementos de utilidad, como el logger.
-- • Realizar los test unitarios a todos los ficheros creados (a excepción de los index.js)
+- 'controllers' Contiene las llamadas a los distintos servicios si los requiere
+- 'routes' Contiene la definición de rutas y selección del controlador que emite la respuesta
+- 'loaders' Contiene el despliegue y configuracion del servidor
+- 'utils' (opcional) Contiene elementos de utilidad, como el logger.
+- Realizar los test unitarios a todos los ficheros creados (a excepción de los index.js)
 
 ### Estructura de carpetas
