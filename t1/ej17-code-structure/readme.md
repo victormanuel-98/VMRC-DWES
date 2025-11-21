@@ -29,3 +29,10 @@ del código.
 - Realizar los test unitarios a todos los ficheros creados (a excepción de los index.js)
 
 ### Estructura de carpetas
+---
+![estructura de carpetas](./ejercicios/imagenes/ej2estructura.png)
+
+## Resultado
+---
+![Resultado por terminal](./ejercicios/imagenes/ej2fibonacci.png)
+
