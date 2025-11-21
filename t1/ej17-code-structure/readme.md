@@ -15,11 +15,11 @@ src
 
 ### Resultados
 ---
-![Resultado del endpoint ping por navegador](./imagenes/ej1pong.png)
+![Resultado del endpoint ping por navegador](./ejercicios/ej1-ping/imagenes/ej1pong.png)
 
 ---
 
-![Resultado del endpoint ping por consola](./imagenes/ej1pong2.png)
+![Resultado del endpoint ping por consola](./ejercicios/ej1-ping/imagenes/ej1pong2.png)
 
 ---
 
