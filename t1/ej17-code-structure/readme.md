@@ -15,9 +15,9 @@ src
 
 ### Resultados
 ---
-![Resultado del endpoint ping por navegador](./ejercicios/ej1-ping/imagenes/ej1pong.png)
+![Resultado del endpoint ping por navegador](./ejercicios/imagenes/ej1pong.png)
 ---
-![Resultado del endpoint ping por consola](./ejercicios/ej1-ping/imagenes/ej1pong2.png)
+![Resultado del endpoint ping por consola](./ejercicios/imagenes/ej1pong2.png)
 ---
 
 ## 2. Crear un proyecto bien estructurado con la ruta /fibonacci realizando la correcta separación
