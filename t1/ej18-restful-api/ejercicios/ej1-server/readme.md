@@ -67,4 +67,4 @@ curl -X DELETE http://localhost:3000/users/1
 ```
 ### Imagen con el resultado por consola:
 
-![Resultado](ej18-restful-api/ejercicios/imagenes/ej1server.png)
+![Resultado](./ejercicios/imagenes/ej1server.png)
