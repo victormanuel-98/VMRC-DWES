@@ -65,4 +65,6 @@ curl -X PATCH http://localhost:3000/users/1 \
 ```
 curl -X DELETE http://localhost:3000/users/1
 ```
+### Imagen con el resultado por consola:
 
+![Resultado](./ejercicios/imagenes/ej1server.png)
