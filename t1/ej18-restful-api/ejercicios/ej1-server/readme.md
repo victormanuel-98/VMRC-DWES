@@ -66,7 +66,3 @@ curl -X PATCH http://localhost:3000/users/1 \
 curl -X DELETE http://localhost:3000/users/1
 ```
 
-### 2. Trabajo
-Investigación y comparativa de REST vs OData vs GraphQL
-- Escribir documentación en Markdown (Readme.md)
-- Seleccionar uno entre OData y GraphQL y realizar una puesta en práctica con Nodejs
