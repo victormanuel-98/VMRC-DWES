@@ -2,14 +2,17 @@ const express = require("express");
 const app = express();
 const usersRouter = require("./src/routes/users.routes");
 
-app.use(express.json()); // body parser
+app.use(express.json());
+app.use(require("helmet")());
+app.use(require("morgan")("dev"));
 
+app.set("json spaces", 2);
 app.use("/users", usersRouter);
 
-// Middleware de errores
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(err.status || 500).json({ error: err.message });
 });
 
-app.listen(3000, () => console.log("Servidor en http://localhost:3000"));
+const PORT = 3000;
+app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));
