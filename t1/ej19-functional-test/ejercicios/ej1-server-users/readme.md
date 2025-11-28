@@ -40,7 +40,7 @@ npm run dev
 
 **2. Listar todos los usuarios (GET /users)**
 
-![Listar usuarios](./imagenes/ej1arrayuser.png)
+![Listar usuarios](./imagenes/ej1arrayusers.png)
 
 ---
 
