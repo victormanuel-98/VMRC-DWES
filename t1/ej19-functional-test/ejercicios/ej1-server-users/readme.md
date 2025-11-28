@@ -38,7 +38,7 @@ npm run dev
 
 Body de ejemplo:
 
-```json
+```
 {
   "name": "Prueba API",
   "email": "prueba@example.com"
@@ -46,21 +46,21 @@ Body de ejemplo:
 ```
 
 **Captura 2:** Crear usuario en Postman
-![Crear usuario](ruta/a/captura2.png)
+![Crear usuario](./imagenes/ej1postuser.png)
 
 ---
 
 **Listar todos los usuarios (GET /users)**
 
 **Captura 3:** Obtener todos los usuarios
-![Listar usuarios](ruta/a/captura3.png)
+![Listar usuarios](./imagenes/ej1arrayuser.png)
 
 ---
 
 **Obtener usuario por ID (GET /users/:id)**
 
 **Captura 4:** Obtener un usuario específico
-![Get user by ID](ruta/a/captura4.png)
+![Get user by ID](./imagenes/ej1obteneruserid.png)
 
 ---
 
@@ -68,7 +68,7 @@ Body de ejemplo:
 
 Body de ejemplo:
 
-```json
+```
 {
   "name": "Prueba API Modificada",
   "email": "modificado@example.com"
@@ -76,14 +76,14 @@ Body de ejemplo:
 ```
 
 **Captura 5:** Actualizar usuario
-![Actualizar usuario](ruta/a/captura5.png)
+![Actualizar usuario](./imagenes/ej1updateuser.png)
 
 ---
 
 **Eliminar usuario (DELETE /users/:id)**
 
 **Captura 6:** Eliminar usuario y comprobar listado
-![Eliminar usuario](ruta/a/captura6.png)
+![Eliminar usuario](./imagenes/ej1deleteuser.png)
 
 ---
 
@@ -93,11 +93,11 @@ Se incluye la colección `collection.json` y el entorno `environment.json` para 
 
 Ejecutar tests automáticos:
 
-```bash
+```
 newman run collection.json -e environment.json
 ```
 
 **Captura 7:** Resultados de tests con Newman
-![Tests Newman](ruta/a/captura7.png)
+![Tests Newman](./imagenes/ej1terminal.png)
 
 
