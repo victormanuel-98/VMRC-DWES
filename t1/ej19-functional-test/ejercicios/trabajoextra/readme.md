@@ -66,25 +66,37 @@ Se ha creado una colección de Postman que incluye todos los endpoints de la API
 
 ![Conexión al puerto 3000](./imagenes/trabajoservercorriendo.png)
 
+---
+
 ### JSON de notas en el navegador
 
 ![Notas en navegador](./imagenes/trabajojsonweb.png)
+
+---
 
 ### Notas en Postman
 
 ![Notas en Postman](./imagenes/trabajonotaspostman.png)
 
+---
+
 ### Se prueba a lanzar error
 
 ![Lanzar error por consola](./imagenes/trabajoErrorTerminal.png)
+
+---
 
 ### Se muestra el error en navegador
 
 ![No se encuentra la nota](./imagenes/trabajoTryError.png)
 
+---
+
 ### Se realiza una petición con Winston + Morgan
 
 ![Peticion con w+m](./imagenes/trabajomorgan+winstonPeticion.png)
+
+---
 
 ### Se muestra la cobertura de los tests >80%
 
