@@ -54,6 +54,3 @@ npm test
 ### Ejecución de npm test con Newman:
 
 ![Resultado tests Newman](./imagenes/ej2salidatestnewman.png)
-
-Si quieres, hacemos ahora el **README del ejercicio 3** o empezamos directamente a desarrollarlo.
-```
