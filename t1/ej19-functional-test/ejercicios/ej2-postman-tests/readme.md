@@ -33,15 +33,15 @@ npm install newman --save-dev
 ```
 ---
 
-## ▶️ Cómo ejecutar los tests
+## Cómo ejecutar los tests
 
-Asegúrate de que el servidor de la API está corriendo:
+El servidor de la API del ejercicio 1 esté corriendo:
 
 ```bash
 node server.js
 ```
 
-Luego ejecuta:
+Luego ejecuta en otro termianl:
 
 ```bash
 npm test
