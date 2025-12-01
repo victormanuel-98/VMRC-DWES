@@ -1,6 +1,6 @@
 import fs from "fs";
 
-const file = "./data/notas.json";
+const file = "./src/data/notas.json";
 
 export function cargarNotas() {
     try {
