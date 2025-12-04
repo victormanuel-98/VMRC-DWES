@@ -27,7 +27,7 @@ ej1-token-middleware/
 
 Cuando el servidor se inicia, se genera un hash del mensaje `"I know your secret"` usando bcrypt.
 
-Token generado
+**Token generado**
 ![generar token](./imagenes/ej1token.png)
 
 ---
@@ -36,7 +36,7 @@ Token generado
 
 Si el cliente no envía ninguna cabecera `Authorization`, el servidor devuelve:
 
-Token requerido
+**Token requerido**
 ![generar token](./imagenes/ej1tokenrequired.png)
 
 ---
@@ -45,7 +45,7 @@ Token requerido
 
 Si el token no coincide con el mensaje original, el sistema devuelve:
 
-Token inválido
+**Token inválido**
 ![generar token](./imagenes/ej1invalidtoken.png)
 
 ---
@@ -54,7 +54,7 @@ Token inválido
 
 Si el cliente envía `"I know your secret"` como token, el acceso es concedido.
 
-Token correcto
+**Token correcto**
 ![generar token](./imagenes/ej1correctToken.png)
 
 ---
