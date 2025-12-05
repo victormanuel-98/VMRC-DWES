@@ -1,50 +1,38 @@
 import express from "express";
-
 const app = express();
-app.use(express.json());
 
-// Middleware: comprueba si el usuario está autenticado
-const vipMiddleware = (req, res, next) => {
-    const user = req.headers["authorization"];
+const checkRole = (requiredRole) => {
+    return (req, res, next) => {
+        const role = req.headers["x-role"];
 
-    if (!user) {
-        return res.status(401).json({ message: "Acceso solo para usuarios registrados" });
-    }
+        if (!role) {
+            return res.status(401).json({ error: "Rol no proporcionado" });
+        }
 
-    next();
+        if (requiredRole === "public") return next();
+
+        if (requiredRole === "vip" && (role === "user" || role === "admin")) {
+            return next();
+        }
+
+        if (requiredRole === "admin" && role === "admin") {
+            return next();
+        }
+
+        return res.status(403).json({ error: "Acceso denegado" });
+    };
 };
 
-// Middleware: comprueba si el usuario es admin
-const adminMiddleware = (req, res, next) => {
-    const user = req.headers["authorization"];
-
-    if (!user) {
-        return res.status(401).json({ message: "Acceso solo para usuarios registrados" });
-    }
-
-    if (user !== "admin") {
-        return res.status(403).json({ message: "Acceso exclusivo para administradores" });
-    }
-
-    next();
-};
-
-// Ruta pública
-app.get("/public", (req, res) => {
-    res.json({ message: "Bienvenido a la zona pública" });
+app.get("/public", checkRole("public"), (req, res) => {
+    res.json({ msg: "Acceso público permitido" });
 });
 
-// Ruta VIP (usuarios registrados)
-app.get("/vip", vipMiddleware, (req, res) => {
-    res.json({ message: "Acceso VIP concedido" });
+app.get("/vip", checkRole("vip"), (req, res) => {
+    res.json({ msg: "Bienvenido, usuario VIP" });
 });
 
-// Ruta Admin (usuarios con rol admin)
-app.get("/admin", adminMiddleware, (req, res) => {
-    res.json({ message: "Bienvenido, administrador" });
+app.get("/admin", checkRole("admin"), (req, res) => {
+    res.json({ msg: "Bienvenido, admin" });
 });
 
-// Iniciar servidor
-app.listen(3000, () => {
-    console.log("Servidor iniciado en http://localhost:3000");
-});
+app.listen(3000, () => console.log("Servidor iniciado en puerto 3000"));
