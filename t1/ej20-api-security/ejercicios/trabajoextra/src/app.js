@@ -3,6 +3,7 @@ import notasRoutes from "./routes/notas.routes.js";
 import morgan from "morgan";
 import logger from "./utils/logger.js";
 import errorHandler from "./middlewares/errorHandler.js";
+import authRoutes from "./routes/auth.routes.js";
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(morgan("combined", {
 
 // Rutas
 app.use("/api/notas", notasRoutes);
+app.use("/api/auth", authRoutes);
 
 // Middleware global de errores
 app.use(errorHandler);
