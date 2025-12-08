@@ -1,12 +1,22 @@
 import { Router } from "express";
-import * as notasController from "../controllers/notas.controller.js";
+import { getAll, getById, create, update, remove } from "../controllers/notas.controller.js";
+import { verifyToken } from "../middlewares/auth.middleware.js";
 
 const router = Router();
 
-router.get("/", notasController.getAll);
-router.get("/:id", notasController.getById);
-router.post("/", notasController.create);
-router.put("/:id", notasController.update);
-router.delete("/:id", notasController.remove);
+// Obtener todas las notas
+router.get("/", verifyToken, getAll);
+
+// Obtener una nota por ID
+router.get("/:id", verifyToken, getById);
+
+// Crear nota
+router.post("/", verifyToken, create);
+
+// Actualizar nota
+router.put("/:id", verifyToken, update);
+
+// Eliminar nota
+router.delete("/:id", verifyToken, remove);
 
 export default router;
