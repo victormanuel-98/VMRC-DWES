@@ -1,103 +1,34 @@
 # Gestor de Notas (se añaden imágenes al final con los resultados)
 
-Este proyecto consiste en una API REST para gestionar notas. Está desarrollado siguiendo buenas prácticas, con estructura MVC, logger configurado, control de errores y tests automatizados con Jest y Supertest.
+Añadir seguridad al proyecto notas con un token encriptado y con el nombre de un usuario 'admin' dado por variable de entorno.
 
 ---
 
 ## Instalación
 
-Se clona la carpeta con el trabajo desde el tema 17 y se añade a la carpeta del tema 19:
+Se clona la carpeta con el trabajo desde el tema 19 y se añade a la carpeta del tema 20:
 
-## Ejecución
+## Ejecución mediante capturas
 
-Para levantar el servidor:
-
-```
-node src/server.js
-```
-
-El servidor se ejecutará en:
-
-```
-http://localhost:3000
-```
-
----
-
-## Rutas de la API
-
-* `GET /api/notas` → Obtener todas las notas
-* `POST /api/notas` → Crear una nueva nota
-* `GET /api/notas/:id` → Obtener una nota por ID
-* `PUT /api/notas/:id` → Actualizar una nota
-* `DELETE /api/notas/:id` → Eliminar una nota
-
----
-
-## Tests y Cobertura
-
-Se utiliza Jest con Babel para ejecutar los tests.
-
-Ejecutar tests:
-
-```
-npm test
-```
-
-Cobertura actual: **88.88%**
-
-* Funciones: 94.44%
-* Líneas: 94.54%
-* Ramas: 42.85%
-
-Todos los endpoints están cubiertos por tests automatizados.
-
----
-
-## Colección Postman
-
-Se ha creado una colección de Postman que incluye todos los endpoints de la API para facilitar pruebas manuales.
-
----
-
-## Imágenes
 
 ### Conexión al puerto 3000
 
-![Conexión al puerto 3000](./imagenes/trabajoservercorriendo.png)
+![Conexión al puerto 3000](./imagenes/notasServerUp.png)
 
 ---
 
-### JSON de notas en el navegador
+### Se da el TOKEN y se listan las notas
 
-![Notas en navegador](./imagenes/trabajojsonweb.png)
-
----
-
-### Notas en Postman
-
-![Notas en Postman](./imagenes/trabajonotaspostman.png)
+![TOKEN y notas en terminal](./imagenes/notasTOKENylistarNotas.png)
 
 ---
 
-### Se prueba a lanzar error
+### Crear nota de prueba
 
-![Lanzar error por consola](./imagenes/trabajoErrorTerminal.png)
-
----
-
-### Se muestra el error en navegador
-
-![No se encuentra la nota](./imagenes/trabajoTryError.png)
+![Nota de prueba](./imagenes/crearNota.png)
 
 ---
 
-### Se realiza una petición con Winston + Morgan
+### JSON con notas
 
-![Peticion con w+m](./imagenes/trabajomorgan+winstonPeticion.png)
-
----
-
-### Se muestra la cobertura de los tests >80%
-
-![Cobertura de tests](./imagenes/trabajoLaunchTests.png)
+![JSON con notas](./imagenes/JSONnotas.png)
