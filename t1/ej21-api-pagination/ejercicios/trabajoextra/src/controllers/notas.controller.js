@@ -1,7 +1,24 @@
 import * as notasService from "../services/notas.service.js";
 
 export function getAll(req, res) {
-    res.json(notasService.getAll());
+    const q = req.query || {};
+    // If no query parameters, keep previous behaviour (return raw array)
+    if (Object.keys(q).length === 0) return res.json(notasService.getAll());
+
+    const options = {
+        filterTitle: q.title || q.filterTitle,
+        filterContent: q.content || q.filterContent,
+        category: q.category,
+        fromDate: q.from || q.fromDate,
+        toDate: q.to || q.toDate,
+        sortBy: q.sortBy || q.sort || q.sort_by,
+        order: q.order,
+        page: q.page,
+        perPage: q.perPage || q.per_page,
+    };
+
+    const result = notasService.getAll(options);
+    res.json(result);
 }
 
 export function getById(req, res) {
