@@ -20,18 +20,18 @@ Incluir en el proyecto de notas la posibilidad de ordenar, filtrar y paginar las
 
 ### Ideas de implementación:
 
-• Ordenación:
+#### Ordenación:
 – Por fecha de creación/edición
 – Por título
 – Por tamaño
 
-• Filtro:
+#### Filtro:
 – Contiene un texto en el titulo
 – Contiene un texto en el contenido
 – Igual a una categoría o grupo
 – Pertenece a un rango de fechas según creación/actulización
 
-• Paginado:
+#### Paginado:
 – Establecer un valor de elementos por página por defecto
 – Mostrar el total de elementos
 – Mostrar el total de páginas
