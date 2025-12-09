@@ -25,13 +25,13 @@ Servidor disponible en: `http://localhost:3000`
 ## Capturas
 
 **Server funcionando:**
-![Servidor corriendo](ej1+ej2ServerUp.png)
+![Servidor corriendo](./imagenes/ej1+ej2ServerUp.png)
 
 **Pruebas de Ordenación en Postman:**
-![Postman](ej1+ej2Ordenacion.png)
+![Postman](./imagenes/ej1+ej2Ordenacion.png)
 
 **Pruebas de Filtrado en Postman:**
-![Postman](ej1+ej2Filtrado.png)
+![Postman](./imagenes/ej1+ej2Filtrado.png)
 
 **Pruebas de Paginado en Postman:**
-![Postman](ej1+ej2Paginado.png)
+![Postman](./imagenes/ej1+ej2Paginado.png)
