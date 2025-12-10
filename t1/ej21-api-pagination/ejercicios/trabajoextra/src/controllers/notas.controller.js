@@ -9,6 +9,7 @@ export function getAll(req, res) {
         filterTitle: q.title || q.filterTitle,
         filterContent: q.content || q.filterContent,
         category: q.category,
+        group: q.group || q.grupo,
         fromDate: q.from || q.fromDate,
         toDate: q.to || q.toDate,
         sortBy: q.sortBy || q.sort || q.sort_by,

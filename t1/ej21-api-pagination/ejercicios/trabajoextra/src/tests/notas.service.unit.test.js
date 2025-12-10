@@ -44,8 +44,22 @@ describe('notas.service', () => {
         expect(res.items.every(i => i.categoria === 'A')).toBe(true);
     });
 
+    test('getAll with group alias filters correctly', () => {
+        mockData[0].grupo = 'Z';
+        const res = notasService.getAll({ group: 'Z' });
+        expect(res.items.length).toBe(1);
+        expect(res.items[0].id).toBe(1);
+    });
+
     test('getAll with date range filters correctly', () => {
         const res = notasService.getAll({ fromDate: 1500, toDate: 2500 });
+        expect(res.items.length).toBe(1);
+        expect(res.items[0].id).toBe(2);
+    });
+
+    test('getAll date range also uses updatedAt', () => {
+        mockData[1].updatedAt = 5000;
+        const res = notasService.getAll({ fromDate: 4500, toDate: 5500 });
         expect(res.items.length).toBe(1);
         expect(res.items[0].id).toBe(2);
     });
@@ -53,6 +67,12 @@ describe('notas.service', () => {
     test('getAll sorting by date desc works', () => {
         const res = notasService.getAll({ sortBy: 'date', order: 'desc' });
         expect(res.items[0].id).toBe(3);
+    });
+
+    test('getAll sorting by updatedAt desc works', () => {
+        mockData[0].updatedAt = 9000;
+        const res = notasService.getAll({ sortBy: 'updated', order: 'desc' });
+        expect(res.items[0].id).toBe(1);
     });
 
     test('getAll sorting by titulo asc works', () => {
@@ -75,6 +95,19 @@ describe('notas.service', () => {
         expect(res.items.length).toBe(2);
         expect(res.totalItems).toBe(4);
         expect(res.totalPages).toBe(2);
+    });
+
+    test('getAll returns totalPages 0 when no matches', () => {
+        const res = notasService.getAll({ filterTitle: 'no hay match' });
+        expect(res.items.length).toBe(0);
+        expect(res.totalItems).toBe(0);
+        expect(res.totalPages).toBe(0);
+    });
+
+    test('getAll applies default perPage when not provided', () => {
+        const res = notasService.getAll({ filterTitle: 'a' });
+        expect(res.perPage).toBeGreaterThan(0);
+        expect(res.perPage).toBe(10);
     });
 
     test('create adds timestamps and id', () => {

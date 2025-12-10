@@ -37,6 +37,19 @@ describe("API de Notas", () => {
         notaId = res.body.id;
     });
 
+    it("Debe permitir filtrar, ordenar y paginar notas", async () => {
+        const res = await request(app)
+            .get("/api/notas?filterTitle=nota&sortBy=title&order=asc&page=1&perPage=2")
+            .set("Authorization", authHeader);
+
+        expect(res.status).toBe(200);
+        expect(res.body).toHaveProperty("items");
+        expect(res.body).toHaveProperty("totalItems");
+        expect(res.body).toHaveProperty("totalPages");
+        expect(Array.isArray(res.body.items)).toBe(true);
+        expect(res.body.items.length).toBeLessThanOrEqual(2);
+    });
+
     // GET nota por ID
     it("Debe obtener la nota creada por ID", async () => {
         const res = await request(app).get(`/api/notas/${notaId}`).set("Authorization", authHeader);
