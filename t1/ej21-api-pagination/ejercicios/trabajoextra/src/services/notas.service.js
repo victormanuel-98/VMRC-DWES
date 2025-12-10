@@ -85,24 +85,20 @@ export function getAll(options) {
     // Sorting
     if (sortBy) {
         const dir = String(order).toLowerCase() === "desc" ? -1 : 1;
-        const comparator = (() => {
-            const key = String(sortBy).toLowerCase();
-            if (["date", "created", "createdat", "creacion", "fecha"].includes(key)) {
-                return (a, b) => (asTimestamp(a.createdAt, typeof a.id === "number" ? a.id : 0) - asTimestamp(b.createdAt, typeof b.id === "number" ? b.id : 0)) * dir;
-            }
-            if (["updated", "updatedat", "edicion", "modificacion", "modified"].includes(key)) {
-                return (a, b) => (asTimestamp(a.updatedAt, asTimestamp(a.createdAt, 0)) - asTimestamp(b.updatedAt, asTimestamp(b.createdAt, 0))) * dir;
-            }
-            if (["titulo", "title", "nombre"].includes(key)) {
-                return ((a.titulo || "").localeCompare(b.titulo || "")) * dir;
-            }
-            if (key === "size" || key === "tamano") {
-                return (noteSize(a) - noteSize(b)) * dir;
-            }
-            return null;
-        })();
+        const key = String(sortBy).toLowerCase();
+        let comparator = null;
 
-        if (comparator) items.sort(comparator);
+        if (["date", "created", "createdat", "creacion", "fecha"].includes(key)) {
+            comparator = (a, b) => (asTimestamp(a.createdAt, typeof a.id === "number" ? a.id : 0) - asTimestamp(b.createdAt, typeof b.id === "number" ? b.id : 0)) * dir;
+        } else if (["updated", "updatedat", "edicion", "modificacion", "modified"].includes(key)) {
+            comparator = (a, b) => (asTimestamp(a.updatedAt, asTimestamp(a.createdAt, 0)) - asTimestamp(b.updatedAt, asTimestamp(b.createdAt, 0))) * dir;
+        } else if (["titulo", "title", "nombre"].includes(key)) {
+            comparator = (a, b) => (a.titulo || "").localeCompare(b.titulo || "") * dir;
+        } else if (key === "size" || key === "tamano") {
+            comparator = (a, b) => (noteSize(a) - noteSize(b)) * dir;
+        }
+
+        if (comparator) items.sort((a, b) => comparator(a, b));
     }
 
     // Pagination
