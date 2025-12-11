@@ -1,65 +1,93 @@
 # Gestor de Notas (se añaden imágenes al final con los resultados)
 
-Añadir seguridad al proyecto notas con un token encriptado y con el nombre de un usuario 'admin' dado por variable de entorno.
+Incluir en el proyecto de notas la posibilidad de ordenar, filtrar y paginar las notas.
+Lo he hecho desde la interfaz de Postman.
+
+## Implementación:
+
+### Ordenación:
+- Por fecha de creación/edición
+- Por título
+- Por tamaño
+### Filtro:
+- Contiene un texto en el titulo
+- Contiene un texto en el contenido
+- Igual a una categoría o grupo
+- Pertenece a un rango de fechas según creación/actulización
+### Paginado:
+- Establecer un valor de elementos por página por defecto
+- Mostrar el total de elementos
 
 ---
 
 ## Instalación
 
-Se clona la carpeta con el trabajo desde el tema 19 y se añade a la carpeta del tema 20:
+Se clona la carpeta con el trabajo desde el tema 20 y se añade a la carpeta del tema 21.
 
 ## Ejecución mediante capturas
 
+### Se obtiene el TOKEN tras introducir el username y la contraseña correcta
 
-### Conexión al puerto 3000
-
-![Conexión al puerto 3000](./imagenes/notasServerUp.png)
-
----
-
-### Se da el TOKEN y se listan las notas
-
-![TOKEN y notas en terminal](./imagenes/notasTOKENylistarNotas.png)
+![TOKEN en json](./imagenes/notasObtenerToken.png)
 
 ---
 
-### Crear nota de prueba
+### Se ven todas las notas
 
-![Nota de prueba](./imagenes/crearNota.png)
-
----
-
-### JSON con notas
-
-![JSON con notas](./imagenes/JSONnotas.png)
+![Todas las notas](./imagenes/notasObtenertodasNotas.png)
 
 ---
 
-## Ordenar, filtrar y paginar notas (API)
+### Se ordenan las notas por fecha de creación/edición
 
-Endpoint protegido: `GET /api/notas` con `Authorization: Bearer <token>`.
+![orden notas por fecha](./imagenes/notasOrdenar1.png)
 
-Parámetros de consulta disponibles:
+---
 
-- `filterTitle` / `title`: filtra por texto incluido en el título.
-- `filterContent` / `content`: filtra por texto incluido en el contenido.
-- `category` / `group` / `grupo`: filtra por categoría o grupo exacto.
-- `fromDate` / `from` y `toDate` / `to`: rango de fechas (creación o última edición). Acepta timestamp o fecha parseable.
-- `sortBy`: `date` (creación), `updated`, `titulo`/`title`, `size`.
-- `order`: `asc` (default) o `desc`.
-- `page`: número de página (>=1).
-- `perPage`: elementos por página (default 10 o `NOTAS_PER_PAGE_DEFAULT`).
+### Se ordenan las notas por título
 
-Ejemplo: `/api/notas?filterTitle=nota&sortBy=updated&order=desc&page=1&perPage=5`
+![orden notas por titulo](./imagenes/notasOrdenar2.png)
 
-La respuesta con parámetros incluye:
+---
 
-```json
-{
-	"items": [ /* notas filtradas y paginadas */ ],
-	"totalItems": 12,
-	"totalPages": 3,
-	"page": 1,
-	"perPage": 5
-}
-```
+### Se ordenan las notas por tamaño
+
+![orden notas por tamaño](./imagenes/notasOrdenar3.png)
+
+---
+
+### Se filtran las notas por contener un texto en el título
+
+![filtrar por texto en titulo](./imagenes/notasFiltro1.png)
+
+---
+
+### Se filtran las notas por contener un texto en el contenido
+
+![filtrar por texto en contenido](./imagenes/notasFiltro2.png)
+
+---
+
+### Se filtran las notas por igualdad a una categoría o grupo
+
+![filtrar por = categoria/grupo](./imagenes/notasFiltro3.png)
+
+---
+
+### Se filtran las notas por pertenecer a un rango de fecha según creación/actualización
+
+![filtrar por fecha creación](./imagenes/notasFiltro4.png)
+
+---
+
+### Se paginan las notas por establecer un valor de elementos por página por defecto
+
+![paginar por valor elementos](./imagenes/notasPaginado1.png)
+
+---
+
+### Se paginan las notas por mostrar el total de elementos
+
+![paginar por mostrar total elementos](./imagenes/notasPaginado2.png)
+
+---
