@@ -132,6 +132,7 @@
       <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
         <input id="fileAnyInput" type="file" multiple />
         <button id="btnUploadAny">Subir ficheros</button>
+        <button id="btnImportNotes">Importar .note</button>
         <button id="btnRefreshFiles">Refrescar lista</button>
         <div class="small">Soporta .pdf, .png, .jpg, etc.</div>
       </div>
@@ -308,6 +309,18 @@
       const res = await fetch(apiRoot + '/api/files/upload', { method: 'POST', headers: { ...authHeaders() }, body: fd });
       if (!res.ok) { const j = await res.json().catch(() => ({})); alert('Error: ' + (j.error || res.status)); return; }
       alert('Subidos'); input.value = ''; loadFiles();
+    });
+
+    // Import .note files from files manager input
+    document.getElementById('btnImportNotes').addEventListener('click', async () => {
+      const input = document.getElementById('fileAnyInput');
+      if (!input.files.length) return alert('Selecciona ficheros .note');
+      const notes = Array.from(input.files).filter(f => f.name && f.name.toLowerCase().endsWith('.note'));
+      if (!notes.length) return alert('No hay ficheros .note en la selección');
+      const fd = new FormData(); for (const f of notes) fd.append('files', f);
+      const res = await fetch(apiRoot + '/api/notas/import', { method: 'POST', headers: { ...authHeaders() }, body: fd });
+      if (!res.ok) { const j = await res.json().catch(() => ({})); alert('Error importando: ' + (j.error || res.status)); return; }
+      const result = await res.json().catch(() => ({})); alert('Importadas: ' + (result.imported || 0)); input.value = ''; loadNotes(1); loadFiles();
     });
 
     document.querySelector('#filesTable tbody').addEventListener('click', async (e) => {
