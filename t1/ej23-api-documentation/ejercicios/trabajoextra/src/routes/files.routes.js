@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     const ext = path.extname(file.originalname || '').toLowerCase();
     let folder = 'others';
-    if (ext === '.note') folder = 'note';
+    if (ext === '.note') folder = 'notes';
     else if (ext === '.pdf') folder = 'pdf';
     const dest = path.join(process.cwd(), 'files', folder);
     try { if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true }); } catch (e) { /* ignore */ }

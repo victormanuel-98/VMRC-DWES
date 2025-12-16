@@ -7,13 +7,6 @@
     "updatedAt": 1765890374375
   },
   {
-    "id": 2,
-    "titulo": "Hola a todos",
-    "contenido": "Hola Dr. Nick",
-    "categoria": "",
-    "updatedAt": 1765890379151
-  },
-  {
     "id": 4,
     "titulo": "Duda de clase",
     "contenido": "Preguntar a gema por conexion de pantallas en figma",
@@ -83,5 +76,23 @@
     "updatedAt": 1765890517805,
     "titulo": "Nota creada por asistente",
     "contenido": "Esta es una nota de prueba subida por el asistente."
+  },
+  {
+    "id": 1765904716648,
+    "createdAt": 1765904716648,
+    "updatedAt": 1765904716648,
+    "titulo": "Comprar pan",
+    "contenido": "Ir a la panadería",
+    "etiquetas": [
+      "compras"
+    ]
+  },
+  {
+    "id": "bio-001",
+    "createdAt": "2025-12-16T16:37:00Z",
+    "updatedAt": 1765904954945,
+    "titulo": "BioShock - Plasmidos y mejoras",
+    "contenido": "Lista de tareas: 1. Encontrar todos los audiologs de Rapture, 2. Conseguir todas las mejoras de plasmidos (Electrobolt nivel 3, Incinerate nivel 3, 3. Completar el juego sin matar Little Sisters (final bueno), 4. Fotografiar todos los tipos de enemigos para la guía del investigador, 5. Mejorar todas las armas en las estaciones de 'Power to the People', 6. Derrotar a Andrew Ryan y Frank Fontaine",
+    "categoria": "fps-inmersivo"
   }
 ]

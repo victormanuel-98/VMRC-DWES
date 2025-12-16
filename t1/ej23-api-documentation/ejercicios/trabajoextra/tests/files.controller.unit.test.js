@@ -57,4 +57,59 @@ describe('files.controller', () => {
     expect(unlinkSpy).toHaveBeenCalled();
     expect(res2.json).toHaveBeenCalledWith(expect.objectContaining({ message: 'Fichero borrado' }));
   });
+
+  // New tests for viewFile
+  test('viewFile 404 when missing', () => {
+    jest.spyOn(fs, 'existsSync').mockReturnValue(false);
+    const req = { query: { name: 'notes/x.note' } };
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
+    fc.viewFile(req, res);
+    expect(res.status).toHaveBeenCalledWith(404);
+  });
+
+  test('viewFile returns content when exists', () => {
+    jest.spyOn(fs, 'existsSync').mockReturnValue(true);
+    jest.spyOn(fs, 'statSync').mockReturnValue({ isDirectory: () => false });
+    jest.spyOn(fs, 'readFileSync').mockReturnValue('HELLO');
+    const req = { query: { name: 'notes/x.note' } };
+    const res = { json: jest.fn(), status: jest.fn().mockReturnThis() };
+    fc.viewFile(req, res);
+    expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ name: 'notes/x.note', content: 'HELLO' }));
+  });
+
+  // New tests for updateFile
+  test('updateFile 400 when content missing', () => {
+    const req = { body: { name: 'notes/x.note' } };
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
+    fc.updateFile(req, res);
+    expect(res.status).toHaveBeenCalledWith(400);
+  });
+
+  test('updateFile 404 when missing', () => {
+    jest.spyOn(fs, 'existsSync').mockReturnValue(false);
+    const req = { body: { name: 'notes/x.note', content: '{}' } };
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
+    fc.updateFile(req, res);
+    expect(res.status).toHaveBeenCalledWith(404);
+  });
+
+  test('updateFile rejects directories', () => {
+    jest.spyOn(fs, 'existsSync').mockReturnValue(true);
+    jest.spyOn(fs, 'statSync').mockReturnValue({ isDirectory: () => true });
+    const req = { body: { name: 'notes/dir', content: 'x' } };
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
+    fc.updateFile(req, res);
+    expect(res.status).toHaveBeenCalledWith(400);
+  });
+
+  test('updateFile writes content', () => {
+    jest.spyOn(fs, 'existsSync').mockReturnValue(true);
+    jest.spyOn(fs, 'statSync').mockReturnValue({ isDirectory: () => false });
+    const writeSpy = jest.spyOn(fs, 'writeFileSync').mockImplementation(() => {});
+    const req = { body: { name: 'notes/x.note', content: 'DATA' } };
+    const res = { json: jest.fn(), status: jest.fn().mockReturnThis() };
+    fc.updateFile(req, res);
+    expect(writeSpy).toHaveBeenCalled();
+    expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ message: 'Fichero actualizado correctamente' }));
+  });
 });
