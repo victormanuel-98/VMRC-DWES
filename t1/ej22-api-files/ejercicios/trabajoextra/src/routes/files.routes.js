@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import path from 'path';
+import fs from 'fs';
 import multer from 'multer';
 import { listFiles, downloadFile, deleteFile, uploadFiles } from '../controllers/files.controller.js';
 import { verifyToken } from '../middlewares/auth.middleware.js';
@@ -8,7 +9,15 @@ const router = Router();
 
 // Store files on disk under project files/ directory
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, path.join(process.cwd(), 'files')),
+  destination: (req, file, cb) => {
+    const ext = path.extname(file.originalname || '').toLowerCase();
+    let folder = 'others';
+    if (ext === '.note') folder = 'note';
+    else if (ext === '.pdf') folder = 'pdf';
+    const dest = path.join(process.cwd(), 'files', folder);
+    try { if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true }); } catch (e) { /* ignore */ }
+    cb(null, dest);
+  },
   filename: (req, file, cb) => cb(null, file.originalname)
 });
 

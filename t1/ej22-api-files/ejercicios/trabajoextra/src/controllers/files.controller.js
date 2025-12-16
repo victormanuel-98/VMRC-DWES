@@ -25,7 +25,7 @@ export function listFiles(req, res){
         if (isDir) {
           items.push(...walk(full, rel));
         } else {
-          items.push({ name: rel.replace(/\\\\/g, '/'), size: stat.size, mtime: stat.mtime });
+          items.push({ name: rel.replace(/\\/g, '/'), size: stat.size, mtime: stat.mtime });
         }
       }
       return items;
