@@ -1,58 +1,85 @@
-# Gestor de Notas (se añaden imágenes al final con los resultados)
+# Gestor de Notas
 
-Sobre el proyecto de notas:
+Proyecto desarrollado en la asignatura **DWES**, ampliado progresivamente con lo visto en el tema 23.
 
-- Permitir importar (subir) uno o varios ficheros de extensión .note para almacenarlo directamente.
+El objetivo del proyecto es implementar un **gestor de notas** con funcionalidades de gestión de ficheros y una **API REST documentada mediante OpenAPI (Swagger)**.
 
-- Permitir exportar las notas para descargar directamente los ficheros fuente, para mejor usabilidad, implementar filtros para la selección de notas.
+## Funcionalidades implementadas
+
+* Importación (subida) de uno o varios ficheros con extensión `.note`.
+* Exportación de notas para su descarga en formato fichero.
+* Filtrado de notas para mejorar la usabilidad.
+* Implementación de una API REST para la gestión de notas.
+* Documentación técnica completa de la API utilizando **OpenAPI 3.x (Swagger)**.
+* Integración de **Swagger UI** para la visualización y prueba de los endpoints.
 
 ---
 
 ## Instalación
 
-Se clona la carpeta con el trabajo desde el tema 21 y se añade a la carpeta del tema 22.
+Se parte del proyecto desarrollado en el **tema 21**, ampliado en el **tema 22**, y extendido en el **tema 23** con la documentación Swagger.
 
-### Configuración
+## Documentación de la API (OpenAPI / Swagger)
 
-- Copia `.env.example` a `.env` y ajusta los valores:
+El proyecto incluye documentación técnica de la API REST conforme a la especificación **OpenAPI 3.x**.
 
-```
-PORT=3000
-JWT_SECRET=change_me_dev_secret
-JWT_EXPIRES_IN=1h
-ADMIN_USER=admin
-ADMIN_PASS=admin123
-NOTAS_PER_PAGE_DEFAULT=10
-```
+### Contenido documentado
 
-- En Windows (cmd) puedes iniciar con un puerto distinto:
+* Endpoints de la API para la gestión de notas.
+* Métodos HTTP (`GET`, `POST`, `PUT`, `DELETE`).
+* Parámetros de ruta, consulta y cuerpo de las peticiones.
+* Definición de schemas de datos.
+* Responses de éxito y error.
+* Ejemplos de uso.
+* Definición del sistema de seguridad.
 
-```
-set PORT=4000 && npm start
-```
+### Acceso a Swagger UI
 
-- En PowerShell:
+Una vez iniciado el servidor, la documentación interactiva está disponible en:
 
 ```
-$env:PORT=4000; npm start
+http://localhost:3000/api-docs
 ```
 
-## Ejecución mediante capturas
+El puerto puede variar según la configuración definida en el archivo `.env`.
 
-### Se levanta el servidor desde la terminal de vscode con bash.
+---
+
+## Ejecución y resultados
+
+### Arranque del servidor
+
+El servidor se levanta correctamente desde la terminal de VS Code utilizando bash.
 
 ![server up](./samples/images/notasServerUp.png)
 
 ---
 
-### Se ven todas las notas con extensión '.note'
+### Visualización de la documentación Swagger
+
+La interfaz Swagger UI permite consultar y probar los endpoints de la API de forma interactiva.
+
+![swagger ui](./samples/images/swaggerUI.png)
+
+---
+
+### Visualización de notas con extensión `.note`
+
+Listado de notas almacenadas en el sistema.
 
 ![Todas las notas](./samples/images/notasContenidoNotas.png)
 
 ---
 
-### Se ven los archivos con extensión '.pdf'
+### Visualización de archivos con extensión `.pdf`
+
+Listado de archivos exportados en formato PDF.
 
 ![notas pdf](./samples/images/notasArchivosPdf.png)
 
 ---
+
+Si quieres, en el próximo mensaje puedo:
+
+* Ajustarlo aún más a **formato rúbrica** (muy típico de ADAITS), o
+* Redactarte un **texto corto de justificación del Tema 23** para pegarlo directamente en la entrega.
