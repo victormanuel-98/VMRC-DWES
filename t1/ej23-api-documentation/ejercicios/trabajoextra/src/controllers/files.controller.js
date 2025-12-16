@@ -94,3 +94,50 @@ export function deleteFile(req, res){
     res.status(500).json({ error: 'Error borrando fichero' });
   }
 }
+
+export function viewFile(req, res){
+  try{
+    ensureDir();
+    const raw = (req.query && req.query.name) || '';
+    const name = decodeURIComponent(raw);
+    const full = path.resolve(FILES_DIR, name);
+    const rel = path.relative(path.resolve(FILES_DIR), full);
+    if (!rel || rel.startsWith('..') || rel.includes('..' + path.sep)) return res.status(400).json({ error: 'Ruta inválida' });
+    if (!fs.existsSync(full)) return res.status(404).json({ error: 'Fichero no encontrado' });
+    let isDir = false;
+    try { const st = fs.statSync(full); isDir = typeof st.isDirectory === 'function' ? st.isDirectory() : false; } catch (e) { isDir = false; }
+    if (isDir) return res.status(404).json({ error: 'Fichero no encontrado' });
+    
+    const content = fs.readFileSync(full, 'utf-8');
+    res.json({ name: name, content: content });
+  }catch(err){
+    console.error('viewFile error', err);
+    res.status(500).json({ error: 'Error leyendo fichero' });
+  }
+}
+
+export function updateFile(req, res){
+  try{
+    ensureDir();
+    const raw = (req.query && req.query.name) || (req.body && req.body.name) || '';
+    const name = decodeURIComponent(raw);
+    const newContent = req.body && req.body.content;
+    
+    if (!newContent && newContent !== '') return res.status(400).json({ error: 'Contenido requerido' });
+    
+    const full = path.resolve(FILES_DIR, name);
+    const rel = path.relative(path.resolve(FILES_DIR), full);
+    if (!rel || rel.startsWith('..') || rel.includes('..' + path.sep)) return res.status(400).json({ error: 'Ruta inválida' });
+    if (!fs.existsSync(full)) return res.status(404).json({ error: 'Fichero no encontrado' });
+    
+    let isDir = false;
+    try { const st = fs.statSync(full); isDir = typeof st.isDirectory === 'function' ? st.isDirectory() : false; } catch (e) { isDir = false; }
+    if (isDir) return res.status(400).json({ error: 'Ruta inválida' });
+    
+    fs.writeFileSync(full, newContent, 'utf-8');
+    res.json({ message: 'Fichero actualizado correctamente' });
+  }catch(err){
+    console.error('updateFile error', err);
+    res.status(500).json({ error: 'Error actualizando fichero' });
+  }
+}

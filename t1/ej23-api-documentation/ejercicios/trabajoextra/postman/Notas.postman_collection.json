@@ -146,6 +146,117 @@
         "url": { "raw": "{{baseUrl}}/api/notas", "host": ["{{baseUrl}}"], "path": ["api","notas"] }
       },
       "response": []
+    },
+    {
+      "name": "GET Files - List all",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/files",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "files"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Files - View file content",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/files/view?name=notes/example.note",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "files", "view"],
+          "query": [
+            {
+              "key": "name",
+              "value": "notes/example.note",
+              "description": "Nombre del archivo a visualizar (puede incluir carpeta)"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT Files - Update file content",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"notes/example.note\",\n  \"content\": \"{\\n  \\\"id\\\": \\\"ejemplo-01\\\",\\n  \\\"titulo\\\": \\\"Archivo modificado desde Postman\\\",\\n  \\\"contenido\\\": \\\"Este contenido ha sido actualizado mediante la API\\\",\\n  \\\"categoria\\\": \\\"test\\\",\\n  \\\"createdAt\\\": \\\"2025-12-16T10:00:00Z\\\"\\n}\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/files/update",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "files", "update"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Files - Download file",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/files/download?name=notes/example.note",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "files", "download"],
+          "query": [
+            {
+              "key": "name",
+              "value": "notes/example.note"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE Files - Delete file",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/files/test-file.txt",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "files", "test-file.txt"]
+        }
+      },
+      "response": []
     }
   ]
 }

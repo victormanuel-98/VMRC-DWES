@@ -8,10 +8,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#f8fafc;
+      --bg:#a69d71;
       --card:#ffffff;
-      --accent:#2563eb;
-      --muted:#6b7280;
+      --accent:#ca571a;
+      --muted:#c04141;
       --soft:#eef2ff;
       --radius:10px;
       --shadow:0 6px 20px rgba(16,24,40,0.06);
@@ -65,7 +65,7 @@
   <div class="container">
     <header>
       <div class="brand">
-        <h1>Gestor de Notas (.note)</h1>
+        <h1>Gestor de Notas</h1>
         <div class="small">Interfaz para ver, importar, exportar y editar notas</div>
       </div>
       <div class="auth panel" style="display:flex;gap:8px;align-items:center">
@@ -163,6 +163,21 @@
       <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
         <button id="btnClose">Cerrar</button>
         <button id="btnSave">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal view/edit files -->
+  <div id="fileModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="card">
+      <h3 id="fileModalTitle">Ver archivo</h3>
+      <div style="margin-bottom:8px">
+        <strong>Archivo:</strong> <span id="fileName"></span>
+      </div>
+      <textarea id="fileContent" rows="15" style="width:100%;font-family:monospace;font-size:0.9rem"></textarea>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+        <button id="btnFileClose">Cerrar</button>
+        <button id="btnFileSave">Guardar cambios</button>
       </div>
     </div>
   </div>
@@ -300,7 +315,7 @@
     async function loadFiles() {
       const res = await fetch(apiRoot + '/api/files', { headers: { ...authHeaders() } });
       if (!res.ok) return; const files = await res.json(); const tbody = document.querySelector('#filesTable tbody'); tbody.innerHTML = '';
-      for (const f of files) { const tr = document.createElement('tr'); tr.innerHTML = `<td>${escapeHtml(f.name)}</td><td class="small">${(f.size / 1024).toFixed(1)} KB</td><td class="small">${new Date(f.mtime).toLocaleString()}</td><td><button class="fdownload" data-name="${encodeURIComponent(f.name)}">Descargar</button> <button class="fdelete" data-name="${encodeURIComponent(f.name)}">Borrar</button></td>`; tbody.appendChild(tr); }
+      for (const f of files) { const tr = document.createElement('tr'); tr.innerHTML = `<td>${escapeHtml(f.name)}</td><td class="small">${(f.size / 1024).toFixed(1)} KB</td><td class="small">${new Date(f.mtime).toLocaleString()}</td><td class="actions"><button class="fview" data-name="${encodeURIComponent(f.name)}">Ver</button> <button class="fedit" data-name="${encodeURIComponent(f.name)}">Modificar</button> <button class="fdownload" data-name="${encodeURIComponent(f.name)}">Descargar</button> <button class="fdelete" data-name="${encodeURIComponent(f.name)}">Borrar</button></td>`; tbody.appendChild(tr); }
     }
 
     document.getElementById('btnRefreshFiles').addEventListener('click', loadFiles);
@@ -325,6 +340,18 @@
 
     document.querySelector('#filesTable tbody').addEventListener('click', async (e) => {
       const btn = e.target.closest('button'); if (!btn) return; const name = decodeURIComponent(btn.dataset.name);
+      if (btn.classList.contains('fview')) {
+        const res = await fetch(apiRoot + '/api/files/view?name=' + encodeURIComponent(name), { headers: { ...authHeaders() } });
+        if (!res.ok) { const j = await res.json().catch(() => ({})); return alert('Error leyendo archivo: ' + (j.error || res.status)); }
+        const data = await res.json();
+        openFileModal(data.name, data.content, false);
+      }
+      if (btn.classList.contains('fedit')) {
+        const res = await fetch(apiRoot + '/api/files/view?name=' + encodeURIComponent(name), { headers: { ...authHeaders() } });
+        if (!res.ok) { const j = await res.json().catch(() => ({})); return alert('Error leyendo archivo: ' + (j.error || res.status)); }
+        const data = await res.json();
+        openFileModal(data.name, data.content, true);
+      }
       if (btn.classList.contains('fdownload')) {
         const res = await fetch(apiRoot + '/api/files/download?name=' + encodeURIComponent(name), { headers: { ...authHeaders() } });
         if (!res.ok) { const j = await res.json().catch(() => ({})); return alert('Error descargando: ' + (j.error || res.status)); }
@@ -335,6 +362,36 @@
 
     // auto-load files if authorized
     if (jwt) loadFiles();
+
+    // File modal functions
+    function openFileModal(name, content, editable) {
+      $('#fileModal').classList.remove('hidden');
+      $('#fileName').textContent = name;
+      $('#fileContent').value = content;
+      $('#fileContent').readOnly = !editable;
+      $('#fileModal').dataset.filename = name;
+      $('#fileModalTitle').textContent = editable ? 'Modificar archivo' : 'Ver archivo';
+      $('#btnFileSave').style.display = editable ? 'inline-block' : 'none';
+    }
+
+    $('#btnFileClose').addEventListener('click', () => $('#fileModal').classList.add('hidden'));
+    
+    $('#btnFileSave').addEventListener('click', async () => {
+      const name = $('#fileModal').dataset.filename;
+      const content = $('#fileContent').value;
+      const res = await fetch(apiRoot + '/api/files/update', {
+        method: 'PUT',
+        headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name, content: content })
+      });
+      if (!res.ok) {
+        const j = await res.json().catch(() => ({}));
+        return alert('Error guardando: ' + (j.error || res.status));
+      }
+      alert('Archivo guardado correctamente');
+      $('#fileModal').classList.add('hidden');
+      loadFiles();
+    });
   </script>
 </body>
 

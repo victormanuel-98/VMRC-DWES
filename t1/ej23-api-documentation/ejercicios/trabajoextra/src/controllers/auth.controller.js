@@ -1,19 +1,24 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { config } from '../config/env.js';
 
 export const login = async (req, res) => {
   const { username, password } = req.body;
 
-  const adminUser = process.env.ADMIN_USER;
-  const adminPass = process.env.ADMIN_PASS;
-  const jwtSecret = process.env.JWT_SECRET;
-  const jwtExpires = process.env.JWT_EXPIRES_IN || "1h";
+  const adminUser = config.ADMIN_USER;
+  const adminPass = config.ADMIN_PASS;
+  const jwtSecret = config.JWT_SECRET;
+  const jwtExpires = config.JWT_EXPIRES_IN;
 
   if (!username || !password)
     return res.status(400).json({ message: "Faltan datos" });
 
   if (!adminUser || !adminPass || !jwtSecret) {
-    console.error("Auth env vars missing");
+    console.error("Auth env vars missing", {
+      hasAdminUser: Boolean(adminUser),
+      hasAdminPass: Boolean(adminPass),
+      hasJwtSecret: Boolean(jwtSecret)
+    });
     return res.status(500).json({ message: "Error de configuración del servidor" });
   }
 
@@ -53,10 +58,10 @@ export const login = async (req, res) => {
 export const tokenOnly = async (req, res) => {
   const { username, password } = req.body;
 
-  const adminUser = process.env.ADMIN_USER;
-  const adminPass = process.env.ADMIN_PASS;
-  const jwtSecret = process.env.JWT_SECRET;
-  const jwtExpires = process.env.JWT_EXPIRES_IN || "1h";
+  const adminUser = config.ADMIN_USER;
+  const adminPass = config.ADMIN_PASS;
+  const jwtSecret = config.JWT_SECRET;
+  const jwtExpires = config.JWT_EXPIRES_IN;
 
   if (!username || !password)
     return res.status(400).json({ message: "Faltan datos" });

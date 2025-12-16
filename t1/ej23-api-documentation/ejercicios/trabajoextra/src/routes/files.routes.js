@@ -2,7 +2,7 @@ import { Router } from 'express';
 import path from 'path';
 import fs from 'fs';
 import multer from 'multer';
-import { listFiles, downloadFile, deleteFile, uploadFiles } from '../controllers/files.controller.js';
+import { listFiles, downloadFile, deleteFile, uploadFiles, viewFile, updateFile } from '../controllers/files.controller.js';
 import { verifyToken } from '../middlewares/auth.middleware.js';
 
 const router = Router();
@@ -32,6 +32,12 @@ router.post('/upload', verifyToken, upload.array('files'), uploadFiles);
 // Download by name or path (supports subfolders)
 // Download via query parameter to avoid router wildcard issues
 router.get('/download', verifyToken, downloadFile);
+
+// View file content
+router.get('/view', verifyToken, viewFile);
+
+// Update file content
+router.put('/update', verifyToken, updateFile);
 
 // Delete (supports ?name=... for paths with subfolders)
 router.delete('/', verifyToken, deleteFile);
