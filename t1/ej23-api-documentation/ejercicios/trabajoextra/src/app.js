@@ -7,6 +7,8 @@ import morgan from "morgan";
 import logger from "./utils/logger.js";
 import errorHandler from "./middlewares/errorHandler.js";
 import authRoutes from "./routes/auth.routes.js";
+import swaggerUi from "swagger-ui-express";
+import swaggerSpec from "./swagger.js";
 
 const app = express();
 
@@ -27,6 +29,9 @@ app.use(morgan("combined", {
 app.use("/api/notas", notasRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/files", filesRoutes);
+
+// Swagger UI
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Middleware global de errores
 app.use(errorHandler);
