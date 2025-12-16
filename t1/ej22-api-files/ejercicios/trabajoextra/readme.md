@@ -16,18 +16,18 @@ Se clona la carpeta con el trabajo desde el tema 21 y se añade a la carpeta del
 
 ### Se levanta el servidor desde la terminal de vscode con bash.
 
-![server up](./imagenes/notasServerUp.png)
+![server up](./samples/images/notasServerUp.png)
 
 ---
 
 ### Se ven todas las notas con extensión '.note'
 
-![Todas las notas](./imagenes/notasContenidoNotas.png)
+![Todas las notas](./samples/images/notasContenidoNotas.png)
 
 ---
 
 ### Se ven los archivos con extensión '.pdf'
 
-![notas pdf](./imagenes/notasArchivosPdf.png)
+![notas pdf](./samples/images/notasArchivosPdf.png)
 
 ---
