@@ -59,27 +59,48 @@ El servidor se levanta correctamente desde la terminal de VS Code utilizando bas
 
 La interfaz Swagger UI permite consultar y probar los endpoints de la API de forma interactiva.
 
-![swagger ui](./samples/images/swaggerUI.png)
+![swagger ui](./images/ej23swagger.png)
 
 ---
 
-### Visualización de notas con extensión `.note`
+### Visualización de notas con extensión `.json`
 
 Listado de notas almacenadas en el sistema.
 
-![Todas las notas](./samples/images/notasContenidoNotas.png)
+![Todas las notas](./images/ej23notasJSON.png)
 
 ---
 
-### Visualización de archivos con extensión `.pdf`
+### Visualización de archivos de la carpeta 'files/'
 
-Listado de archivos exportados en formato PDF.
+Listado de archivos en formato note y pdf.
 
-![notas pdf](./samples/images/notasArchivosPdf.png)
+![notas note/pdf](./images/ej23notasfiles.png)
 
 ---
 
-Si quieres, en el próximo mensaje puedo:
+### Visualización de ejemplo de .note
 
-* Ajustarlo aún más a **formato rúbrica** (muy típico de ADAITS), o
-* Redactarte un **texto corto de justificación del Tema 23** para pegarlo directamente en la entrega.
+Se muestra nota en formato json sobre videojuego Bioshock
+
+![nota bioshock](./images/ej23bioshocknote.png)
+
+### Visualización en Postman con las requests 'GET'
+
+Se muestra interfaz de Postman con la lista de requests (temas pasados)
+
+![requests postman](./images/ej23postmanlist.png)
+
+### Visualización en Postman de la lista de archivos '/file'
+
+Se muestra la interfaz de Postman con la lista de notas creadas con formato '.note'
+
+![lista '.note' postman](./images/ej23postmannotes.png)
+
+### Visualización del token obtenido en Postman
+
+Se muestra el token junto con usuario y contraseña
+
+![token postman](./images/ej23postmantoken.png)
+
+---
