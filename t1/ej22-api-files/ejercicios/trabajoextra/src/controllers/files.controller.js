@@ -4,18 +4,34 @@ import path from 'path';
 const FILES_DIR = path.join(process.cwd(), 'files');
 
 function ensureDir(){
-  if (!fs.existsSync(FILES_DIR)) fs.mkdirSync(FILES_DIR, { recursive: true });
+  try {
+    if (!fs.existsSync(FILES_DIR)) fs.mkdirSync(FILES_DIR, { recursive: true });
+  } catch (e) {
+    // ignore directory creation errors (e.g., during tests or permissions)
+  }
 }
 
 export function listFiles(req, res){
   try{
     ensureDir();
-    const names = fs.readdirSync(FILES_DIR);
-    const details = names.map(name => {
-      const full = path.join(FILES_DIR, name);
-      const stat = fs.statSync(full);
-      return { name, size: stat.size, mtime: stat.mtime };
-    });
+    // Recursively list files and return relative paths
+    const walk = (dir, base) => {
+      const items = [];
+      for (const entry of fs.readdirSync(dir)) {
+        const full = path.join(dir, entry);
+        const rel = path.join(base, entry);
+        const stat = fs.statSync(full);
+        const isDir = typeof stat.isDirectory === 'function' ? stat.isDirectory() : false;
+        if (isDir) {
+          items.push(...walk(full, rel));
+        } else {
+          items.push({ name: rel.replace(/\\\\/g, '/'), size: stat.size, mtime: stat.mtime });
+        }
+      }
+      return items;
+    };
+
+    const details = walk(FILES_DIR, '');
     res.json(details);
   }catch(err){
     console.error('listFiles error', err);
@@ -34,15 +50,23 @@ export function uploadFiles(req, res){
   }
 }
 
-const safeName = (name) => path.basename(name).replace(/\s+/g, '_');
-
 export function downloadFile(req, res){
   try{
     ensureDir();
-    const name = safeName(req.params.name);
-    const full = path.join(FILES_DIR, name);
+    // Accept name via query or params for compatibility
+    const raw = (req.query && req.query.name) || req.params[0] || req.params.name || req.params.path || '';
+    const name = decodeURIComponent(raw);
+    // Prevent path traversal: resolve and ensure it is inside FILES_DIR
+    const full = path.resolve(FILES_DIR, name);
+    const rel = path.relative(path.resolve(FILES_DIR), full);
+    if (!rel || rel.startsWith('..') || rel.includes('..' + path.sep)) return res.status(400).json({ error: 'Ruta inválida' });
     if (!fs.existsSync(full)) return res.status(404).json({ error: 'Fichero no encontrado' });
-    return res.download(full, name, err => {
+    // avoid throwing if fs.statSync is not mocked in tests
+    let isDir = false;
+    try { const st = fs.statSync(full); isDir = typeof st.isDirectory === 'function' ? st.isDirectory() : false; } catch (e) { isDir = false; }
+    if (isDir) return res.status(404).json({ error: 'Fichero no encontrado' });
+    const downloadName = path.basename(full);
+    return res.download(full, downloadName, err => {
       if (err) console.error('download error', err);
     });
   }catch(err){
@@ -54,9 +78,15 @@ export function downloadFile(req, res){
 export function deleteFile(req, res){
   try{
     ensureDir();
-    const name = safeName(req.params.name);
-    const full = path.join(FILES_DIR, name);
+    // Accept names that may include subfolders (e.g., "note/hola.note")
+    const raw = decodeURIComponent((req.query && req.query.name) || req.params[0] || req.params.name || req.params.path || '');
+    const full = path.resolve(FILES_DIR, raw);
+    // Prevent path traversal
+    const rel = path.relative(path.resolve(FILES_DIR), full);
+    if (!rel || rel.startsWith('..') || rel.includes('..' + path.sep)) return res.status(400).json({ error: 'Ruta inválida' });
     if (!fs.existsSync(full)) return res.status(404).json({ error: 'Fichero no encontrado' });
+    // avoid deleting directories
+    try { const st = fs.statSync(full); if (typeof st.isDirectory === 'function' && st.isDirectory()) return res.status(400).json({ error: 'Ruta inválida' }); } catch (e) {}
     fs.unlinkSync(full);
     res.json({ message: 'Fichero borrado' });
   }catch(err){

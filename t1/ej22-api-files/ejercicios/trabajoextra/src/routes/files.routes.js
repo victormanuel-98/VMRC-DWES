@@ -20,10 +20,13 @@ router.get('/', verifyToken, listFiles);
 // Upload one or many files (any extension)
 router.post('/upload', verifyToken, upload.array('files'), uploadFiles);
 
-// Download by name
-router.get('/download/:name', verifyToken, downloadFile);
+// Download by name or path (supports subfolders)
+// Download via query parameter to avoid router wildcard issues
+router.get('/download', verifyToken, downloadFile);
 
-// Delete
+// Delete (supports ?name=... for paths with subfolders)
+router.delete('/', verifyToken, deleteFile);
+// Backward-compatible single-segment delete
 router.delete('/:name', verifyToken, deleteFile);
 
 export default router;
