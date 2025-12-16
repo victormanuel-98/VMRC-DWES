@@ -2,27 +2,23 @@
   {
     "id": 1,
     "titulo": "Manzano",
-    "contenido": "calvo"
+    "contenido": "calvo",
+    "categoria": "",
+    "updatedAt": 1765890374375
   },
   {
     "id": 2,
     "titulo": "Hola a todos",
-    "contenido": "Hola Dr. Nick"
-  },
-  {
-    "id": 3,
-    "titulo": "Comprar",
-    "contenido": "Leche"
+    "contenido": "Hola Dr. Nick",
+    "categoria": "",
+    "updatedAt": 1765890379151
   },
   {
     "id": 4,
     "titulo": "Duda de clase",
-    "contenido": "No me entero ni de la mitad"
-  },
-  {
-    "id": 5,
-    "titulo": "Ruso",
-    "contenido": "tonto"
+    "contenido": "Preguntar a gema por conexion de pantallas en figma",
+    "categoria": "",
+    "updatedAt": 1765890399127
   },
   {
     "id": 6,
@@ -80,5 +76,12 @@
     "updatedAt": 1765425240670,
     "titulo": "test2",
     "contenido": "Contenido sin JSON para nota 2"
+  },
+  {
+    "id": 1765890517805,
+    "createdAt": 1765890517805,
+    "updatedAt": 1765890517805,
+    "titulo": "Nota creada por asistente",
+    "contenido": "Esta es una nota de prueba subida por el asistente."
   }
 ]
