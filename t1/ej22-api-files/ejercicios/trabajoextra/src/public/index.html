@@ -325,7 +325,11 @@
 
     document.querySelector('#filesTable tbody').addEventListener('click', async (e) => {
       const btn = e.target.closest('button'); if (!btn) return; const name = decodeURIComponent(btn.dataset.name);
-      if (btn.classList.contains('fdownload')) { const a = document.createElement('a'); a.href = apiRoot + '/api/files/download?name=' + encodeURIComponent(name); a.download = name; document.body.appendChild(a); a.click(); a.remove(); }
+      if (btn.classList.contains('fdownload')) {
+        const res = await fetch(apiRoot + '/api/files/download?name=' + encodeURIComponent(name), { headers: { ...authHeaders() } });
+        if (!res.ok) { const j = await res.json().catch(() => ({})); return alert('Error descargando: ' + (j.error || res.status)); }
+        const blob = await res.blob(); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(a.href);
+      }
       if (btn.classList.contains('fdelete')) { if (!confirm('Borrar ' + name + '?')) return; const res = await fetch(apiRoot + '/api/files/' + encodeURIComponent(name), { method: 'DELETE', headers: { ...authHeaders() } }); if (!res.ok) { const j = await res.json().catch(() => ({})); return alert('No se pudo borrar: ' + (j.error || res.status)); } loadFiles(); }
     });
 
