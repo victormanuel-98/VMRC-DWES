@@ -3,5 +3,7 @@ module.exports = {
     transform: {
         "^.+\\.js$": "babel-jest"
     }
-    ,setupFiles: ["<rootDir>/src/tests/setup.js"]
+    ,setupFiles: ["<rootDir>/tests/setup.js"],
+    testMatch: ["<rootDir>/tests/**/*.test.js"],
+    testPathIgnorePatterns: ["/node_modules/", "<rootDir>/src/tests/"]
 };

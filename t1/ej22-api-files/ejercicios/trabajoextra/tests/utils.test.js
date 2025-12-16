@@ -1,6 +1,6 @@
-import * as fm from "../utils/fileManager.js";
-import errorHandler from "../middlewares/errorHandler.js";
-import logger from "../utils/logger.js";
+import * as fm from "../src/utils/fileManager.js";
+import errorHandler from "../src/middlewares/errorHandler.js";
+import logger from "../src/utils/logger.js";
 import fs from "fs";
 
 describe("fileManager utils", () => {

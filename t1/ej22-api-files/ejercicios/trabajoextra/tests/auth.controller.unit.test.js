@@ -1,4 +1,4 @@
-import { login, tokenOnly } from "../controllers/auth.controller.js";
+import { login, tokenOnly } from "../src/controllers/auth.controller.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -66,3 +66,4 @@ describe("auth.controller unit tests", () => {
     expect(res.send).toHaveBeenCalledWith('tok-only');
   });
 });
+// migrated test

@@ -1,5 +1,5 @@
-import * as fileManager from '../utils/fileManager.js';
-import * as notasService from '../services/notas.service.js';
+import * as fileManager from "../src/utils/fileManager.js";
+import * as notasService from "../src/services/notas.service.js";
 
 let mockData = [];
 

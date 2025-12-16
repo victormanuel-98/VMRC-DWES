@@ -1,7 +1,6 @@
 
 import express from "express";
 import path from "path";
-import { fileURLToPath } from "url";
 import notasRoutes from "./routes/notas.routes.js";
 import filesRoutes from "./routes/files.routes.js";
 import morgan from "morgan";
@@ -12,10 +11,9 @@ import authRoutes from "./routes/auth.routes.js";
 const app = express();
 
 // Serve static UI from ./public (moved into src/public)
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-app.use(express.static(path.join(__dirname, "public")));
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, "public", "index.html")));
+const staticPath = path.join(process.cwd(), "src", "public");
+app.use(express.static(staticPath));
+app.get('/', (req, res) => res.sendFile(path.join(staticPath, "index.html")));
 
 // Middlewares
 app.use(express.json());

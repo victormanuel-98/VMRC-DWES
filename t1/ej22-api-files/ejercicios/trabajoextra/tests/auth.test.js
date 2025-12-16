@@ -1,8 +1,8 @@
 import request from "supertest";
-import app from "../app.js";
+import app from "../src/app.js";
 import jwt from "jsonwebtoken";
 
-import { verifyToken, onlyAdmin } from "../middlewares/auth.middleware.js";
+import { verifyToken, onlyAdmin } from "../src/middlewares/auth.middleware.js";
 
 describe("Auth controller (HTTP)", () => {
   beforeAll(() => {

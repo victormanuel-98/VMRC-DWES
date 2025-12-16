@@ -4,7 +4,7 @@ process.env.ADMIN_PASS = process.env.ADMIN_PASS || "supermegaesternocleidomastoi
 process.env.JWT_SECRET = process.env.JWT_SECRET || "test_jwt_secret";
 
 import request from "supertest";
-import app from "../app.js";
+import app from "../src/app.js";
 
 describe("API de Notas", () => {
     let notaId;

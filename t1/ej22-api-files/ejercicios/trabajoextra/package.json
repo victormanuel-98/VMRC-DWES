@@ -6,10 +6,8 @@
     "main": "index.js",
     "scripts": {
         "start": "node src/server.js",
-        "test": "jest --coverage",
-        "ver": "node index.js ver",
-        "agregar": "node index.js agregar",
-        "borrar": "node index.js borrar"
+        "dev": "nodemon src/server.js",
+        "test": "jest --coverage"
     },
     "dependencies": {
         "archiver": "^5.3.1",
