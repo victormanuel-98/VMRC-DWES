@@ -51,7 +51,7 @@ El puerto puede variar según la configuración definida en el archivo `.env`.
 
 El servidor se levanta correctamente desde la terminal de VS Code utilizando bash.
 
-![server up](./samples/images/notasServerUp.png)
+![server up](./images/ej23serverup.png)
 
 ---
 
