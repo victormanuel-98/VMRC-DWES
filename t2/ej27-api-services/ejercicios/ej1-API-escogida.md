@@ -48,11 +48,3 @@ Aplicar, si procede:
 Ejemplo de acceso a la API desde navegador o cliente HTTP:
 
 GET <endpoint de la API>
-
-La respuesta se recibe en formato JSON, lo que facilita su tratamiento desde JavaScript.
-
-7. Justificación de la elección
-
-Puedes poner esto tal cual en la entrega:
-
-Se ha elegido la Crisis Core Fusion API por tratarse de una API pública, accesible sin autenticación y bien adaptada al consumo desde Node.js. Proporciona datos en formato JSON y permite practicar la integración de servicios externos mediante peticiones HTTP, cumpliendo los requisitos del Tema 27 de DWES.
