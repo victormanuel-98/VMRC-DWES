@@ -1,7 +1,7 @@
 {
-    "name": "gestor-notas",
+    "name": "crisis-core-materia-api",
     "version": "1.0.0",
-    "description": "Gestor de notas con scripts de acceso directo",
+    "description": "API proxy para consultar materias de Crisis Core Final Fantasy VII",
     "type": "module",
     "main": "index.js",
     "scripts": {
@@ -10,19 +10,12 @@
         "test": "jest --coverage"
     },
     "dependencies": {
-        "archiver": "^5.3.1",
-        "swagger-jsdoc": "^6.2.8",
-        "swagger-ui-express": "^4.6.3",
-        "bcrypt": "^6.0.0",
-        "chalk": "^5.6.2",
+        "axios": "^1.6.2",
         "dotenv": "^17.2.3",
         "express": "^5.1.0",
-        "form-data": "^4.0.5",
-        "jsonwebtoken": "^9.0.3",
         "morgan": "^1.10.1",
-        "multer": "^1.4.5-lts.1",
-        "node-fetch": "^3.3.2",
-        "readline-sync": "^1.4.10",
+        "swagger-jsdoc": "^6.2.8",
+        "swagger-ui-express": "^4.6.3",
         "winston": "^3.18.3"
     },
     "devDependencies": {

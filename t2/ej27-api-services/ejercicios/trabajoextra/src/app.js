@@ -1,12 +1,10 @@
 
 import express from "express";
 import path from "path";
-import notasRoutes from "./routes/notas.routes.js";
-import filesRoutes from "./routes/files.routes.js";
+import materiaRoutes from "./routes/materia.routes.js";
 import morgan from "morgan";
 import logger from "./utils/logger.js";
 import errorHandler from "./middlewares/errorHandler.js";
-import authRoutes from "./routes/auth.routes.js";
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec from "./swagger.js";
 
@@ -26,9 +24,7 @@ app.use(morgan("combined", {
 }));
 
 // Rutas
-app.use("/api/notas", notasRoutes);
-app.use("/api/auth", authRoutes);
-app.use("/api/files", filesRoutes);
+app.use("/api/materia", materiaRoutes);
 
 // Swagger UI
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));

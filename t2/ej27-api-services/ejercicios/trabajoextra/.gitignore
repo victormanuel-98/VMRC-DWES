@@ -10,40 +10,57 @@ node_modules/
 logs/
 *.log
 npm-debug.log*
+yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
 
 # Coverage reports
 coverage/
-coverage/**
+*.lcov
+.nyc_output
 
 # Build / dist
 dist/
 build/
 
-# Uploaded user files (don't commit large binaries)
+# Archivos de usuario y datos
 files/
+uploads/
+data/
 
 # Local IDE files
 .vscode/
 .idea/
+*.sublime-project
+*.sublime-workspace
 
 # OS files
 .DS_Store
+Thumbs.db
+desktop.ini
 
 # Temporary and generated files
 *.tmp
 *.bak
 *.swp
+*~
+.cache
 
 # Test artifacts and debug output
-notas_export*.zip
-response_headers*.txt
-token.txt
+test-results/
+*.test.js.snap
 
 # Temporary artifacts folder
 tmp/
 
-# Samples (move to samples/ if you want to keep them under source control)
-# Ignore any .note by default but allow ones under samples/
-*.note
-!samples/**/*.note
+# Package manager
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Debug
+.pnp
+.pnp.js
+
+# Documentación generada
+docs/generated/
