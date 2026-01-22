@@ -1,11 +1,3 @@
-/*
-
-Películas MFlix-  año >= 2000
-
-- Idioma: Español && Ingles / Español || Ingles
-
-*/
-
 use sample_mflix
 
 languages: { $in: ["Spanish", "English"] }
@@ -14,15 +6,6 @@ languages: { $all: ["Spanish", "English"] }
 
 
 
-/*
-
-Películas MFlix-  año >= 2000
-
-- Que el parámetro "viewers" exista
-
-*/
-
-use sample_mflix
 
 db.movies.find({
   year: { $gte: 2000 },
@@ -31,15 +14,6 @@ db.movies.find({
 
 
 
-/*
-
-Películas MFlix-  año >= 2000
-
-- Que tenga al menos 3 directores
-
-*/
-
-use sample_mflix
 
 db.movies.find({
   year: { $gte: 2000 },
