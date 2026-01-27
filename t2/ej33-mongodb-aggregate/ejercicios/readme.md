@@ -17,4 +17,4 @@ db.movies.aggregate([
     }
 ]);
 ```
-![consulta1.1](./ejercicios/images/ej1.1.png)
+![consulta1.1](/images/ej1.1.png)
