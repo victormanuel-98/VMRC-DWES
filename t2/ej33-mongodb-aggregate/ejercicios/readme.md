@@ -17,7 +17,7 @@ db.movies.aggregate([
     }
 ]);
 ```
-![consulta 1.1](./ej33-mongodb-aggregate/ejercicios/images/ej1.1.png)
+![consulta 1.1](images/ej1.1.png)
 
 ---
 
@@ -48,7 +48,7 @@ db.movies.aggregate([
     }
 ]);
 ```
-![consulta 1.2](./ej33-mongodb-aggregate/ejercicios/images/ej1.2.png)
+![consulta 1.2](images/ej1.2.png)
 
 ---
 
@@ -77,7 +77,7 @@ db.movies.aggregate([
 ]);
 ```
 
-![consulta 2](./ej33-mongodb-aggregate/ejercicios/images/ej2.png)
+![consulta 2](images/ej2.png)
 
 ---
 
@@ -116,7 +116,7 @@ db.movies.aggregate([
 ]);
 ```
 
-![consulta 3](./ej33-mongodb-aggregate/ejercicios/images/ej3.png)
+![consulta 3](images/ej3.png)
 
 ---
 
@@ -143,4 +143,4 @@ db.movies.aggregate([
 ]);
 ```
 
-![consulta 4](./ej33-mongodb-aggregate/ejercicios/images/ej4.png)
+![consulta 4](images/ej4.png)
