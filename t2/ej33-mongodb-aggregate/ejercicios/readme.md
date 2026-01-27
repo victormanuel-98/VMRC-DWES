@@ -17,4 +17,130 @@ db.movies.aggregate([
     }
 ]);
 ```
-![consulta1.1](./ej33-mongodb-aggregate/ejercicios/images/ej1.1.png)
+![consulta 1.1](./ej33-mongodb-aggregate/ejercicios/images/ej1.1.png)
+
+---
+
+## 1.2. Devolver la cuenta de cuántas películas y series hay en español. En lugar de array de nombres, que sean objetos que contengan:
+- nombre
+- año
+- valoración IMDb
+- géneros
+
+```
+db.movies.aggregate([
+    {
+        $match: { languages: 'Spanish' }
+    },
+    {
+        $group: {
+            _id: null,
+            total: { $count: {} },
+            peliculas: {
+                $push: {
+                    nombre: '$title',
+                    año: '$year',
+                    valoracionImdb: '$imdb.rating',
+                    generos: '$genres'
+                }
+            }
+        }
+    }
+]);
+```
+![consulta 1.2](./ej33-mongodb-aggregate/ejercicios/images/ej1.2.png)
+
+---
+
+## 2. Devolver las películas agrupadas:
+- Primer nivel por género
+- Segundo nivel por año
+
+```
+db.movies.aggregate([
+    { $unwind: '$genres' },
+    {
+        $group: {
+            _id: {
+                genero: '$genres',
+                año: '$year'
+            },
+            peliculas: { $push: '$title' }
+        }
+    },
+    {
+        $sort: {
+            '_id.genero': 1,
+            '_id.año': 1
+        }
+    }
+]);
+```
+
+![consulta 2](./ej33-mongodb-aggregate/ejercicios/images/ej2.png)
+
+---
+
+## 3. Agrupar las películas por valoración.
+- La agrupación se hace por valores enteros.
+Ej: en la categoría 7 estarán todos los comprendidos entre [7, 8).]
+
+```
+db.movies.aggregate([
+    {
+        $match: { "imdb.rating": { $type: "number" } }
+    },
+    {
+        $group: {
+            _id: { $floor: "$imdb.rating" },
+            totalPeliculas: { $sum: 1 }
+        }
+    },
+    {
+        $project: {
+            _id: 0,
+            categoria: "$_id",
+            rango: {
+                $concat: [
+                    "[",
+                    { $toString: "$_id" },
+                    ", ",
+                    { $toString: { $add: ["$_id", 1] } },
+                    ")"
+                ]
+            },
+            totalPeliculas: 1
+        }
+    },
+    { $sort: { categoria: 1 } }
+]);
+```
+
+![consulta 3](./ej33-mongodb-aggregate/ejercicios/images/ej3.png)
+
+---
+
+## 4. 4. Agrupar las películas por categorías y coger sólo:
+- nombre
+- año
+- valoración media calculada
+
+```
+db.movies.aggregate([
+    { $unwind: '$genres' },
+    {
+        $group: {
+            _id: '$genres',
+            peliculas: {
+                $push: {
+                    nombre: '$title',
+                    año: '$year',
+                    valoracionMedia: '$imdb.rating'
+                }
+            }
+        }
+    }
+]);
+```
+
+![consulta 4](./ej33-mongodb-aggregate/ejercicios/images/ej4.png)
