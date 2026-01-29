@@ -1,20 +1,17 @@
-import mongoose from 'mongoose';
 import mongoosePaginate from 'mongoose-paginate-v2';
+import mongoose from 'mongoose';
+import { Weather } from '../models/weather.model.js';
+import { connectDB, closeDB } from '../config/database.js';
 
-// CONFIGURR MODELOS
-
-const weatherSchemaNative = new mongoose.Schema({}, { strict: false });
-const WeatherNative = mongoose.model('WeatherNative', weatherSchemaNative, 'data');
-
-
-
+// Modelo con plugin para paginación
 const weatherSchemaWithPlugin = new mongoose.Schema({}, { strict: false });
 weatherSchemaWithPlugin.plugin(mongoosePaginate);
 const WeatherWithPlugin = mongoose.model('WeatherWithPlugin', weatherSchemaWithPlugin, 'data');
 
 
-// PAGINACIÓN NATIVA (skip y limit)
-
+/**
+ * 1. PAGINACIÓN NATIVA (usando skip y limit)
+ */
 async function paginacionNativa() {
     console.log('\n========== PAGINACIÓN NATIVA ==========\n');
     
@@ -22,12 +19,12 @@ async function paginacionNativa() {
     const limit = 5;
     const skip = (page - 1) * limit;
 
-    const docs = await WeatherNative
+    const docs = await Weather
         .find()
         .skip(skip)
         .limit(limit);
 
-    const totalDocs = await WeatherNative.countDocuments();
+    const totalDocs = await Weather.countDocuments();
     const totalPages = Math.ceil(totalDocs / limit);
     
     console.log(`Página: ${page} de ${totalPages}`);
@@ -44,8 +41,9 @@ async function paginacionNativa() {
 }
 
 
-// PAGINACIÓN CON PLUGIN mongoose-paginate-v2
-
+/**
+ * 2. PAGINACIÓN CON PLUGIN mongoose-paginate-v2
+ */
 async function paginacionConPlugin() {
     console.log('\n========== PAGINACIÓN CON PLUGIN ==========\n');
     
@@ -55,7 +53,7 @@ async function paginacionConPlugin() {
         sort: { _id: 1 },
         lean: false
     };
-
+    
     const result = await WeatherWithPlugin.paginate({}, options);
     
     console.log(`Página: ${result.page} de ${result.totalPages}`);
@@ -77,11 +75,12 @@ async function paginacionConPlugin() {
 }
 
 
-// EJEMPLO CON FILTROS Y PROYECCIÓN
-
+/**
+ * EJEMPLO AVANZADO: Paginación con filtros y proyección
+ */
 async function paginacionAvanzada() {
     console.log('\n========== PAGINACIÓN AVANZADA CON FILTROS ==========\n');
-
+    
     const query = {};
     
     const options = {
@@ -106,13 +105,13 @@ async function paginacionAvanzada() {
 }
 
 
-// FUNCIÓN PRINCIPAL
-
+/**
+ * Función principal
+ */
 async function main() {
     try {
-        await mongoose.connect('mongodb://localhost:27017/sample_weatherdata');
-        console.log('✓ Conectado a MongoDB');
-
+        await connectDB('sample_weatherdata');
+        
         await paginacionNativa();
         await paginacionConPlugin();
         await paginacionAvanzada();
@@ -120,9 +119,13 @@ async function main() {
     } catch (error) {
         console.error('Error:', error);
     } finally {
-        await mongoose.connection.close();
-        console.log('\n✓ Conexión cerrada');
+        await closeDB();
     }
 }
 
-main();
+// Ejecutar si es el archivo principal
+if (import.meta.url === `file:///${process.argv[1].replace(/\\/g, '/')}`) {
+    main();
+}
+
+export { paginacionNativa, paginacionConPlugin, paginacionAvanzada };
