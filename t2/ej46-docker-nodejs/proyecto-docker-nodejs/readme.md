@@ -25,4 +25,4 @@ http://localhost:3000
 ```
 
 3. Imagen de prueba del navegador:
-![Puerto conectado](/images/ej1.png)
+![Puerto conectado](images/ej1.png)
