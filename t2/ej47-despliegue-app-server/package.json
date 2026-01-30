@@ -1,13 +1,13 @@
 {
   "name": "ej47-despliegue-app-server",
   "version": "1.0.0",
-  "description": "Aplicación Node.js desplegada en Vercel",
+  "description": "Aplicación Node.js desplegada en Render",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "dev": "node index.js"
   },
-  "keywords": ["node", "express", "vercel"],
+  "keywords": ["node", "express", "render"],
   "author": "",
   "license": "MIT",
   "dependencies": {
