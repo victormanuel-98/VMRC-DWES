@@ -3,7 +3,7 @@
 ## Captura
 
 <!-- Añadir captura de pantalla de la aplicación -->
-![Interfaz de la aplicación](./images/vercelapp.png)
+![Interfaz de la aplicación](./images/renderapp.png)
 
 ---
 
