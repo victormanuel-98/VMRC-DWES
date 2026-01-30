@@ -136,11 +136,11 @@ app.get('/', (req, res) => {
       <div class="container">
         <div class="header">
           <h1>🚀 Aplicación Node.js</h1>
-          <p class="subtitle">Desplegada con éxito en Vercel</p>
+          <p class="subtitle">Desplegada con éxito en Render</p>
           <div>
             <span class="badge">Node.js</span>
             <span class="badge">Express</span>
-            <span class="badge">Vercel</span>
+            <span class="badge">Render</span>
           </div>
           <p style="margin-top: 20px; color: #888;">
             📅 ${new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })}
@@ -190,12 +190,12 @@ app.get('/', (req, res) => {
           <h2>ℹ️ Información del Proyecto</h2>
           <p><strong>Proyecto:</strong> VMRC-DWES - T2 - Ejercicio 47</p>
           <p><strong>Tecnologías:</strong> Node.js + Express</p>
-          <p><strong>Despliegue:</strong> Vercel</p>
+          <p><strong>Despliegue:</strong> Render</p>
           <p><strong>Estado:</strong> <span style="color: #10b981; font-weight: bold;">✓ Activo</span></p>
         </div>
 
         <div class="footer">
-          <p>💻 Desarrollado con Node.js y desplegado en Vercel</p>
+          <p>💻 Desarrollado con Node.js y desplegado en Render</p>
           <p style="margin-top: 10px; font-size: 0.9em;">VMRC-DWES © 2026</p>
         </div>
       </div>
@@ -253,7 +253,7 @@ app.get('/api/info', (req, res) => {
   res.json({
     nombre: 'Aplicación de ejemplo',
     version: '1.0.0',
-    tecnologias: ['Node.js', 'Express', 'Vercel'],
+    tecnologias: ['Node.js', 'Express', 'Render'],
     autor: 'VMRC-DWES'
   });
 });
@@ -350,5 +350,5 @@ app.listen(PORT, () => {
   console.log(`🚀 Servidor ejecutándose en http://localhost:${PORT}`);
 });
 
-// Exportar para Vercel
+// Exportar para Render
 module.exports = app;
