@@ -49,7 +49,7 @@ La aplicación permite gestionar alimentos individuales y platos combinados, as�
 
 ---
 
-## 3. Backend
+## 3. Backend (provisional)
 
 ### Estructura de carpetas
 
@@ -68,6 +68,8 @@ backend/
  │    ├── User.js
  │    ├── Recipe.js
  │    ├── Ingredient.js
+ │    ├── Favorite.js
+ │    ├── LookingFor.js
  │    ├── Plan.js
  │    ├── History.js
  │    ├── Favorite.js
