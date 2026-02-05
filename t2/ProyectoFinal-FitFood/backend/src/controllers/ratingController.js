@@ -14,7 +14,6 @@ export const crearValoracion = async (req, res) => {
             return res.status(400).json({ mensaje: 'La puntuación debe estar entre 1 y 5' });
         }
 
-        // Verificar si ya existe valoración
         const existente = await Rating.findOne({ usuario: usuarioId, receta: recetaId });
         if (existente) {
             return res.status(400).json({ mensaje: 'Ya has valorado esta receta' });
@@ -29,7 +28,6 @@ export const crearValoracion = async (req, res) => {
 
         await nuevaValoracion.save();
 
-        // Actualizar puntuación promedio de la receta
         await actualizarPuntuacionReceta(recetaId);
 
         res.status(201).json({
@@ -97,7 +95,6 @@ export const actualizarValoracion = async (req, res) => {
         const recetaId = valoracion.receta;
         await valoracion.save();
 
-        // Actualizar puntuación promedio de la receta
         await actualizarPuntuacionReceta(recetaId);
 
         res.status(200).json({
@@ -126,7 +123,6 @@ export const eliminarValoracion = async (req, res) => {
         const recetaId = valoracion.receta;
         await Rating.findByIdAndDelete(id);
 
-        // Actualizar puntuación promedio de la receta
         await actualizarPuntuacionReceta(recetaId);
 
         res.status(200).json({ mensaje: 'Valoración eliminada exitosamente' });
@@ -135,7 +131,6 @@ export const eliminarValoracion = async (req, res) => {
     }
 };
 
-// Función auxiliar para actualizar la puntuación promedio
 const actualizarPuntuacionReceta = async (recetaId) => {
     try {
         const valoraciones = await Rating.find({ receta: recetaId });

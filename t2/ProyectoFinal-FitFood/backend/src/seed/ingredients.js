@@ -6,7 +6,6 @@ import Ingredient from '../models/Ingredient.js';
 dotenv.config();
 
 const ingredientes = [
-    // Proteínas
     { nombre: 'Pechuga de pollo', calorias: 165, unidad: 'g', proteinas: 31, grasas: 3.6, carbohidratos: 0 },
     { nombre: 'Pavo', calorias: 135, unidad: 'g', proteinas: 29, grasas: 1.6, carbohidratos: 0 },
     { nombre: 'Atún en agua', calorias: 116, unidad: 'g', proteinas: 26, grasas: 1, carbohidratos: 0 },
@@ -26,7 +25,6 @@ const ingredientes = [
     { nombre: 'Leche desnatada', calorias: 35, unidad: 'ml', proteinas: 3.5, grasas: 0.1, carbohidratos: 5 },
     { nombre: 'Bebida de soja sin azúcar', calorias: 33, unidad: 'ml', proteinas: 3.3, grasas: 1.8, carbohidratos: 0.7 },
 
-    // Cereales y carbohidratos saludables
     { nombre: 'Avena', calorias: 389, unidad: 'g', proteinas: 16.9, grasas: 6.9, carbohidratos: 66.3 },
     { nombre: 'Quinoa cocida', calorias: 120, unidad: 'g', proteinas: 4.4, grasas: 1.9, carbohidratos: 21.3 },
     { nombre: 'Arroz integral cocido', calorias: 111, unidad: 'g', proteinas: 2.6, grasas: 0.9, carbohidratos: 23 },
@@ -40,7 +38,6 @@ const ingredientes = [
     { nombre: 'Batata cocida', calorias: 86, unidad: 'g', proteinas: 1.6, grasas: 0.1, carbohidratos: 20.1 },
     { nombre: 'Patata cocida', calorias: 87, unidad: 'g', proteinas: 1.9, grasas: 0.1, carbohidratos: 20 },
 
-    // Frutas
     { nombre: 'Plátano', calorias: 89, unidad: 'g', proteinas: 1.1, grasas: 0.3, carbohidratos: 23 },
     { nombre: 'Manzana', calorias: 52, unidad: 'g', proteinas: 0.3, grasas: 0.2, carbohidratos: 14 },
     { nombre: 'Fresas', calorias: 32, unidad: 'g', proteinas: 0.7, grasas: 0.3, carbohidratos: 7.7 },
@@ -52,7 +49,6 @@ const ingredientes = [
     { nombre: 'Piña', calorias: 50, unidad: 'g', proteinas: 0.5, grasas: 0.1, carbohidratos: 13 },
     { nombre: 'Uvas', calorias: 69, unidad: 'g', proteinas: 0.7, grasas: 0.2, carbohidratos: 18 },
 
-    // Verduras y hortalizas
     { nombre: 'Espinacas', calorias: 23, unidad: 'g', proteinas: 2.9, grasas: 0.4, carbohidratos: 3.6 },
     { nombre: 'Kale', calorias: 49, unidad: 'g', proteinas: 4.3, grasas: 0.9, carbohidratos: 8.8 },
     { nombre: 'Brócoli', calorias: 34, unidad: 'g', proteinas: 2.8, grasas: 0.4, carbohidratos: 6.6 },
@@ -72,7 +68,6 @@ const ingredientes = [
     { nombre: 'Guisantes', calorias: 81, unidad: 'g', proteinas: 5.4, grasas: 0.4, carbohidratos: 14 },
     { nombre: 'Maíz dulce', calorias: 86, unidad: 'g', proteinas: 3.4, grasas: 1.2, carbohidratos: 19 },
 
-    // Grasas saludables y semillas
     { nombre: 'Aceite de oliva virgen extra', calorias: 884, unidad: 'g', proteinas: 0, grasas: 100, carbohidratos: 0 },
     { nombre: 'Semillas de chía', calorias: 486, unidad: 'g', proteinas: 17, grasas: 31, carbohidratos: 42 },
     { nombre: 'Semillas de lino', calorias: 534, unidad: 'g', proteinas: 18.3, grasas: 42.2, carbohidratos: 28.9 },
@@ -82,7 +77,6 @@ const ingredientes = [
     { nombre: 'Tahini', calorias: 595, unidad: 'g', proteinas: 17, grasas: 53, carbohidratos: 21 },
     { nombre: 'Aceite de coco', calorias: 892, unidad: 'g', proteinas: 0, grasas: 100, carbohidratos: 0 },
 
-    // Extras saludables
     { nombre: 'Cacao puro', calorias: 228, unidad: 'g', proteinas: 20, grasas: 14, carbohidratos: 50 },
     { nombre: 'Canela', calorias: 247, unidad: 'g', proteinas: 4, grasas: 1.2, carbohidratos: 81 },
     { nombre: 'Miel', calorias: 304, unidad: 'g', proteinas: 0.3, grasas: 0, carbohidratos: 82 },
@@ -94,7 +88,6 @@ const ingredientes = [
     { nombre: 'Salsa de soja baja en sal', calorias: 53, unidad: 'g', proteinas: 8, grasas: 0.6, carbohidratos: 4.9 },
     { nombre: 'Mostaza Dijon', calorias: 66, unidad: 'g', proteinas: 4.4, grasas: 3.7, carbohidratos: 5.7 },
 
-    // Ingredientes para recetas ejemplo
     { nombre: 'Pan integral para hamburguesa', calorias: 250, unidad: 'g', proteinas: 9, grasas: 4, carbohidratos: 45 },
     { nombre: 'Hamburguesa vegana (soja)', calorias: 180, unidad: 'g', proteinas: 18, grasas: 7, carbohidratos: 11 },
     { nombre: 'Leche de almendras sin azúcar', calorias: 13, unidad: 'ml', proteinas: 0.4, grasas: 1.1, carbohidratos: 0.3 },

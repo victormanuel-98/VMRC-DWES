@@ -2,7 +2,6 @@ import User from '../models/User.js';
 import jwt from 'jsonwebtoken';
 import validator from 'validator';
 
-// Validar contraseña fuerte
 const esContraseniaFuerte = (contrasena) => {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     return regex.test(contrasena);
@@ -12,7 +11,6 @@ export const registrar = async (req, res) => {
     try {
         const { usuario, email, nombre, apellidos, contrasena, rol } = req.body;
 
-        // Validaciones
         if (!usuario || !email || !nombre || !contrasena) {
             return res.status(400).json({ mensaje: 'Todos los campos obligatorios deben ser completados' });
         }
@@ -27,13 +25,11 @@ export const registrar = async (req, res) => {
             });
         }
 
-        // Verificar usuario duplicado
         const usuarioExistente = await User.findOne({ $or: [{ usuario }, { email }] });
         if (usuarioExistente) {
             return res.status(400).json({ mensaje: 'Usuario o email ya registrado' });
         }
 
-        // Crear usuario
         const nuevoUsuario = new User({
             usuario,
             email,
@@ -45,7 +41,6 @@ export const registrar = async (req, res) => {
 
         await nuevoUsuario.save();
 
-        // Generar token
         const token = jwt.sign(
             { id: nuevoUsuario._id, usuario: nuevoUsuario.usuario, rol: nuevoUsuario.rol },
             process.env.JWT_SECRET,
@@ -76,19 +71,16 @@ export const login = async (req, res) => {
             return res.status(400).json({ mensaje: 'Usuario y contraseña requeridos' });
         }
 
-        // Buscar usuario
         const usuarioEncontrado = await User.findOne({ $or: [{ usuario }, { email: usuario }] }).select('+contrasena');
         if (!usuarioEncontrado) {
             return res.status(401).json({ mensaje: 'Usuario o contraseña incorrectos' });
         }
 
-        // Verificar contraseña
         const esValida = await usuarioEncontrado.compararContrasena(contrasena);
         if (!esValida) {
             return res.status(401).json({ mensaje: 'Usuario o contraseña incorrectos' });
         }
 
-        // Generar token
         const token = jwt.sign(
             { id: usuarioEncontrado._id, usuario: usuarioEncontrado.usuario, rol: usuarioEncontrado.rol },
             process.env.JWT_SECRET,
@@ -133,7 +125,6 @@ export const verificarToken = async (req, res) => {
     }
 };
 
-// Obtener perfil de usuario por ID
 export const obtenerPerfil = async (req, res) => {
     try {
         const { id } = req.params;
@@ -163,13 +154,11 @@ export const obtenerPerfil = async (req, res) => {
     }
 };
 
-// Actualizar perfil de usuario
 export const actualizarPerfil = async (req, res) => {
     try {
         const { id } = req.params;
         const { nombre, apellidos, email, telefono, foto, notificaciones, visibilidad, contrasenaActual, contrasenaNueva } = req.body;
 
-        // Verificar que el usuario autenticado es el mismo o es admin
         if (req.usuario.id !== id && req.usuario.rol !== 'admin') {
             return res.status(403).json({ mensaje: 'No autorizado para modificar este perfil' });
         }
@@ -179,7 +168,6 @@ export const actualizarPerfil = async (req, res) => {
             return res.status(404).json({ mensaje: 'Usuario no encontrado' });
         }
 
-        // Actualizar campos básicos
         if (nombre !== undefined) usuario.nombre = nombre;
         if (apellidos !== undefined) usuario.apellidos = apellidos;
         if (telefono !== undefined) usuario.telefono = telefono;
@@ -187,7 +175,6 @@ export const actualizarPerfil = async (req, res) => {
         if (notificaciones !== undefined) usuario.notificaciones = notificaciones;
         if (visibilidad !== undefined) usuario.visibilidad = visibilidad;
 
-        // Actualizar email (validar que no exista)
         if (email !== undefined && email !== usuario.email) {
             if (!validator.isEmail(email)) {
                 return res.status(400).json({ mensaje: 'Email inválido' });
@@ -199,7 +186,6 @@ export const actualizarPerfil = async (req, res) => {
             usuario.email = email;
         }
 
-        // Cambiar contraseña si se proporciona
         if (contrasenaNueva) {
             if (!contrasenaActual) {
                 return res.status(400).json({ mensaje: 'Contraseña actual requerida' });

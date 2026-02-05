@@ -55,7 +55,6 @@ const historySchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-// Asegurar que no haya duplicados de fecha por usuario
 historySchema.index({ usuario: 1, fecha: 1 }, { unique: true });
 
 export default mongoose.model('History', historySchema);

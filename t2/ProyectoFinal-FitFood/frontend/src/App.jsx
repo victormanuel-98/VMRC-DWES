@@ -24,12 +24,10 @@ function App() {
       <Router>
         <div className="App">
           <Routes>
-            {/* Rutas públicas */}
             <Route path="/" element={<Navigate to="/login" replace />} />
             <Route path="/login" element={<PublicLayout><Login /></PublicLayout>} />
             <Route path="/registro" element={<PublicLayout><Register /></PublicLayout>} />
             
-            {/* Rutas privadas */}
             <Route path="/inicio" element={<ProtectedRoute><PrivateLayout><Home /></PrivateLayout></ProtectedRoute>} />
             <Route path="/perfil" element={<ProtectedRoute><PrivateLayout><Profile /></PrivateLayout></ProtectedRoute>} />
             <Route path="/recetas" element={<ProtectedRoute><PrivateLayout><MyRecipes /></PrivateLayout></ProtectedRoute>} />
@@ -42,7 +40,6 @@ function App() {
             <Route path="/platos/cena" element={<ProtectedRoute><PrivateLayout><NotFound /></PrivateLayout></ProtectedRoute>} />
             <Route path="/platos/otros" element={<ProtectedRoute><PrivateLayout><NotFound /></PrivateLayout></ProtectedRoute>} />
             
-            {/* Rutas especiales */}
             <Route path="/forbidden" element={<PublicLayout><Forbidden /></PublicLayout>} />
             <Route path="*" element={<PublicLayout><NotFound /></PublicLayout>} />
           </Routes>

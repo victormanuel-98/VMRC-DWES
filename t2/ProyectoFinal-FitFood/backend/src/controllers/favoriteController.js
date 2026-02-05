@@ -9,7 +9,6 @@ export const agregarFavorito = async (req, res) => {
             return res.status(400).json({ mensaje: 'ID de receta requerido' });
         }
 
-        // Verificar si ya existe
         const existente = await Favorite.findOne({ usuario: usuarioId, receta: recetaId });
         if (existente) {
             return res.status(400).json({ mensaje: 'Esta receta ya está en favoritos' });
@@ -22,9 +21,20 @@ export const agregarFavorito = async (req, res) => {
 
         await nuevoFavorito.save();
 
+        const favoritoConDatos = await Favorite.findById(nuevoFavorito._id)
+            .populate('usuario', 'usuario nombre email foto')
+            .populate({
+                path: 'receta',
+                select: 'nombre descripcionCorta categoria dificultad calorias imagen',
+                populate: {
+                    path: 'autor',
+                    select: 'usuario nombre foto',
+                },
+            });
+
         res.status(201).json({
             mensaje: 'Receta agregada a favoritos',
-            favorito: nuevoFavorito,
+            favorito: favoritoConDatos,
         });
     } catch (error) {
         res.status(500).json({ mensaje: 'Error al agregar favorito', error: error.message });
@@ -36,8 +46,10 @@ export const obtenerFavoritos = async (req, res) => {
         const usuarioId = req.usuario.id;
 
         const favoritos = await Favorite.find({ usuario: usuarioId })
+            .populate('usuario', 'usuario nombre email foto')
             .populate({
                 path: 'receta',
+                select: 'nombre descripcionCorta categoria dificultad calorias imagen',
                 populate: {
                     path: 'autor',
                     select: 'usuario nombre foto',

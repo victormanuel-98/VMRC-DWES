@@ -3202,3 +3202,132 @@ h1, h2, h3 {
         gap: clamp(10px, 2vw, 20px);
     }
 }
+
+  /* ========== ASISTENTE IA ========== */
+  .ai-assistant {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  .ai-toggle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: none;
+    background: #5a8090;
+    color: white;
+    font-size: 22px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  }
+
+  .ai-panel {
+    width: min(360px, 90vw);
+    max-height: 70vh;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ai-header {
+    background: #5a8090;
+    color: white;
+    padding: 12px 16px;
+  }
+
+  .ai-title {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .ai-subtitle {
+    font-size: 0.8rem;
+    opacity: 0.85;
+  }
+
+  .ai-messages {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+  }
+
+  .ai-message {
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+
+  .ai-message.user {
+    align-self: flex-end;
+    background: #e8f4f8;
+    color: #2a4c59;
+  }
+
+  .ai-message.assistant {
+    align-self: flex-start;
+    background: #f4f4f4;
+    color: #333;
+  }
+
+  .ai-error {
+    color: #b00020;
+    padding: 0 12px 8px;
+    font-size: 0.85rem;
+  }
+
+  .ai-input {
+    padding: 10px 12px 12px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    align-items: end;
+  }
+
+  .ai-input textarea {
+    width: 100%;
+    resize: none;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    padding: 8px 10px;
+    font-family: inherit;
+  }
+
+  .ai-input button {
+    background: #5a8090;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 12px;
+  }
+
+  .ai-input button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .ai-hints {
+    display: flex;
+    gap: 8px;
+    padding: 0 12px 12px;
+    flex-wrap: wrap;
+  }
+
+  .ai-hints button {
+    background: #f0f7fa;
+    border: 1px solid #d8e6ec;
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    color: #2a4c59;
+  }

@@ -43,7 +43,6 @@ const seedRecetas = async () => {
     try {
         await connectDB();
 
-        // Crear usuario nutricionista si no existe
         const emailNutri = 'nutricionista@fitfood.com';
         let nutricionista = await User.findOne({ email: emailNutri });
 
@@ -59,7 +58,6 @@ const seedRecetas = async () => {
             await nutricionista.save();
         }
 
-        // Eliminar recetas previas
         await Recipe.deleteMany();
 
         const recetasBase = [

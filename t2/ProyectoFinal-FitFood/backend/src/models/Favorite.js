@@ -16,7 +16,6 @@ const favoriteSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-// Asegurar que no haya duplicados
 favoriteSchema.index({ usuario: 1, receta: 1 }, { unique: true });
 
 export default mongoose.model('Favorite', favoriteSchema);

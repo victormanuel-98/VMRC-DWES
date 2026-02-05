@@ -1,7 +1,6 @@
 import Recipe from '../models/Recipe.js';
 import Ingredient from '../models/Ingredient.js';
 
-// Calcular calorías totales de una receta
 const calcularCalorias = async (ingredientes) => {
     let totalCalorias = 0;
     let totalProteinas = 0;
@@ -31,10 +30,7 @@ export const crearReceta = async (req, res) => {
             return res.status(400).json({ mensaje: 'Faltan campos obligatorios' });
         }
 
-        // Solo nutricionistas y admins pueden crear recetas oficiales
         const esOficial = req.usuario.rol !== 'usuario';
-
-        // Calcular calorías
         const { totalCalorias, totalProteinas, totalGrasas, totalCarbohidratos } = await calcularCalorias(ingredientes);
 
         const nuevaReceta = new Recipe({
@@ -139,12 +135,9 @@ export const actualizarReceta = async (req, res) => {
             return res.status(404).json({ mensaje: 'Receta no encontrada' });
         }
 
-        // Verificar que solo el autor pueda editar
         if (receta.autor.toString() !== req.usuario.id && req.usuario.rol !== 'admin') {
             return res.status(403).json({ mensaje: 'No tienes permisos para editar esta receta' });
         }
-
-        // Actualizar campos
         if (nombre) receta.nombre = nombre;
         if (descripcionCorta) receta.descripcionCorta = descripcionCorta;
         if (descripcionLarga !== undefined) receta.descripcionLarga = descripcionLarga;
@@ -181,7 +174,6 @@ export const eliminarReceta = async (req, res) => {
             return res.status(404).json({ mensaje: 'Receta no encontrada' });
         }
 
-        // Verificar que solo el autor pueda eliminar
         if (receta.autor.toString() !== req.usuario.id && req.usuario.rol !== 'admin') {
             return res.status(403).json({ mensaje: 'No tienes permisos para eliminar esta receta' });
         }

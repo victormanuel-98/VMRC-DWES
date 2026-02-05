@@ -8,7 +8,6 @@ export const subirImagenReceta = async (req, res) => {
             return res.status(400).json({ mensaje: 'No se proporcionó imagen' });
         }
 
-        // Validar que sea un base64 válido
         if (!imagen.startsWith('data:image')) {
             return res.status(400).json({ mensaje: 'Imagen inválida' });
         }

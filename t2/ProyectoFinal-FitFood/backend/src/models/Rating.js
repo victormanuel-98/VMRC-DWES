@@ -26,7 +26,6 @@ const ratingSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-// Asegurar que un usuario solo pueda puntuar una vez por receta
 ratingSchema.index({ usuario: 1, receta: 1 }, { unique: true });
 
 export default mongoose.model('Rating', ratingSchema);

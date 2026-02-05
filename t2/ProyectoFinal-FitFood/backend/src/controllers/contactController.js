@@ -4,12 +4,9 @@ export const enviarMensajeContacto = async (req, res) => {
     try {
         const { nombre, email, asunto, mensaje } = req.body;
 
-        // Validaciones
         if (!nombre || !email || !asunto || !mensaje) {
             return res.status(400).json({ mensaje: 'Todos los campos son requeridos' });
         }
-
-        // Crear nuevo mensaje
         const nuevoMensaje = new Contact({
             nombre,
             email,

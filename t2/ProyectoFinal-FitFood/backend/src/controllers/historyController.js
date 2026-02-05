@@ -16,7 +16,6 @@ export const crearOActualizarHistorial = async (req, res) => {
             fecha: { $gte: new Date(fecha), $lt: new Date(new Date(fecha).getTime() + 86400000) },
         });
 
-        // Calcular totales
         let totalCalorias = 0;
         let totalProteinas = 0;
         let totalGrasas = 0;
@@ -126,7 +125,6 @@ export const eliminarAlimentoHistorial = async (req, res) => {
 
         historial.alimentos.splice(alimentoIndex, 1);
 
-        // Recalcular totales
         let totalCalorias = 0;
         let totalProteinas = 0;
         let totalGrasas = 0;
