@@ -1,6 +1,5 @@
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
-// Auth
 export const login = async (usuario, contrasena) => {
     const res = await fetch(`${API_BASE_URL}/auth/login`, {
         method: 'POST',
@@ -26,7 +25,6 @@ export const verificarToken = async (token) => {
     return res.json();
 };
 
-// Usuarios
 export const obtenerPerfilUsuario = async (id, token) => {
     const res = await fetch(`${API_BASE_URL}/usuarios/${id}`, {
         headers: { 'Authorization': `Bearer ${token}` },
@@ -46,7 +44,6 @@ export const actualizarPerfilUsuario = async (id, datos, token) => {
     return res.json();
 };
 
-// Upload
 export const subirImagenReceta = async (base64, token) => {
     const res = await fetch(`${API_BASE_URL}/upload/receta`, {
         method: 'POST',
@@ -71,7 +68,6 @@ export const subirImagenPerfil = async (base64, token) => {
     return res.json();
 };
 
-// Recetas
 export const crearReceta = async (datos, token) => {
     const res = await fetch(`${API_BASE_URL}/recetas`, {
         method: 'POST',
@@ -115,14 +111,12 @@ export const eliminarReceta = async (id, token) => {
     return res.json();
 };
 
-// Ingredientes
 export const obtenerIngredientes = async (busqueda = '') => {
     const params = new URLSearchParams({ q: busqueda });
     const res = await fetch(`${API_BASE_URL}/ingredientes?${params}`);
     return res.json();
 };
 
-// Favoritos
 export const agregarFavorito = async (recetaId, token) => {
     const res = await fetch(`${API_BASE_URL}/favoritos`, {
         method: 'POST',
@@ -150,7 +144,6 @@ export const eliminarFavorito = async (recetaId, token) => {
     return res.json();
 };
 
-// Valoraciones
 export const crearValoracion = async (datos, token) => {
     const res = await fetch(`${API_BASE_URL}/valoraciones`, {
         method: 'POST',
@@ -168,7 +161,6 @@ export const obtenerValoraciones = async (recetaId) => {
     return res.json();
 };
 
-// Historial
 export const crearHistorial = async (datos, token) => {
     const res = await fetch(`${API_BASE_URL}/historial`, {
         method: 'POST',
@@ -188,7 +180,6 @@ export const obtenerHistorial = async (fecha, token) => {
     return res.json();
 };
 
-// Contacto
 export const enviarMensajeContacto = async (datos) => {
     const res = await fetch(`${API_BASE_URL}/contacto`, {
         method: 'POST',
@@ -198,7 +189,6 @@ export const enviarMensajeContacto = async (datos) => {
     return res.json();
 };
 
-// IA (LMStudio)
 export const enviarConsultaIA = async (mensajes, token) => {
     const res = await fetch(`${API_BASE_URL}/ai/chat`, {
         method: 'POST',

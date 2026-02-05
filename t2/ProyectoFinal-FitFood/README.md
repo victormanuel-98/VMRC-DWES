@@ -152,11 +152,7 @@ POST   /api/upload/perfil          - Subir imagen de perfil
 ## Tecnologías Utilizadas
 
 ### Frontend
-- **React 19.2.0**: Framework UI con hooks
-- **React Router v7.12.0**: Navegación con parámetros dinámicos
-- **Vite 7.3.1**: Build tool y dev server
-- **CSS3**: Estilos personalizados responsive
-- **Context API**: Estado global de autenticación
+- Carpeta `frontend/` añadida en el proyecto.
 
 ### Backend
 - **Node.js + Express**: Servidor API REST
@@ -167,6 +163,23 @@ POST   /api/upload/perfil          - Subir imagen de perfil
 - **Validator.js**: Validación de emails
 - **CORS**: Cross-Origin Resource Sharing
 - **express-async-errors**: Manejo de errores asíncronos
+- **LM Studio (Qwen3)**: Asistente IA vía OpenAI-compatible API
+
+## Composición del Backend
+
+- API REST con Express y middlewares de autenticación/autorización.
+- Modelos Mongoose para usuarios, recetas, ingredientes, favoritos, valoraciones, historial y contacto.
+- Rutas agrupadas por dominio (`/api/auth`, `/api/recetas`, `/api/favoritos`, `/api/ai`, etc.).
+- Subida de imágenes a Cloudinary.
+- Integración de IA con LM Studio usando endpoint compatible con OpenAI.
+
+## Cambios Implementados
+
+- Integración de asistente IA (Qwen3 en LM Studio) con endpoint `/api/ai/chat`.
+- Widget de asistente en frontend (carpeta añadida).
+- Respuestas de favoritos pobladas con usuario y receta.
+- Variables de entorno ampliadas para LM Studio.
+- Tests con Jest y Supertest para auth, favoritos y IA.
 
 ---
 
@@ -211,42 +224,7 @@ RidaoChavesVictorManuel-PI-FRONT-SPRINT9/
 │   ├── .gitignore
 │   └── package.json
 │
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── Header.jsx
-│   │   │   ├── Navigation.jsx
-│   │   │   ├── Footer.jsx
-│   │   │   ├── Breadcrumbs.jsx
-│   │   │   └── ProtectedRoute.jsx
-│   │   ├── context/
-│   │   │   └── AuthContext.jsx
-│   │   ├── layouts/
-│   │   │   ├── PublicLayout.jsx
-│   │   │   └── PrivateLayout.jsx
-│   │   ├── pages/
-│   │   │   ├── Login.jsx
-│   │   │   ├── Register.jsx
-│   │   │   ├── Home.jsx
-│   │   │   ├── Profile.jsx          
-│   │   │   ├── MyRecipes.jsx       
-│   │   │   ├── RecipeDetail.jsx    
-│   │   │   ├── CreateRecipe.jsx   
-│   │   │   ├── BreakfastRecipes.jsx 
-│   │   │   ├── Contact.jsx
-│   │   │   ├── Settings.jsx
-│   │   │   ├── NotFound.jsx
-│   │   │   └── Forbidden.jsx
-│   │   ├── services/
-│   │   │   └── api.js   
-│   │   ├── styles/
-│   │   │   └── styles.css
-│   │   ├── App.jsx        
-│   │   └── main.jsx
-│   ├── public/
-│   ├── .gitignore
-│   ├── package.json
-│   └── vite.config.js
+├── frontend/ (carpeta añadida)
 │
 ├── .gitignore
 └── README.md
@@ -380,13 +358,16 @@ Crear archivo `.env` en `/backend`:
 
 ```
 PORT=5000
-MONGO_URI=mongodb+srv://tu-usuario:tu-password@cluster.mongodb.net/fitfood
+MONGODB_URI=mongodb+srv://tu-usuario:tu-password@cluster.mongodb.net/fitfood
 JWT_SECRET=tu-clave-secreta-super-segura
 JWT_EXPIRE=7d
 CLOUDINARY_CLOUD_NAME=tu-cloud-name
 CLOUDINARY_API_KEY=tu-api-key
 CLOUDINARY_API_SECRET=tu-api-secret
 CORS_ORIGIN=http://localhost:5173
+LMSTUDIO_BASE_URL=http://localhost:1234/v1
+LMSTUDIO_MODEL=qwen3
+LMSTUDIO_TIMEOUT_MS=20000
 ```
 
 3. **Iniciar servidor**:
@@ -396,40 +377,18 @@ npm run dev
 ```
 El servidor estará en [http://localhost:5000](http://localhost:5000)
 
-### Configuración del Frontend
-
-1. **Instalar dependencias**:
-
-```
-cd frontend
-npm install
-```
-
-2. **Configurar variables de entorno** (opcional):
-Crear archivo `.env` en `/frontend`:
-```env
-VITE_API_URL=http://localhost:5000/api
-```
-
-3. **Iniciar aplicación**:
-```bash
-npm run dev
-```
-La app estará en [http://localhost:5173](http://localhost:5173)
-
 ### Build para Producción
-
-**Frontend**:
-```bash
-cd frontend
-npm run build
-```
-
-**Backend**:
 
 ```
 cd backend
 npm start
+```
+
+## Tests
+
+```
+cd backend
+npm test -- --coverage
 ```
 
 ---

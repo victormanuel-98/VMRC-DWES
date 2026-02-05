@@ -40,14 +40,12 @@ const Register = () => {
   const handleImageChange = async (e) => {
     const file = e.target.files[0];
     if (file) {
-      // Mostrar preview local
       const readerPreview = new FileReader();
       readerPreview.onloadend = () => {
         setPreviewImage(readerPreview.result);
       };
       readerPreview.readAsDataURL(file);
 
-      // Subir a Cloudinary (sin token porque el usuario no está registrado aún)
       const readerUpload = new FileReader();
       readerUpload.onloadend = async () => {
         try {

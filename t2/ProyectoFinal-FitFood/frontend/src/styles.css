@@ -1,10 +1,8 @@
-/* ========================================
-   FITFOOD APP - ESTILOS CONSOLIDADOS
-   ======================================== */
 
-/* ========== ESTILOS GLOBALES ========== */
 
-/* Reset y configuración base */
+
+
+
 * {
     margin: 0;
     padding: 0;
@@ -52,7 +50,7 @@ body {
     padding: 0;
 }
 
-/* Tipografía global */
+
 h1 {
     font-size: 3.2em;
     line-height: 1.1;
@@ -64,7 +62,7 @@ h3 {
     font-weight: normal;
 }
 
-/* Enlaces */
+
 a {
     font-weight: 500;
     color: #646cff;
@@ -75,7 +73,7 @@ a:hover {
     color: #535bf2;
 }
 
-/* Botones globales */
+
 button {
     font-family: inherit;
     cursor: pointer;
@@ -86,7 +84,7 @@ button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* Animaciones globales */
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -143,7 +141,7 @@ button:focus-visible {
     }
 }
 
-/* Tema claro (preferencia del sistema) */
+
 @media (prefers-color-scheme: light) {
     :root {
         color: #213547;
@@ -160,9 +158,9 @@ button:focus-visible {
 }
 
 
-/* ========== COMPONENTES ========== */
 
-/* ===== Header ===== */
+
+
 .header {
     background-color: #5a8090;
     padding: 0.5rem 5%;
@@ -179,7 +177,7 @@ button:focus-visible {
     position: relative;
 }
 
-/* Buscador */
+
 .search-container {
     flex: 1;
     max-width: 250px;
@@ -198,7 +196,7 @@ button:focus-visible {
     color: #999;
 }
 
-/* Logo */
+
 .logo-container {
     position: absolute;
     left: 50%;
@@ -215,7 +213,7 @@ button:focus-visible {
     padding: 5px;
 }
 
-/* Iconos del header */
+
 .header-icons {
     display: flex;
     gap: 1rem;
@@ -236,7 +234,7 @@ button:focus-visible {
     opacity: 0.8;
 }
 
-/* Avatar de usuario */
+
 .user-avatar {
     width: 32px;
     height: 32px;
@@ -250,7 +248,7 @@ button:focus-visible {
     transform: scale(1.1);
 }
 
-/* Dropdown de usuario */
+
 .user-dropdown-container {
     position: relative;
 }
@@ -308,7 +306,7 @@ button:focus-visible {
     background: #ffebee;
 }
 
-/* Modal de logout */
+
 .logout-modal-overlay {
     position: fixed;
     top: 0;
@@ -393,7 +391,7 @@ button:focus-visible {
 }
 
 
-/* ===== Navigation ===== */
+
 .navigation {
     background-color: #d4a88a;
     padding: 1.5rem 5%;
@@ -439,7 +437,7 @@ button:focus-visible {
     padding-right: clamp(1.2rem, 3.2vw, 2.2rem);
 }
 
-/* Dropdown de navegación */
+
 .nav-dropdown {
     position: absolute;
     top: calc(100% + 8px);
@@ -492,7 +490,7 @@ button:focus-visible {
 }
 
 
-/* ===== Footer ===== */
+
 .footer {
     background-color: #5a8090;
     color: white;
@@ -645,9 +643,9 @@ button:focus-visible {
 }
 
 
-/* ========== PÁGINAS ========== */
 
-/* ===== Login Page ===== */
+
+
 .login-page {
     background-color: #d4a88a;
     min-height: 60vh;
@@ -803,7 +801,7 @@ button:focus-visible {
 }
 
 
-/* ===== Register Page ===== */
+
 .register-page {
     background-color: #d4a88a;
     min-height: 100vh;
@@ -1117,7 +1115,7 @@ button:focus-visible {
 }
 
 
-/* ===== Home Page ===== */
+
 .home-page {
     background-color: #d4a88a;
     width: 100%;
@@ -1198,7 +1196,7 @@ button:focus-visible {
     padding: 0 1.5rem 2rem;
 }
 
-/* Carrusel */
+
 .carousel-container {
     position: relative;
     display: flex;
@@ -1313,7 +1311,7 @@ button:focus-visible {
     }
 }
 
-/* Tarjetas de recetas (compartido) */
+
 .recipe-card {
     background: white;
     border-radius: 15px;
@@ -1398,7 +1396,7 @@ button:focus-visible {
 }
 
 
-/* ===== Profile Page ===== */
+
 .profile-page {
     background-color: #d4a88a;
     min-height: 60vh;
@@ -1614,7 +1612,7 @@ button:focus-visible {
 }
 
 
-/* ===== My Recipes Page ===== */
+
 .my-recipes-page {
     min-height: calc(100vh - 180px);
     background-color: #d4a88a;
@@ -1626,7 +1624,7 @@ button:focus-visible {
     margin: 0 auto;
 }
 
-/* Breadcrumb */
+
 .breadcrumb {
     font-size: clamp(12px, 1.5vw, 14px);
     color: rgba(255, 255, 255, 0.9);
@@ -1641,7 +1639,7 @@ button:focus-visible {
     color: rgba(255, 255, 255, 0.7);
 }
 
-/* Header */
+
 .my-recipes-header {
     background-color: #6b95a5;
     border-radius: 20px;
@@ -1666,7 +1664,7 @@ button:focus-visible {
     font-weight: 400;
 }
 
-/* Lista en grid de 4 columnas */
+
 .recipes-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1680,7 +1678,7 @@ button:focus-visible {
     max-width: 260px;
 }
 
-/* Estados */
+
 .loading-state,
 .error-state,
 .empty-state {
@@ -1745,7 +1743,7 @@ button:focus-visible {
     transform: translateY(0);
 }
 
-/* Responsive */
+
 @media (max-width: 1200px) {
     .recipes-list {
         grid-template-columns: repeat(3, 1fr);
@@ -1782,7 +1780,7 @@ button:focus-visible {
 }
 
 
-/* ===== Recipe Detail Page ===== */
+
 .recipe-detail-page {
     background-color: #d4a88a;
     min-height: 100vh;
@@ -1818,7 +1816,7 @@ button:focus-visible {
     align-items: start;
 }
 
-/* Sección de imagen */
+
 .recipe-image-section {
     position: sticky;
     top: 20px;
@@ -1832,7 +1830,7 @@ button:focus-visible {
     display: block;
 }
 
-/* Sección de detalles */
+
 .recipe-details-section {
     display: flex;
     flex-direction: column;
@@ -1870,7 +1868,7 @@ button:focus-visible {
     font-weight: 600;
 }
 
-/* Grid de información */
+
 .recipe-info-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1902,7 +1900,7 @@ button:focus-visible {
     font-weight: 700;
 }
 
-/* Descripción */
+
 .recipe-description {
     background: rgba(255, 255, 255, 0.7);
     padding: clamp(16px, 2vw, 24px);
@@ -1917,7 +1915,7 @@ button:focus-visible {
     line-height: 1.6;
 }
 
-/* Información nutricional */
+
 .nutrients-info {
     background: white;
     padding: clamp(20px, 2vw, 28px);
@@ -1961,7 +1959,7 @@ button:focus-visible {
     font-weight: 700;
 }
 
-/* Contenido de receta */
+
 .recipe-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -2024,7 +2022,7 @@ button:focus-visible {
     font-weight: 700;
 }
 
-/* Responsive */
+
 @media (max-width: 1024px) {
     .recipe-detail-container {
         grid-template-columns: 1fr;
@@ -2079,7 +2077,7 @@ button:focus-visible {
 }
 
 
-/* ===== Create Recipe Page ===== */
+
 .create-recipe-page {
     background-color: #d4a88a;
     min-height: calc(100vh - 180px);
@@ -2407,7 +2405,7 @@ button:focus-visible {
 }
 
 
-/* ===== Contact Page ===== */
+
 .contact-page {
     min-height: calc(100vh - 180px);
     background-color: #d4a88a;
@@ -2445,7 +2443,7 @@ button:focus-visible {
     align-items: start;
 }
 
-/* Formulario */
+
 .contact-form-section {
     background: white;
     border-radius: 20px;
@@ -2518,7 +2516,7 @@ button:focus-visible {
     transform: translateY(0);
 }
 
-/* Sección de información */
+
 .contact-info-section {
     display: flex;
     flex-direction: column;
@@ -2573,7 +2571,7 @@ button:focus-visible {
     line-height: 1.4;
 }
 
-/* Responsive */
+
 @media (max-width: 968px) {
     .contact-content {
         grid-template-columns: 1fr;
@@ -2609,7 +2607,7 @@ button:focus-visible {
 }
 
 
-/* ===== Settings Page ===== */
+
 .settings-page {
     background-color: #d4a88a;
     min-height: calc(100vh - 180px);
@@ -2772,7 +2770,7 @@ button:focus-visible {
 }
 
 
-/* ===== Breakfast Recipes Page ===== */
+
 .breakfast-page {
     min-height: calc(100vh - 180px);
     background-color: #d4a88a;
@@ -2947,7 +2945,7 @@ button:focus-visible {
 }
 
 
-/* ===== Not Found Page ===== */
+
 .not-found-page {
     min-height: calc(100vh - 180px);
     background-color: #d4a88a;
@@ -3033,7 +3031,7 @@ button:focus-visible {
 }
 
 
-/* ===== Forbidden Page ===== */
+
 .forbidden-page {
     min-height: 100vh;
     background-color: #d4a88a;

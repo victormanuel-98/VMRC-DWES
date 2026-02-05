@@ -74,7 +74,6 @@ const Profile = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      // Validar tamaño (max 5MB)
       if (file.size > 5 * 1024 * 1024) {
         setMensaje({ texto: 'La imagen no puede superar los 5MB', tipo: 'error' });
         return;
@@ -98,7 +97,6 @@ const Profile = () => {
       const token = localStorage.getItem('token');
       let fotoUrl = null;
 
-      // Si hay una imagen nueva, subirla primero
       if (imagenBase64) {
         const respuestaImagen = await subirImagenPerfil(imagenBase64, token);
         if (respuestaImagen.error) {
@@ -107,7 +105,6 @@ const Profile = () => {
         fotoUrl = respuestaImagen.url;
       }
 
-      // Validar contraseña nueva si se está cambiando
       if (formData.contrasenaNueva) {
         if (formData.contrasenaNueva !== formData.confirmarContrasena) {
           throw new Error('Las contraseñas no coinciden');
@@ -120,7 +117,6 @@ const Profile = () => {
         }
       }
 
-      // Preparar datos de actualización
       const datosActualizacion = {
         nombre: formData.nombre,
         apellidos: formData.apellidos,
@@ -130,12 +126,10 @@ const Profile = () => {
         notificaciones: formData.notificaciones
       };
 
-      // Agregar foto si se subió una nueva
       if (fotoUrl) {
         datosActualizacion.foto = fotoUrl;
       }
 
-      // Agregar contraseñas si se están cambiando
       if (formData.contrasenaNueva) {
         datosActualizacion.contrasenaActual = formData.contrasenaActual;
         datosActualizacion.contrasenaNueva = formData.contrasenaNueva;
@@ -147,7 +141,6 @@ const Profile = () => {
         throw new Error(respuesta.mensaje || 'Error al actualizar el perfil');
       }
 
-      // Limpiar campos de contraseña
       setFormData(prev => ({
         ...prev,
         contrasenaActual: '',
@@ -158,7 +151,6 @@ const Profile = () => {
       setImagenBase64(null);
       setMensaje({ texto: 'Perfil actualizado correctamente', tipo: 'success' });
       
-      // Limpiar mensaje después de 3 segundos
       setTimeout(() => setMensaje({ texto: '', tipo: '' }), 3000);
 
     } catch (error) {

@@ -13,6 +13,7 @@ Backend API REST para la aplicación FitFood - Sistema de gestión nutricional y
 - ✅ Valoraciones y comentarios en recetas
 - ✅ Base de datos MongoDB
 - ✅ Validaciones de seguridad (contraseña fuerte, email válido)
+- ✅ Asistente IA con LM Studio (Qwen3)
 
 ## 📋 Requisitos Previos
 
@@ -59,6 +60,11 @@ JWT_EXPIRE=7d
 
 # CORS
 CORS_ORIGIN=http://localhost:5173
+
+# LM Studio
+LMSTUDIO_BASE_URL=http://localhost:1234/v1
+LMSTUDIO_MODEL=qwen3
+LMSTUDIO_TIMEOUT_MS=20000
 
 # Cloudinary (opcional para subida de imágenes)
 CLOUDINARY_CLOUD_NAME=tu_cloud_name
@@ -168,6 +174,12 @@ El servidor estará disponible en `http://localhost:5000`
 | GET | `/api/valoraciones/:recetaId/usuario` | Mi valoración (requiere auth) |
 | PUT | `/api/valoraciones/:id` | Actualizar valoración (requiere auth) |
 | DELETE | `/api/valoraciones/:id` | Eliminar valoración (requiere auth) |
+
+### IA
+
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| POST | `/api/ai/chat` | Asistente IA (requiere auth) |
 
 **Ejemplo de valoración:**
 
@@ -329,6 +341,12 @@ Requisitos de contraseña fuerte:
 - **cloudinary**: Almacenamiento de imágenes
 - **multer**: Carga de archivos
 - **express-async-errors**: Manejo de errores async/await
+
+## ✅ Tests
+
+```bash
+npm test
+```
 
 ## 🚀 Despliegue en Render
 

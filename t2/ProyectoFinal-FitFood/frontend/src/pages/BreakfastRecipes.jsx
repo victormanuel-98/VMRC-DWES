@@ -41,7 +41,6 @@ const BreakfastRecipes = () => {
         navigate(`/receta/${recetaId}`);
     };
 
-    // Estado de carga
     if (loading) {
         return (
             <div className="breakfast-page">
@@ -56,7 +55,6 @@ const BreakfastRecipes = () => {
         );
     }
 
-    // Estado de error
     if (error) {
         return (
             <div className="breakfast-page">
@@ -78,7 +76,6 @@ const BreakfastRecipes = () => {
         );
     }
 
-    // Estado vacío
     if (recipes.length === 0) {
         return (
             <div className="breakfast-page">

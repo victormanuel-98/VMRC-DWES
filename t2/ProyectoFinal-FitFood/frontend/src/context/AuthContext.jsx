@@ -16,7 +16,6 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Verificar si hay sesión guardada en localStorage
         const savedAuth = localStorage.getItem('isAuthenticated');
         const savedUser = localStorage.getItem('user');
         

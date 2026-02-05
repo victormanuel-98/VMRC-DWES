@@ -59,7 +59,6 @@ const MyRecipes = () => {
             const respuesta = await eliminarReceta(recetaId, token);
             
             if (respuesta.mensaje) {
-                // Recargar las recetas
                 cargarRecetas();
             } else {
                 alert('Error al eliminar la receta');
@@ -69,7 +68,6 @@ const MyRecipes = () => {
         }
     };
 
-    // Estado de carga
     if (loading) {
         return (
             <div className="my-recipes-page">
@@ -84,7 +82,6 @@ const MyRecipes = () => {
         );
     }
 
-    // Estado de error
     if (error) {
         return (
             <div className="my-recipes-page">
@@ -106,7 +103,6 @@ const MyRecipes = () => {
         );
     }
 
-    // Estado vacío
     if (recipes.length === 0) {
         return (
             <div className="my-recipes-page">

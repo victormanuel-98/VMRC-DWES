@@ -1,4 +1,4 @@
-/* ========== ESTILOS GLOBALES - FITFOOD ========== */  
+  
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -48,7 +48,7 @@ button:focus-visible {
   }
 }
   
-/* ========== APP ========== */  
+  
 * {
   margin: 0;
   padding: 0;
@@ -92,9 +92,9 @@ h1, h2, h3 {
   font-weight: normal;
 }
   
-/* ========== COMPONENTES ========== */  
+  
 
-/* Breadcrumbs */
+
 .breadcrumbs {
   background-color: transparent;
   padding: 0.75rem 5%;
@@ -159,7 +159,7 @@ h1, h2, h3 {
   }
 }
 
-/* Header */
+
 .header {
     background-color: #5a8090;
     padding: 0.5rem 5%;
@@ -645,7 +645,7 @@ h1, h2, h3 {
         text-align: center;
     }
 }  
-/* ========== P�GINAS ========== */  
+  
 .login-page {
     background-color: #d4a88a;
     min-height: 60vh;
@@ -1637,7 +1637,7 @@ h1, h2, h3 {
     margin: 0 auto;
 }
 
-/* Breadcrumb */
+
 .breadcrumb {
     font-size: clamp(12px, 1.5vw, 14px);
     color: rgba(255, 255, 255, 0.9);
@@ -1652,7 +1652,7 @@ h1, h2, h3 {
     color: rgba(255, 255, 255, 0.7);
 }
 
-/* Header */
+
 .my-recipes-header {
     background-color: #6b95a5;
     border-radius: 20px;
@@ -1677,7 +1677,7 @@ h1, h2, h3 {
     font-weight: 400;
 }
 
-/* Lista en grid de 4 columnas */
+
 .recipes-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1686,7 +1686,7 @@ h1, h2, h3 {
     justify-items: center;
 }
 
-/* Tarjeta individual */
+
 .recipe-card {
     background: white;
     border-radius: 15px;
@@ -1705,7 +1705,7 @@ h1, h2, h3 {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Imagen de la receta */
+
 .recipe-image-container {
     width: 100%;
     height: 180px;
@@ -1720,7 +1720,7 @@ h1, h2, h3 {
     object-fit: cover;
 }
 
-/* Contenedor de información */
+
 .recipe-info-container {
     flex: 1;
     display: flex;
@@ -1748,7 +1748,7 @@ h1, h2, h3 {
     font-size: clamp(11px, 1.1vw, 12px);
 }
 
-/* Botón de receta */
+
 .recipe-button {
     padding: 8px 20px;
     background-color: #6b95a5;
@@ -1775,7 +1775,7 @@ h1, h2, h3 {
     transform: translateY(0);
 }
 
-/* Estados */
+
 .loading-state,
 .error-state,
 .empty-state {
@@ -1844,7 +1844,7 @@ h1, h2, h3 {
     transform: translateY(0);
 }
 
-/* Responsive */
+
 @media (max-width: 1200px) {
     .recipes-list {
         grid-template-columns: repeat(3, 1fr);
@@ -1914,7 +1914,7 @@ h1, h2, h3 {
     align-items: start;
 }
 
-/* Sección de imagen */
+
 .recipe-image-section {
     position: sticky;
     top: 20px;
@@ -1928,7 +1928,7 @@ h1, h2, h3 {
     display: block;
 }
 
-/* Sección de detalles */
+
 .recipe-details-section {
     display: flex;
     flex-direction: column;
@@ -1966,7 +1966,7 @@ h1, h2, h3 {
     font-weight: 600;
 }
 
-/* Grid de información */
+
 .recipe-info-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1998,7 +1998,7 @@ h1, h2, h3 {
     font-weight: 700;
 }
 
-/* Descripción */
+
 .recipe-description {
     background: rgba(255, 255, 255, 0.7);
     padding: clamp(16px, 2vw, 24px);
@@ -2013,7 +2013,7 @@ h1, h2, h3 {
     line-height: 1.6;
 }
 
-/* Información nutricional */
+
 .nutrients-info {
     background: white;
     padding: clamp(20px, 2vw, 28px);
@@ -2057,7 +2057,7 @@ h1, h2, h3 {
     font-weight: 700;
 }
 
-/* Contenido de receta */
+
 .recipe-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -2120,7 +2120,7 @@ h1, h2, h3 {
     font-weight: 700;
 }
 
-/* Responsive */
+
 @media (max-width: 1024px) {
     .recipe-detail-container {
         grid-template-columns: 1fr;
@@ -2478,7 +2478,7 @@ h1, h2, h3 {
     align-items: start;
 }
 
-/* Formulario */
+
 .contact-form-section {
     background: white;
     border-radius: 20px;
@@ -2572,7 +2572,7 @@ h1, h2, h3 {
     }
 }
 
-/* Sección de información */
+
 .contact-info-section {
     display: flex;
     flex-direction: column;
@@ -2627,7 +2627,7 @@ h1, h2, h3 {
     line-height: 1.4;
 }
 
-/* Responsive */
+
 @media (max-width: 968px) {
     .contact-content {
         grid-template-columns: 1fr;
@@ -3203,7 +3203,7 @@ h1, h2, h3 {
     }
 }
 
-  /* ========== ASISTENTE IA ========== */
+  
   .ai-assistant {
     position: fixed;
     right: 20px;

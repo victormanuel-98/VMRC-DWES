@@ -7,7 +7,7 @@ import {
     actualizarReceta,
     eliminarReceta,
 } from '../controllers/recipeController.js';
-import { autenticar, soloNutricionista } from '../middlewares/authMiddleware.js';
+import { autenticar } from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 

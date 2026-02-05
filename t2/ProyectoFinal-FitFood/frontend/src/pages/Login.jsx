@@ -20,10 +20,7 @@ const Login = () => {
             const respuesta = await apiLogin(usuario, contrasena);
             
             if (respuesta.token) {
-                // Guardar token en localStorage
                 localStorage.setItem('token', respuesta.token);
-                
-                // Actualizar contexto de autenticación
                 login({
                     usuario: respuesta.usuario.usuario,
                     nombre: respuesta.usuario.nombre,

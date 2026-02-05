@@ -48,7 +48,6 @@ const CreateRecipe = () => {
   const handleIngredientChange = async (id, field, value) => {
     setIngredients((prev) => prev.map((ing) => (ing.id === id ? { ...ing, [field]: value } : ing)));
     
-    // Buscar ingredientes mientras el usuario escribe
     if (field === 'name' && value.length > 2) {
       setSearchingIngredient(id);
       try {
@@ -103,12 +102,10 @@ const CreateRecipe = () => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // Mostrar preview local
     const reader = new FileReader();
     reader.onload = (ev) => setPreview(ev.target?.result || null);
     reader.readAsDataURL(file);
 
-    // Subir a Cloudinary
     const readerUpload = new FileReader();
     readerUpload.onload = async (ev) => {
       try {
@@ -146,7 +143,6 @@ const CreateRecipe = () => {
         return;
       }
 
-      // Filtrar ingredientes vacíos y validar que tengan ID
       const ingredientesValidos = ingredients
         .filter((ing) => ing.name.trim() && ing.quantity > 0 && ing.ingredienteId)
         .map((ing) => ({
@@ -161,7 +157,6 @@ const CreateRecipe = () => {
 
       setLoading(true);
 
-      // Crear datos de la receta
       const datosReceta = {
         nombre: form.nombre,
         descripcionCorta: form.descripcionCorta,

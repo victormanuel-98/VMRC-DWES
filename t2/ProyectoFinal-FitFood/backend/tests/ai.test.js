@@ -1,5 +1,6 @@
 import request from 'supertest';
 import jwt from 'jsonwebtoken';
+import { jest } from '@jest/globals';
 import app from '../src/app.js';
 
 const createToken = () => jwt.sign(

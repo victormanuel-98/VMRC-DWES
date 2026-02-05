@@ -20,7 +20,6 @@ const Settings = () => {
   };
 
   const handleSave = () => {
-    // Guardar cambios en localStorage
     localStorage.setItem('userSettings', JSON.stringify(settings));
     setSaved(true);
     setTimeout(() => setSaved(false), 3000);
