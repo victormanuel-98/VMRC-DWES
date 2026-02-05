@@ -2,37 +2,24 @@
 
 Backend API REST para la aplicación FitFood - Sistema de gestión nutricional y recetas.
 
-## 🚀 Características
-
-- ✅ Autenticación con JWT
-- ✅ Gestión de usuarios (3 roles: usuario, nutricionista, admin)
-- ✅ Creación y gestión de recetas
-- ✅ Cálculo automático de calorías
-- ✅ Historial nutricional diario
-- ✅ Sistema de favoritos
-- ✅ Valoraciones y comentarios en recetas
-- ✅ Base de datos MongoDB
-- ✅ Validaciones de seguridad (contraseña fuerte, email válido)
-- ✅ Asistente IA con LM Studio (Qwen3)
-
-## 📋 Requisitos Previos
+## Requisitos Previos
 
 - Node.js 16+
 - MongoDB Atlas (o MongoDB local)
 - Cloudinary (para subida de imágenes)
 
-## 🛠️ Instalación
+## Instalación
 
 ### 1. Clonar el repositorio
 
-```bash
+```
 git clone <URL-del-repositorio>
 cd backend
 ```
 
 ### 2. Instalar dependencias
 
-```bash
+```
 npm install
 ```
 
@@ -40,13 +27,13 @@ npm install
 
 Copia el archivo `.env.example` a `.env`:
 
-```bash
+```
 cp .env.example .env
 ```
 
 Completa las variables:
 
-```env
+```
 # MongoDB Atlas
 MONGODB_URI=mongodb+srv://usuario:contraseña@cluster.mongodb.net/fitfood
 
@@ -55,8 +42,8 @@ PORT=5000
 NODE_ENV=development
 
 # JWT
-JWT_SECRET=tu_clave_secreta_muy_segura_aqui
-JWT_EXPIRE=7d
+JWT_SECRET=tu_clave
+JWT_EXPIRE=7d (añadir otro JWT para login por correo +- 30 min)
 
 # CORS
 CORS_ORIGIN=http://localhost:5173
@@ -72,23 +59,36 @@ CLOUDINARY_API_KEY=tu_api_key
 CLOUDINARY_API_SECRET=tu_api_secret
 ```
 
+## 3.1. Características
+
+- Autenticación con JWT
+- Gestión de usuarios (3 roles: usuario, nutricionista, admin)
+- Creación y gestión de recetas
+- Cálculo automático de calorías
+- Historial nutricional diario
+- Sistema de favoritos
+- Valoraciones y comentarios en recetas
+- Base de datos MongoDB
+- Validaciones de seguridad (contraseña fuerte, email válido)
+- Asistente IA con LM Studio (Qwen3)
+
 ### 4. Ejecutar el servidor
 
 **Modo desarrollo (con nodemon):**
 
-```bash
+```
 npm run dev
 ```
 
 **Modo producción:**
 
-```bash
+```
 npm start
 ```
 
 El servidor estará disponible en `http://localhost:5000`
 
-## 📚 Endpoints Principales
+## Endpoints Principales
 
 ### Autenticación
 
@@ -100,7 +100,7 @@ El servidor estará disponible en `http://localhost:5000`
 
 **Ejemplo de registro:**
 
-```json
+```
 {
   "usuario": "victor_98",
   "email": "victor@example.com",
@@ -113,7 +113,7 @@ El servidor estará disponible en `http://localhost:5000`
 
 **Respuesta:**
 
-```json
+```
 {
   "mensaje": "Usuario registrado exitosamente",
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
@@ -140,7 +140,7 @@ El servidor estará disponible en `http://localhost:5000`
 
 **Ejemplo de crear receta:**
 
-```json
+```
 {
   "nombre": "Ensalada César",
   "descripcionCorta": "Ensalada fresca con pollo y aderezo César",
@@ -183,7 +183,7 @@ El servidor estará disponible en `http://localhost:5000`
 
 **Ejemplo de valoración:**
 
-```json
+```
 {
   "recetaId": "507f1f77bcf86cd799439011",
   "puntuacion": 5,
@@ -200,7 +200,7 @@ El servidor estará disponible en `http://localhost:5000`
 | GET | `/api/historial/rango` | Obtener historial de un rango (requiere auth) |
 | DELETE | `/api/historial/:historialId/alimento/:alimentoIndex` | Eliminar alimento (requiere auth) |
 
-## 🔐 Seguridad
+## Seguridad
 
 ### Autenticación
 
@@ -225,11 +225,11 @@ Requisitos de contraseña fuerte:
 - **nutricionista**: Puede crear recetas oficiales
 - **admin**: Acceso total al sistema
 
-## 🗄️ Modelos de Datos
+## Modelos de Datos
 
 ### User
 
-```javascript
+```
 {
   usuario: String (unique),
   email: String (unique),
@@ -244,9 +244,9 @@ Requisitos de contraseña fuerte:
 }
 ```
 
-### Recipe
+### Recetas
 
-```javascript
+```
 {
   nombre: String,
   autor: ObjectId (ref User),
@@ -273,7 +273,7 @@ Requisitos de contraseña fuerte:
 
 ### Ingredient
 
-```javascript
+```
 {
   nombre: String (unique),
   calorias: Number (por 100g),
@@ -288,7 +288,7 @@ Requisitos de contraseña fuerte:
 
 ### Favorite
 
-```javascript
+```
 {
   usuario: ObjectId (ref User),
   receta: ObjectId (ref Recipe),
@@ -298,7 +298,7 @@ Requisitos de contraseña fuerte:
 
 ### Rating
 
-```javascript
+```
 {
   usuario: ObjectId (ref User),
   receta: ObjectId (ref Recipe),
@@ -310,7 +310,7 @@ Requisitos de contraseña fuerte:
 
 ### History
 
-```javascript
+```
 {
   usuario: ObjectId (ref User),
   fecha: Date,
@@ -329,7 +329,7 @@ Requisitos de contraseña fuerte:
 }
 ```
 
-## 📦 Dependencias
+## Dependencias
 
 - **express**: Framework web
 - **mongoose**: ODM para MongoDB
@@ -342,33 +342,16 @@ Requisitos de contraseña fuerte:
 - **multer**: Carga de archivos
 - **express-async-errors**: Manejo de errores async/await
 
-## ✅ Tests
+## Tests
 
-```bash
+```
 npm test
 ```
 
-## 🚀 Despliegue en Render
-
-1. Crear cuenta en [Render](https://render.com)
-2. Conectar repositorio GitHub
-3. Crear nuevo Web Service
-4. Seleccionar rama `main`
-5. Configurar variables de entorno
-6. Deploy automático
-
-## 📝 Notas
+## Notas
 
 - Las calorías se calculan automáticamente basándose en los ingredientes
 - Solo un usuario puede tener un historial por fecha
 - Un usuario solo puede valorar una receta una vez
 - Las contraseñas se encriptan con bcryptjs
 - CORS configurado solo desde Vercel en producción
-
-## 👨‍💻 Autor
-
-Victor Manuel Ridao Chaves
-
-## 📄 Licencia
-
-MIT

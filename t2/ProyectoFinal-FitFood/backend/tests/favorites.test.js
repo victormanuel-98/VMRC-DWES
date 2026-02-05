@@ -72,6 +72,15 @@ afterAll(async () => {
 });
 
 describe('Favoritos API', () => {
+    test('POST /api/favoritos - requiere recetaId', async () => {
+        const res = await request(app)
+            .post('/api/favoritos')
+            .set('Authorization', `Bearer ${token}`)
+            .send({});
+
+        expect(res.statusCode).toBe(400);
+    });
+
     test('POST /api/favoritos - agrega favorito con datos poblados', async () => {
         const res = await request(app)
             .post('/api/favoritos')
@@ -102,5 +111,21 @@ describe('Favoritos API', () => {
             .send({ recetaId });
 
         expect(res.statusCode).toBe(400);
+    });
+
+    test('DELETE /api/favoritos/:recetaId - elimina favorito', async () => {
+        const res = await request(app)
+            .delete(`/api/favoritos/${recetaId}`)
+            .set('Authorization', `Bearer ${token}`);
+
+        expect(res.statusCode).toBe(200);
+    });
+
+    test('DELETE /api/favoritos/:recetaId - no encontrado', async () => {
+        const res = await request(app)
+            .delete(`/api/favoritos/${recetaId}`)
+            .set('Authorization', `Bearer ${token}`);
+
+        expect(res.statusCode).toBe(404);
     });
 });

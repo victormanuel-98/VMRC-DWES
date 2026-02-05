@@ -1,5 +1,6 @@
 # Dependencies
 node_modules/
+**/node_modules/
 /.pnp
 .pnp.js
 package-lock.json
@@ -8,12 +9,16 @@ pnpm-lock.yaml
 
 # Testing
 /coverage
+**/coverage
 *.test.js.snap
 
 # Production build
 /dist
+**/dist
 /build
+**/build
 /out
+**/out
 
 # Environment variables
 .env
