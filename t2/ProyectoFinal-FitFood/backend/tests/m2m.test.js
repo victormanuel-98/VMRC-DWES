@@ -70,6 +70,6 @@ describe('M2M Usuario-Receta-Favorito', () => {
             .delete(`/api/favoritos/${receta._id}`)
             .set('Authorization', `Bearer ${token}`);
         expect(res.statusCode).toBe(200);
-        expect(res.body.mensaje).toMatch(/eliminado/i);
+        expect(res.body.mensaje).toBe("Receta eliminada de favoritos");
     });
 });
