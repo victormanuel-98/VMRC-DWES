@@ -1,85 +1,146 @@
 ## Diagrama de arquitectura
 
-```mermaid
-graph TD
-  A[Cliente (Frontend)] -- HTTP/REST --> B(Express API)
-  A -- Websockets --> D(Socket.io)
-  B -- MongoDB --> C[(Base de datos)]
-  B -- Cloudinary --> E[(Imágenes)]
-  B -- LM Studio --> F[(IA)]
-  B -- Swagger --> G[(Docs)]
-```
 # FitFood Backend
 
-API REST para la gestión nutricional y recetas de la aplicación FitFood. Incluye autenticación, gestión de usuarios y roles, recetas, historial nutricional, favoritos, valoraciones, subida de imágenes, asistente IA, notificaciones en tiempo real y documentación interactiva.
+Backend del proyecto FitFood. API REST para gestión de recetas, usuarios, favoritos, historial, ingredientes y ratings. Incluye autenticación JWT, integración con MongoDB Atlas y Cloudinary, Websockets, Swagger, SonarQube, ESLint y tests con Jest.
 
 ---
 
-## Instalación y Puesta en Marcha
+## Tabla de Contenidos
 
-### 1. Clona el repositorio
-
-```bash
-git clone <https://github.com/victormanuel-98/VMRC-DWES.git>
-cd backend
-```
-
-### 2. Instala las dependencias
-
-```bash
-npm install
-```
-
-### 3. Configura las variables de entorno
-
-Copia el archivo `.env.example` a `.env` y completa los valores necesarios:
-
-```bash
-cp .env.example .env
-```
-
-Variables principales:
-- `MONGODB_URI`: Cadena de conexión a MongoDB
-- `PORT`: Puerto del servidor (por defecto 5000)
-- `JWT_SECRET`: Clave secreta para JWT
-- `CORS_ORIGIN`: Origen permitido para CORS
-
-### 4. Ejecuta el servidor
-
-**Modo desarrollo:**
-```bash
-git clone <https://github.com/victormanuel-98/VMRC-DWES.git>
-cd VMRC-DWES/backend
-
-**Modo producción:**
-```bash
-npm start
-```
-
-El backend estará disponible en `http://localhost:5000`.
+1. [Estructura del proyecto](#estructura-del-proyecto)
+2. [Diagrama de arquitectura](#diagrama-de-arquitectura)
+3. [Instalación y configuración](#instalación-y-configuración)
+4. [Uso y endpoints](#uso-y-endpoints)
+5. [Testing y cobertura](#testing-y-cobertura)
+6. [Despliegue (Render & Docker)](#despliegue-render--docker)
+7. [Herramientas integradas](#herramientas-integradas)
+8. [Buenas prácticas](#buenas-prácticas)
+9. [Contacto](#contacto)
 
 ---
-PORT=5000
-NODE_ENV=development
 
-# JWT
-JWT_SECRET=tu_clave
-JWT_EXPIRE=7d (añadir otro JWT para login por correo +- 30 min)
+## Estructura del proyecto
 
-# CORS
-LMSTUDIO_TIMEOUT_MS=20000
-
-# Cloudinary (opcional para subida de imágenes)
-CLOUDINARY_CLOUD_NAME=tu_cloud_name
-CLOUDINARY_API_KEY=tu_api_key
-CLOUDINARY_API_SECRET=tu_api_secret
+```
+backend/
+  src/
+    app.js
+    server.js
+    config/
+      db.js
+    controllers/
+      ...
+    middlewares/
+      ...
+    models/
+      ...
+    routes/
+      ...
+    seed/
+      ...
+    utils/
+      ...
+    tests/
+      ...
 ```
 
-## 3.1. Características
+## Diagrama de arquitectura
 
-- Autenticación con JWT
-- Gestión de usuarios (3 roles: usuario, nutricionista, admin)
-- Creación y gestión de recetas
+```mermaid
+flowchart TD
+  Client[Cliente (Frontend)] -->|HTTP| API[Express API]
+  API -->|Swagger| Docs[Swagger UI]
+  API -->|Websockets| Socket[Socket.io]
+  API -->|MongoDB| DB[(MongoDB Atlas)]
+  API -->|Cloudinary| Cloud[Cloudinary]
+  API -->|JWT| Auth[Autenticación]
+```
+
+## Instalación y configuración
+
+1. Instala dependencias:
+   ```bash
+   npm install
+   ```
+2. Crea un archivo `.env` con las variables necesarias:
+   ```env
+   MONGO_URI=tu_uri_de_mongodb
+   JWT_SECRET=tu_secreto_jwt
+   CLOUDINARY_CLOUD_NAME=tu_cloud_name
+   CLOUDINARY_API_KEY=tu_api_key
+   CLOUDINARY_API_SECRET=tu_api_secret
+   ```
+3. Ejecuta el servidor:
+   ```bash
+   npm start
+   ```
+
+## Uso y endpoints
+
+- Documentación Swagger disponible en `/api-docs`.
+- Endpoints principales:
+  - `/api/auth` (registro, login)
+  - `/api/recipes` (CRUD recetas)
+  - `/api/ingredients` (CRUD ingredientes)
+  - `/api/favorites` (gestión favoritos)
+  - `/api/history` (historial)
+  - `/api/rating` (valoraciones)
+  - `/api/contact` (contacto)
+  - `/api/upload` (subida imágenes)
+  - `/api/ai` (asistente IA)
+
+## Testing y cobertura
+
+- Ejecuta tests:
+  ```bash
+  npm test
+  ```
+- Cobertura >90% con Jest y Supertest.
+
+## Despliegue (Render & Docker)
+
+### Render
+
+1. Configura variables de entorno en Render.
+2. Usa la raíz del backend como directorio de despliegue.
+3. MongoDB debe ser accesible desde Render.
+
+### Docker
+
+1. Construye la imagen:
+   ```bash
+   docker build -t fitfood-backend .
+   ```
+2. Ejecuta el contenedor:
+   ```bash
+   docker run -p 3000:3000 --env-file .env fitfood-backend
+   ```
+3. Para el proyecto completo, usa `docker-compose.yml` en la raíz:
+   ```bash
+   docker-compose up --build
+   ```
+
+## Herramientas integradas
+
+- ESLint (estilo y calidad)
+- SonarQube (análisis estático)
+- Swagger (documentación API)
+- Jest & Supertest (testing)
+- Socket.io (Websockets)
+
+## Buenas prácticas
+
+- Código modular y comentado.
+- Variables de entorno seguras.
+- Cobertura de tests >90%.
+- Documentación Swagger actualizada.
+- Uso de Docker y Render para despliegue.
+- Integración continua recomendada.
+
+## Contacto
+
+Para dudas o sugerencias, contacta al autor.
 - Cálculo automático de calorías
 - Historial nutricional diario
 ## Características principales

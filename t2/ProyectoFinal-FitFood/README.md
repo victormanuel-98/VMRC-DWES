@@ -119,83 +119,119 @@ POST   /api/upload/perfil          - Subir imagen de perfil
 
 ---
 
-## Mapa de Rutas
+## Backend
 
-### Rutas Públicas
+El backend está desarrollado en Node.js con Express, MongoDB Atlas y Cloudinary. Proporciona una API REST para gestión de recetas, usuarios, favoritos, historial, ingredientes y ratings. Incluye autenticación JWT, Websockets, Swagger, SonarQube, ESLint y tests con Jest.
 
-| Ruta | Componente | Descripción | Layout | Protegida |
-|------|-----------|-------------|---------|-----------|
-| `/` | Navigate | Redirección a /login | - | ❌ |
-| `/login` | Login | Página de inicio de sesión | Public | ❌ |
-| `/registro` | Register | Formulario de registro de usuario | Public | ❌ |
-| `/forbidden` | Forbidden | Página 403 - Sin permisos | Public | ❌ |
-| `*` | NotFound | Página 404 - No encontrada | Public | ❌ |
-
-### Rutas Privadas (Protegidas)
-
-| Ruta | Componente | Descripción | Layout | API Integrada |
-|------|-----------|-------------|---------|---------------|
-| `/inicio` | Home | Página principal con hero y carrusel | Private | ❌ |
-| `/perfil` | Profile | Perfil de usuario (edición completa) | Private | ✅ |
-| `/recetas` | MyRecipes | Listado de recetas personales | Private | ✅ |
-| `/receta/:id` | RecipeDetail | Vista detallada de una receta | Private | ✅ |
-| `/recetas/crear` | CreateRecipe | Formulario de creación con autocomplete | Private | ✅ |
-| `/contacto` | Contact | Formulario de contacto | Private | ❌ |
-| `/ajustes` | Settings | Configuración de la aplicación | Private | ❌ |
-| `/platos/desayuno` | BreakfastRecipes | Recetas de desayuno | Private | ✅ |
-| `/platos/almuerzo` | NotFound | (Por implementar) | Private | ❌ |
-| `/platos/cena` | NotFound | (Por implementar) | Private | ❌ |
-| `/platos/otros` | NotFound | (Por implementar) | Private | ❌ |
-
----
-
-## Tecnologías Utilizadas
-
-### Frontend
-- Carpeta `frontend/` añadida en el proyecto.
-
-### Backend
-- **Node.js + Express**: Servidor API REST
-- **MongoDB + Mongoose**: Base de datos NoSQL
-- **JWT (jsonwebtoken)**: Autenticación
-- **Bcrypt**: Hash de contraseñas
-- **Cloudinary**: Almacenamiento de imágenes
-- **Validator.js**: Validación de emails
-- **CORS**: Cross-Origin Resource Sharing
-- **express-async-errors**: Manejo de errores asíncronos
-- **LM Studio (Qwen3)**: Asistente IA vía OpenAI-compatible API
-
-## Composición del Backend
-
-- API REST con Express y middlewares de autenticación/autorización.
-- Modelos Mongoose para usuarios, recetas, ingredientes, favoritos, valoraciones, historial y contacto.
-- Rutas agrupadas por dominio (`/api/auth`, `/api/recetas`, `/api/favoritos`, `/api/ai`, etc.).
-- Subida de imágenes a Cloudinary.
-- Integración de IA con LM Studio usando endpoint compatible con OpenAI.
-
-## Cambios Implementados
-
-- Integración de asistente IA (Qwen3 en LM Studio) con endpoint `/api/ai/chat`.
-- Widget de asistente en frontend (carpeta añadida).
-- Respuestas de favoritos pobladas con usuario y receta.
-- Variables de entorno ampliadas para LM Studio.
-- Tests con Jest y Supertest para auth, favoritos y IA.
-
----
-
-## Estructura del Proyecto
+### Estructura
 
 ```
-RidaoChavesVictorManuel-PI-FRONT-SPRINT9/
-├── backend/
-│   ├── src/
-│   │   ├── controllers/
-│   │   │   ├── authController.js
-│   │   │   ├── userController.js          
-│   │   │   ├── recipeController.js
-│   │   │   ├── ingredientController.js
-│   │   │   ├── favoriteController.js
-│   │   │   ├── ratingController.js
+backend/
+  src/
+    app.js
+    server.js
+    config/
+      db.js
+    controllers/
+      ...
+    middlewares/
+      ...
+    models/
+      ...
+    routes/
+      ...
+    seed/
+      ...
+    utils/
+      ...
+    tests/
+      ...
+```
+
+### Diagrama de arquitectura
+
+```mermaid
+flowchart TD
+  Client[Cliente (Frontend)] -->|HTTP| API[Express API]
+  API -->|Swagger| Docs[Swagger UI]
+  API -->|Websockets| Socket[Socket.io]
+  API -->|MongoDB| DB[(MongoDB Atlas)]
+  API -->|Cloudinary| Cloud[Cloudinary]
+  API -->|JWT| Auth[Autenticación]
+```
+
+### Instalación y configuración
+
+1. Instala dependencias:
+   ```bash
+   cd backend
+   npm install
+   ```
+2. Crea un archivo `.env` con las variables necesarias:
+   ```env
+   MONGO_URI=tu_uri_de_mongodb
+   JWT_SECRET=tu_secreto_jwt
+   CLOUDINARY_CLOUD_NAME=tu_cloud_name
+   CLOUDINARY_API_KEY=tu_api_key
+   CLOUDINARY_API_SECRET=tu_api_secret
+   ```
+3. Ejecuta el servidor:
+   ```bash
+   npm start
+   ```
+
+### Uso y endpoints
+
+- Documentación Swagger disponible en `/api-docs`.
+- Endpoints principales:
+  - `/api/auth` (registro, login)
+  - `/api/recipes` (CRUD recetas)
+  - `/api/ingredients` (CRUD ingredientes)
+  - `/api/favorites` (gestión favoritos)
+  - `/api/history` (historial)
+  - `/api/rating` (valoraciones)
+  - `/api/contact` (contacto)
+  - `/api/upload` (subida imágenes)
+  - `/api/ai` (asistente IA)
+
+### Testing y cobertura
+
+- Ejecuta tests:
+  ```bash
+  npm test
+  ```
+- Cobertura >90% con Jest y Supertest.
+
+### Despliegue
+
+#### Render
+
+1. Configura variables de entorno en Render.
+2. Usa la raíz del backend como directorio de despliegue.
+3. MongoDB debe ser accesible desde Render.
+
+#### Docker
+
+1. Construye la imagen:
+   ```bash
+   docker build -t fitfood-backend .
+   ```
+2. Ejecuta el contenedor:
+   ```bash
+   docker run -p 3000:3000 --env-file .env fitfood-backend
+   ```
+3. Para el proyecto completo, usa `docker-compose.yml` en la raíz:
+   ```bash
+   docker-compose up --build
+   ```
+
+### Herramientas integradas
+
+- ESLint (estilo y calidad)
+- SonarQube (análisis estático)
+- Swagger (documentación API)
+- Jest & Supertest (testing)
+- Socket.io (Websockets)
 │   │   │   └── uploadController.js
 │   │   ├── routes/
 │   │   │   ├── authRoutes.js
