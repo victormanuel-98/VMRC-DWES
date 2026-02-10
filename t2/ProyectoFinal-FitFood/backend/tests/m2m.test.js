@@ -5,6 +5,7 @@ import app from '../src/app.js';
 import User from '../src/models/User.js';
 import Recipe from '../src/models/Recipe.js';
 import Favorite from '../src/models/Favorite.js';
+import jwt from 'jsonwebtoken';
 
 let mongoServer;
 let usuario;
@@ -25,7 +26,8 @@ beforeAll(async () => {
         apellidos: 'User',
         contrasena: 'Admin123!',
     });
-    token = usuario.generarJWT();
+
+    token = jwt.sign({ id: usuario._id, usuario: usuario.usuario, rol: usuario.rol || 'usuario' }, process.env.JWT_SECRET);
 
     receta = await Recipe.create({
         nombre: 'Receta M2M',
