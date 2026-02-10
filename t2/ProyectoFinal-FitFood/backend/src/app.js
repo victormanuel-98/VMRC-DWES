@@ -35,6 +35,9 @@ app.use('/api/contacto', contactRoutes);
 app.use('/api/ingredientes', ingredientRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/ai', aiRoutes);
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'ok' });
+});
 app.get('/api/health', (req, res) => {
     res.status(200).json({ mensaje: 'Backend de FitFood funcionando correctamente' });
 });
