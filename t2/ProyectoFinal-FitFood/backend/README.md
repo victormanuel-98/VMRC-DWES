@@ -2,7 +2,7 @@
 
 # FitFood Backend
 
-Backend del proyecto FitFood. API REST para gestión de recetas, usuarios, favoritos, historial, ingredientes y ratings. Incluye autenticación JWT, integración con MongoDB Atlas y Cloudinary, Websockets, Swagger, SonarQube, ESLint y tests con Jest.
+Backend del proyecto FitFood. API REST para gestión de recetas, usuarios, favoritos, historial, ingredientes y ratings. Incluye autenticación JWT, integración con MongoDB Atlas y Cloudinary(pendiente), Websockets, Swagger, SonarQube(por añadir), ESLint y tests con Jest.
 
 ---
 
