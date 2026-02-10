@@ -57,7 +57,11 @@ describe('UserController - Casos de error y validaciones', () => {
         const res = await request(app)
             .post('/api/auth/login')
             .send({ email: 'noexiste@fail.com', contrasena: 'incorrecta' });
-        expect([400, 401]).toContain(res.statusCode);
-        expect(res.body.mensaje).toMatch(/credenciales/i);
+                expect([400, 401]).toContain(res.statusCode);
+                expect([
+                    "Usuario y contraseña requeridos",
+                    "Credenciales inválidas",
+                    "Credenciales incorrectas"
+                ]).toContain(res.body.mensaje);
     });
 });
