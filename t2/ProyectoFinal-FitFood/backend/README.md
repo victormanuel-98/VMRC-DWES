@@ -1,3 +1,14 @@
+## Diagrama de arquitectura
+
+```mermaid
+graph TD
+  A[Cliente (Frontend)] -- HTTP/REST --> B(Express API)
+  A -- Websockets --> D(Socket.io)
+  B -- MongoDB --> C[(Base de datos)]
+  B -- Cloudinary --> E[(Imágenes)]
+  B -- LM Studio --> F[(IA)]
+  B -- Swagger --> G[(Docs)]
+```
 # FitFood Backend
 
 API REST para la gestión nutricional y recetas de la aplicación FitFood. Incluye autenticación, gestión de usuarios y roles, recetas, historial nutricional, favoritos, valoraciones, subida de imágenes, asistente IA, notificaciones en tiempo real y documentación interactiva.
@@ -31,15 +42,14 @@ Variables principales:
 - `MONGODB_URI`: Cadena de conexión a MongoDB
 - `PORT`: Puerto del servidor (por defecto 5000)
 - `JWT_SECRET`: Clave secreta para JWT
-- `CLOUDINARY_*`: Credenciales para subida de imágenes
 - `CORS_ORIGIN`: Origen permitido para CORS
 
 ### 4. Ejecuta el servidor
 
 **Modo desarrollo:**
 ```bash
-npm run dev
-```
+git clone <https://github.com/victormanuel-98/VMRC-DWES.git>
+cd VMRC-DWES/backend
 
 **Modo producción:**
 ```bash
@@ -57,11 +67,6 @@ JWT_SECRET=tu_clave
 JWT_EXPIRE=7d (añadir otro JWT para login por correo +- 30 min)
 
 # CORS
-CORS_ORIGIN=http://localhost:5173
-
-# LM Studio
-LMSTUDIO_BASE_URL=http://localhost:1234/v1
-LMSTUDIO_MODEL=qwen3
 LMSTUDIO_TIMEOUT_MS=20000
 
 # Cloudinary (opcional para subida de imágenes)
@@ -77,9 +82,103 @@ CLOUDINARY_API_SECRET=tu_api_secret
 - Creación y gestión de recetas
 - Cálculo automático de calorías
 - Historial nutricional diario
-- Sistema de favoritos
-- Valoraciones y comentarios en recetas
+## Características principales
+
+- Autenticación JWT y gestión de roles (usuario, nutricionista, admin)
+- CRUD de usuarios, recetas, ingredientes, historial, favoritos y valoraciones
+- Cálculo automático de calorías y macros
+- Asistente IA (LM Studio/Qwen3)
+- Subida de imágenes con Cloudinary
+- Notificaciones en tiempo real vía Websockets (Socket.io)
+- Documentación interactiva Swagger
+- Validaciones de seguridad (contraseña fuerte, email válido)
 - Base de datos MongoDB
+- Tests unitarios y de integración (Jest, Supertest)
+- Cobertura de tests >80%
+- Linter ESLint y análisis SonarQube
+- Arquitectura modular y escalable
+- Valoraciones y comentarios en recetas
+## Herramientas implementadas
+
+- **ESLint**: Linter para mantener calidad de código (`.eslintrc.js`)
+- **SonarQube**: Análisis estático y cobertura (`sonar-project.properties`)
+- **Swagger**: Documentación interactiva en `/api/docs` (`src/swagger.js`)
+- **Socket.io**: Websockets para notificaciones (`src/socketServer.js`)
+- **Jest & Supertest**: Tests unitarios, integración y M2M (`jest.config.js`, `tests/`)
+- **mongodb-memory-server**: Tests aislados en memoria
+- Base de datos MongoDB
+## Estructura de carpetas
+
+```text
+backend/
+├── src/
+│   ├── app.js
+│   ├── server.js
+│   ├── config/
+│   │   └── db.js
+│   ├── controllers/
+│   │   ├── aiController.js
+│   │   ├── contactController.js
+│   │   ├── favoriteController.js
+│   │   ├── historyController.js
+│   │   ├── ingredientController.js
+│   │   ├── ratingController.js
+│   │   ├── recipeController.js
+│   │   ├── uploadController.js
+│   │   └── userController.js
+│   ├── middlewares/
+│   │   └── authMiddleware.js
+│   ├── models/
+│   │   ├── Contact.js
+│   │   ├── Favorite.js
+│   │   ├── History.js
+│   │   ├── Ingredient.js
+│   │   ├── Rating.js
+│   │   ├── Recipe.js
+│   │   └── User.js
+│   ├── routes/
+│   │   ├── aiRoutes.js
+│   │   ├── authRoutes.js
+│   │   ├── contactRoutes.js
+│   │   ├── favoriteRoutes.js
+│   │   ├── historyRoutes.js
+│   │   ├── ingredientRoutes.js
+│   │   ├── ratingRoutes.js
+│   │   ├── recipeRoutes.js
+│   │   ├── uploadRoutes.js
+│   │   └── userRoutes.js
+│   ├── seed/
+│   │   ├── ingredients.js
+│   │   ├── recipes.js
+│   │   └── users.js
+│   ├── utils/
+│   │   └── cloudinary.js
+│   ├── tests/
+│   │   ├── ai.test.js
+│   │   ├── auth.test.js
+│   │   ├── favorites.test.js
+│   │   └── app.endpoints.test.js
+│   ├── swagger.js
+│   └── socketServer.js
+├── .eslintrc.js
+├── sonar-project.properties
+├── jest.config.js
+├── package.json
+└── README.md
+```
+
+## Diagrama de arquitectura
+
+```mermaid
+graph TD
+  A[Cliente (Frontend)] -- HTTP/REST --> B(Express API)
+  A -- Websockets --> D(Socket.io)
+  B -- MongoDB --> C[(Base de datos)]
+  B -- Cloudinary --> E[(Imágenes)]
+  B -- LM Studio --> F[(IA)]
+  B -- Swagger --> G[(Docs)]
+```
+
 - Validaciones de seguridad (contraseña fuerte, email válido)
 - Asistente IA con LM Studio (Qwen3)
 
@@ -201,26 +300,16 @@ El servidor estará disponible en `http://localhost:5000`
   "comentario": "¡Excelente receta, muy fácil de hacer!"
 }
 ```
-
-### Historial Nutricional
-
 | Método | Endpoint | Descripción |
 |--------|----------|-------------|
 | POST | `/api/historial` | Crear/actualizar historial (requiere auth) |
 | GET | `/api/historial` | Obtener historial de una fecha (requiere auth) |
-| GET | `/api/historial/rango` | Obtener historial de un rango (requiere auth) |
-| DELETE | `/api/historial/:historialId/alimento/:alimentoIndex` | Eliminar alimento (requiere auth) |
-
-## Seguridad
 
 ### Autenticación
 
 - Se utiliza **JWT** para la autenticación
 - El token se envía en el header: `Authorization: Bearer <token>`
 - Token válido por 7 días
-
-### Contraseña
-
 Requisitos de contraseña fuerte:
 - Mínimo 8 caracteres
 - Incluir mayúscula (A-Z)
@@ -238,7 +327,7 @@ Requisitos de contraseña fuerte:
 
 ## Modelos de Datos
 
-### User
+### Usuario
 
 ```
 {
@@ -282,7 +371,7 @@ Requisitos de contraseña fuerte:
 }
 ```
 
-### Ingredient
+### Ingredientes
 
 ```
 {
@@ -297,7 +386,7 @@ Requisitos de contraseña fuerte:
 }
 ```
 
-### Favorite
+### Favoritos
 
 ```
 {

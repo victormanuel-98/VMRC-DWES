@@ -4,7 +4,7 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
 import app from '../src/app.js';
 import User from '../src/models/User.js';
 import Recipe from '../src/models/Recipe.js';
-import Favorite from '../src/models/Favorite.js';
+// ...existing code...
 import jwt from 'jsonwebtoken';
 
 let mongoServer;
