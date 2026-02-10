@@ -531,7 +531,25 @@ npm test
 - CORS configurado solo desde Vercel en producción
 
 # Por añadir
-- Implementar cloudinari
-- Despelgar en docker
-- Hashear contraseñas
-- Implementar nuevas peticiones en swagger
+
+implementar modelo mensajes
+
+eliminar contact.js
+
+añadir mas parámetros a las categorías (bebidas, almuerzos, etc)
+
+evitar que el usaurio pueda borrarse a si mismo y que no se puedan eliminar entre ellos
+
+cambiar actualizar perfil del usuario ()
+
+añadir cloudinari
+
+falta Docker
+
+añadir mailhog (si se puede)
+
+añadir correo electrónico
+
+coolify (montarte tu propio render)
+
+hedsnet
