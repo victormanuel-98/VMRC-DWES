@@ -20,26 +20,19 @@ afterAll(async () => {
     }
 });
 
-describe('FavoriteController coverage extra', () => {
-    test('Agregar favorito sin recetaId', async () => {
+describe('HistoryController coverage', () => {
+    test('Crear historial válido', async () => {
         const res = await request(app)
-            .post('/api/favoritos')
+            .post('/api/historial')
             .set('Authorization', token)
-            .send({});
-        expect([400, 401]).toContain(res.statusCode);
-    });
-
-    test('Obtener favoritos', async () => {
-        const res = await request(app)
-            .get('/api/favoritos')
-            .set('Authorization', token);
+            .send({ fecha: new Date().toISOString(), alimentos: [{ nombre: 'Manzana', calorias: 50 }] });
         expect([200, 401]).toContain(res.statusCode);
     });
 
-    test('Eliminar favorito inexistente', async () => {
+    test('Obtener historial', async () => {
         const res = await request(app)
-            .delete('/api/favoritos/507f1f77bcf86cd799439011')
+            .get('/api/historial')
             .set('Authorization', token);
-        expect([404, 401]).toContain(res.statusCode);
+        expect([200, 401]).toContain(res.statusCode);
     });
 });

@@ -11,7 +11,7 @@ const ingredientSchema = new mongoose.Schema(
         },
         calorias: {
             type: Number,
-            required: [true, 'Las calorías por 100g son requeridas'],
+            required: [true, 'Las calorías son requeridas'],
             min: 0,
         },
         unidad: {

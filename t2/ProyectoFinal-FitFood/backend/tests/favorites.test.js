@@ -67,7 +67,6 @@ beforeAll(async () => {
 });
 
 
-// ...existing code...
 
     test('POST /api/favoritos - agrega favorito con datos poblados', async () => {
         const res = await request(app)

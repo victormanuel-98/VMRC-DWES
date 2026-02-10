@@ -3,7 +3,7 @@ import app from '../src/app.js';
 import jwt from 'jsonwebtoken';
 
 describe('FavoriteController errores', () => {
-    const token = jwt.sign({ id: 'fakeid', usuario: 'test', rol: 'usuario' }, 'test_jwt_secret_2026');
+    const token = jwt.sign({ id: 'fakeid', usuario: 'test', rol: 'usuario' }, 'test_jwt_secret_TEST');
 
     test('Obtener favoritos con usuario inválido responde 401', async () => {
         const res = await request(app)

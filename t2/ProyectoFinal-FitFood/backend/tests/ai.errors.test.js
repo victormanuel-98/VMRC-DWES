@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import { jest } from '@jest/globals';
 
 describe('AIController errores', () => {
-    const token = jwt.sign({ id: 'fakeid', usuario: 'test', rol: 'usuario' }, 'test_jwt_secret_2026');
+    const token = jwt.sign({ id: 'fakeid', usuario: 'test', rol: 'usuario' }, 'test_jwt_secret_TEST');
 
     test('POST /api/ai/chat - error por timeout', async () => {
         globalThis.fetch = jest.fn().mockRejectedValue({ name: 'AbortError' });
