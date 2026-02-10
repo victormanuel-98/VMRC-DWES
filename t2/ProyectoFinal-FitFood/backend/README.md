@@ -6,17 +6,24 @@ Backend del proyecto FitFood. API REST para gestión de recetas, usuarios, favor
 
 ---
 
-## Tabla de Contenidos
+## Instalación y configuración
 
-1. [Estructura del proyecto](#estructura-del-proyecto)
-2. [Diagrama de arquitectura](#diagrama-de-arquitectura)
-3. [Instalación y configuración](#instalación-y-configuración)
-4. [Uso y endpoints](#uso-y-endpoints)
-5. [Testing y cobertura](#testing-y-cobertura)
-6. [Despliegue (Render & Docker)](#despliegue-render--docker)
-7. [Herramientas integradas](#herramientas-integradas)
-8. [Buenas prácticas](#buenas-prácticas)
-9. [Contacto](#contacto)
+1. Instala dependencias:
+   ```
+   npm install
+   ```
+2. Crea un archivo `.env` con las variables necesarias:
+   ```
+   MONGO_URI=tu_uri_de_mongodb
+   JWT_SECRET=tu_secreto_jwt
+   CLOUDINARY_CLOUD_NAME=tu_cloud_name
+   CLOUDINARY_API_KEY=tu_api_key
+   CLOUDINARY_API_SECRET=tu_api_secret
+   ```
+3. Ejecuta el servidor:
+   ```
+   npm start
+   ```
 
 ---
 
@@ -48,7 +55,7 @@ backend/
 
 ## Diagrama de arquitectura
 
-```mermaid
+```
 flowchart TD
   Client[Cliente (Frontend)] -->|HTTP| API[Express API]
   API -->|Swagger| Docs[Swagger UI]
@@ -61,6 +68,7 @@ flowchart TD
 ## Flujos de Websockets
 
 ### Perfil actualizado (evento: perfilActualizado)
+
 ```mermaid
 sequenceDiagram
     participant F as Frontend
@@ -91,24 +99,7 @@ sequenceDiagram
     F->>F: Muestra notificación en UI
 ```
 
-## Instalación y configuración
 
-1. Instala dependencias:
-   ```
-   npm install
-   ```
-2. Crea un archivo `.env` con las variables necesarias:
-   ```
-   MONGO_URI=tu_uri_de_mongodb
-   JWT_SECRET=tu_secreto_jwt
-   CLOUDINARY_CLOUD_NAME=tu_cloud_name
-   CLOUDINARY_API_KEY=tu_api_key
-   CLOUDINARY_API_SECRET=tu_api_secret
-   ```
-3. Ejecuta el servidor:
-   ```
-   npm start
-   ```
 
 ## Uso y endpoints
 
