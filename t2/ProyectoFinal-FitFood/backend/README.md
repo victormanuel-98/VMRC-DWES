@@ -45,9 +45,10 @@ backend/
       ...
 ```
 
+
 ## Diagrama de arquitectura
 
-```
+```mermaid
 flowchart TD
   Client[Cliente (Frontend)] -->|HTTP| API[Express API]
   API -->|Swagger| Docs[Swagger UI]
@@ -55,6 +56,39 @@ flowchart TD
   API -->|MongoDB| DB[(MongoDB Atlas)]
   API -->|Cloudinary| Cloud[Cloudinary]
   API -->|JWT| Auth[Autenticación]
+```
+
+## Flujos de Websockets
+
+### Perfil actualizado (evento: perfilActualizado)
+```mermaid
+sequenceDiagram
+    participant F as Frontend
+    participant S as Socket.io (Backend)
+    participant U as Usuario
+    U->>S: Actualiza perfil
+    S->>F: Emitir "perfilActualizado" con datos del usuario
+    F->>F: Refresca datos de perfil en tiempo real
+```
+
+### Nuevo favorito añadido (evento: favoritoAgregado)
+```mermaid
+sequenceDiagram
+    participant F as Frontend
+    participant S as Socket.io (Backend)
+    participant U as Usuario
+    U->>S: Añade receta a favoritos
+    S->>F: Emitir "favoritoAgregado" con receta/usuario
+    F->>F: Actualiza lista de favoritos en tiempo real
+```
+
+### Notificación general (evento: notificacion)
+```mermaid
+sequenceDiagram
+    participant S as Socket.io (Backend)
+    participant F as Frontend
+    S->>F: Emitir "notificacion" con mensaje
+    F->>F: Muestra notificación en UI
 ```
 
 ## Instalación y configuración
