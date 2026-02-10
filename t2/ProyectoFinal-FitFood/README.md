@@ -1,4 +1,4 @@
-# SPRINT 9 - FitFood - Aplicación de Recetas Saludables
+# FitFood - Aplicación de Recetas Saludables
 
 ## Descripción del Proyecto
 
@@ -8,7 +8,7 @@ FitFood es una aplicación web fullstack para crear, gestionar y descubrir recet
 
 ## Características Implementadas
 
-### Sprint 9 - Integración Backend y Funcionalidades Avanzadas
+### Integración Backend y Funcionalidades Avanzadas
 
 #### Sistema de Autenticación
 - Registro e inicio de sesión con JWT
