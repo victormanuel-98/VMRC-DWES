@@ -1,6 +1,8 @@
 export default {
     testEnvironment: 'node',
     transform: {},
+    // Aumenta el timeout global para evitar errores de timeout en tests con MongoMemoryServer
+    testTimeout: 30000,
     collectCoverage: true,
     collectCoverageFrom: [
         'src/app.js',

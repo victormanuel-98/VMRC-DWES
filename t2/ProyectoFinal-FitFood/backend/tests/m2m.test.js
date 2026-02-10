@@ -42,7 +42,9 @@ beforeAll(async () => {
 
 afterAll(async () => {
     await mongoose.disconnect();
-    await mongoServer.stop();
+    if (mongoServer) {
+        await mongoServer.stop();
+    }
 });
 
 describe('M2M Usuario-Receta-Favorito', () => {

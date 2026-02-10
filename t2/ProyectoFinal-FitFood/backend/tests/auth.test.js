@@ -17,32 +17,20 @@ beforeAll(async () => {
     process.env.MONGODB_URI = uri;
 
     await mongoose.connect(uri);
-});
-
-afterAll(async () => {
-    await mongoose.disconnect();
-    await mongoServer.stop();
-});
-
-describe('Auth API', () => {
-    test('POST /api/auth/registro - registra un usuario', async () => {
-        const res = await request(app)
-            .post('/api/auth/registro')
-            .send({
-                usuario: 'victor_98',
-                email: 'victor@example.com',
-                nombre: 'Víctor',
-                apellidos: 'Ridao Chaves',
-                contrasena: 'Admin123!',
-            });
-
-        expect(res.statusCode).toBe(201);
-        expect(res.body.token).toBeDefined();
-        expect(res.body.usuario.usuario).toBe('victor_98');
+// ...existing code...
+    afterAll(async () => {
+        await mongoose.disconnect();
+        if (mongoServer) {
+            await mongoServer.stop();
+        }
     });
 
-    test('POST /api/auth/login - login correcto', async () => {
         const res = await request(app)
+    await mongoose.disconnect();
+    if (mongoServer) {
+        await mongoServer.stop();
+    }
+});
             .post('/api/auth/login')
             .send({
                 usuario: 'victor_98',

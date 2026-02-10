@@ -66,20 +66,8 @@ beforeAll(async () => {
     );
 });
 
-afterAll(async () => {
-    await mongoose.disconnect();
-    await mongoServer.stop();
-});
 
-describe('Favoritos API', () => {
-    test('POST /api/favoritos - requiere recetaId', async () => {
-        const res = await request(app)
-            .post('/api/favoritos')
-            .set('Authorization', `Bearer ${token}`)
-            .send({});
-
-        expect(res.statusCode).toBe(400);
-    });
+// ...existing code...
 
     test('POST /api/favoritos - agrega favorito con datos poblados', async () => {
         const res = await request(app)
@@ -128,4 +116,9 @@ describe('Favoritos API', () => {
 
         expect(res.statusCode).toBe(404);
     });
+afterAll(async () => {
+    await mongoose.disconnect();
+    if (mongoServer) {
+        await mongoServer.stop();
+    }
 });

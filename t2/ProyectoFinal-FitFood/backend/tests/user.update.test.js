@@ -27,7 +27,9 @@ beforeAll(async () => {
 
 afterAll(async () => {
     await mongoose.disconnect();
-    await mongoServer.stop();
+    if (mongoServer) {
+        await mongoServer.stop();
+    }
 });
 
 describe('UserController - Actualizar perfil', () => {
