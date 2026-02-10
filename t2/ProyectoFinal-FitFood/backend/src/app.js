@@ -1,4 +1,5 @@
 import express from 'express';
+import swaggerSetup from './swagger.js';
 import cors from 'cors';
 import 'express-async-errors';
 import authRoutes from './routes/authRoutes.js';
@@ -22,6 +23,7 @@ app.use(
 
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
+swaggerSetup(app);
 app.use('/api/auth', authRoutes);
 app.use('/api/usuarios', userRoutes);
 app.use('/api/recetas', recipeRoutes);
