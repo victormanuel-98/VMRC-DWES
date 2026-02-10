@@ -28,13 +28,13 @@ export const crearValoracion = async (req, res) => {
         });
 
         await nuevaValoracion.save();
-            // Emitir evento websocket
-            if (req.app && req.app.get) {
-                const io = req.app.get('io');
-                if (io) {
-                    io.emit('nuevaValoracion', { valoracion: nuevaValoracion });
-                }
+        // Emitir evento websocket
+        if (req.app && req.app.get) {
+            const io = req.app.get('io');
+            if (io) {
+                io.emit('nuevaValoracion', { valoracion: nuevaValoracion });
             }
+        }
 
         await actualizarPuntuacionReceta(recetaId);
 
