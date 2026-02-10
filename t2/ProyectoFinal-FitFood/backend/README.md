@@ -1,43 +1,54 @@
 # FitFood Backend
 
-Backend API REST para la aplicación FitFood - Sistema de gestión nutricional y recetas.
+API REST para la gestión nutricional y recetas de la aplicación FitFood. Incluye autenticación, gestión de usuarios y roles, recetas, historial nutricional, favoritos, valoraciones, subida de imágenes, asistente IA, notificaciones en tiempo real y documentación interactiva.
 
-## Requisitos Previos
+---
 
-- Node.js 16+
-- MongoDB Atlas (o MongoDB local)
-- Cloudinary (para subida de imágenes)
+## Instalación y Puesta en Marcha
 
-## Instalación
+### 1. Clona el repositorio
 
-### 1. Clonar el repositorio
-
-```
-git clone <URL-del-repositorio>
+```bash
+git clone <https://github.com/victormanuel-98/VMRC-DWES.git>
 cd backend
 ```
 
-### 2. Instalar dependencias
+### 2. Instala las dependencias
 
-```
+```bash
 npm install
 ```
 
-### 3. Configurar variables de entorno
+### 3. Configura las variables de entorno
 
-Copia el archivo `.env.example` a `.env`:
+Copia el archivo `.env.example` a `.env` y completa los valores necesarios:
 
-```
+```bash
 cp .env.example .env
 ```
 
-Completa las variables:
+Variables principales:
+- `MONGODB_URI`: Cadena de conexión a MongoDB
+- `PORT`: Puerto del servidor (por defecto 5000)
+- `JWT_SECRET`: Clave secreta para JWT
+- `CLOUDINARY_*`: Credenciales para subida de imágenes
+- `CORS_ORIGIN`: Origen permitido para CORS
 
+### 4. Ejecuta el servidor
+
+**Modo desarrollo:**
+```bash
+npm run dev
 ```
-# MongoDB Atlas
-MONGODB_URI=mongodb+srv://usuario:contraseña@cluster.mongodb.net/fitfood
 
-# Servidor
+**Modo producción:**
+```bash
+npm start
+```
+
+El backend estará disponible en `http://localhost:5000`.
+
+---
 PORT=5000
 NODE_ENV=development
 
