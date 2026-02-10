@@ -529,3 +529,9 @@ npm test
 - Un usuario solo puede valorar una receta una vez
 - Las contraseñas se encriptan con bcryptjs
 - CORS configurado solo desde Vercel en producción
+
+# Por añadir
+- Implementar cloudinari
+- Despelgar en docker
+- Hashear contraseñas
+- Implementar nuevas peticiones en swagger
