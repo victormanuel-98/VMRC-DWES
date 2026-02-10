@@ -206,6 +206,13 @@ export const actualizarPerfil = async (req, res) => {
         }
 
         await usuario.save();
+            // Emitir evento websocket
+            if (req.app && req.app.get) {
+                const io = req.app.get('io');
+                if (io) {
+                    io.emit('perfilActualizado', { usuario });
+                }
+            }
 
         res.status(200).json({
             mensaje: 'Perfil actualizado exitosamente',

@@ -54,6 +54,13 @@ export const crearReceta = async (req, res) => {
         }
 
         await nuevaReceta.save();
+            // Emitir evento websocket
+            if (req.app && req.app.get) {
+                const io = req.app.get('io');
+                if (io) {
+                    io.emit('nuevaReceta', { receta: nuevaReceta });
+                }
+            }
 
         res.status(201).json({
             mensaje: 'Receta creada exitosamente',
