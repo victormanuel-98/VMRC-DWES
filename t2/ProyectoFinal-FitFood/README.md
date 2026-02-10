@@ -150,7 +150,7 @@ backend/
 
 ### Diagrama de arquitectura
 
-```mermaid
+```
 flowchart TD
   Client[Cliente (Frontend)] -->|HTTP| API[Express API]
   API -->|Swagger| Docs[Swagger UI]
