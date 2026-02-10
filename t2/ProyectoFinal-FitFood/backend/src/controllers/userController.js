@@ -1,3 +1,4 @@
+// Controlador de usuarios: gestiona registro, login, perfil, actualización y validaciones de usuario
 import User from '../models/User.js';
 import jwt from 'jsonwebtoken';
 import validator from 'validator';

@@ -1,3 +1,4 @@
+// Controlador de favoritos: permite agregar, consultar y eliminar recetas favoritas de un usuario
 import Favorite from '../models/Favorite.js';
 
 export const agregarFavorito = async (req, res) => {

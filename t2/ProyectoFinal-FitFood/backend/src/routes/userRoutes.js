@@ -1,3 +1,4 @@
+// Rutas de usuario: consulta y actualización de perfil
 import express from 'express';
 import { obtenerPerfil, actualizarPerfil } from '../controllers/userController.js';
 import { autenticar } from '../middlewares/authMiddleware.js';

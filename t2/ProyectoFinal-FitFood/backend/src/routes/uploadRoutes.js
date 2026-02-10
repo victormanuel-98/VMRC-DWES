@@ -1,3 +1,4 @@
+// Rutas de subida de imágenes: recetas y perfiles
 import express from 'express';
 import { subirImagenReceta, subirImagenPerfil } from '../controllers/uploadController.js';
 import { autenticar } from '../middlewares/authMiddleware.js';

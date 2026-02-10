@@ -1,3 +1,4 @@
+// Middleware de autenticación y autorización: verifica JWT y roles de usuario
 import jwt from 'jsonwebtoken';
 
 export const autenticar = (req, res, next) => {

@@ -1,3 +1,4 @@
+// Rutas de IA: gestiona el chat con el asistente FitFood
 import express from 'express';
 import { chatConIA } from '../controllers/aiController.js';
 import { autenticar } from '../middlewares/authMiddleware.js';

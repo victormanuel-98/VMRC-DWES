@@ -1,3 +1,4 @@
+// Rutas de ingredientes: CRUD de ingredientes
 import express from 'express';
 import {
     crearIngrediente,

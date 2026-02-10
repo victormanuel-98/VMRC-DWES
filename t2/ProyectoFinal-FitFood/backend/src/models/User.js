@@ -1,3 +1,4 @@
+// Modelo User: almacena datos de usuario, email, contraseña y rol
 import mongoose from 'mongoose';
 import bcryptjs from 'bcryptjs';
 

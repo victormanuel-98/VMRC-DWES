@@ -1,3 +1,4 @@
+// Rutas de recetas: CRUD de recetas y consulta por usuario
 import express from 'express';
 import {
     crearReceta,

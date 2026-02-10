@@ -1,3 +1,4 @@
+// app.js - Configura la aplicación Express, middlewares, rutas y manejo global de errores.
 import express from 'express';
 import swaggerSetup from './swagger.js';
 import cors from 'cors';

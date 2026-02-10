@@ -28,3 +28,17 @@ coverage/
 # Misc
 .cache/
 *.tmp
+
+# Reports
+lcov-report/
+test-results/
+
+# Build
+dist/
+build/
+
+# Clean up
+*.bak
+*.old
+*.orig
+*.rej

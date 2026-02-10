@@ -1,3 +1,4 @@
+// Rutas de valoraciones: CRUD de valoraciones de recetas
 import express from 'express';
 import {
     crearValoracion,

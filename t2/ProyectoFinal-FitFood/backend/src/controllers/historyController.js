@@ -1,3 +1,4 @@
+// Controlador de historial: gestiona el registro de alimentos consumidos por fecha y usuario
 import History from '../models/History.js';
 
 export const crearOActualizarHistorial = async (req, res) => {

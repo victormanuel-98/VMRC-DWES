@@ -1,3 +1,4 @@
+// Rutas de historial: crear, consultar, eliminar alimentos del historial
 import express from 'express';
 import {
     crearOActualizarHistorial,

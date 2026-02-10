@@ -1,3 +1,4 @@
+// Controlador de ingredientes: permite crear, consultar, actualizar y eliminar ingredientes
 import Ingredient from '../models/Ingredient.js';
 
 export const crearIngrediente = async (req, res) => {

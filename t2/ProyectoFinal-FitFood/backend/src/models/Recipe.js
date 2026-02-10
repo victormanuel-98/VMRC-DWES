@@ -1,3 +1,4 @@
+// Modelo Recipe: almacena recetas, autor, descripción y valores nutricionales
 import mongoose from 'mongoose';
 
 const recipeSchema = new mongoose.Schema(

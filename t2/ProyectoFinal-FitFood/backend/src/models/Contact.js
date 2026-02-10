@@ -1,3 +1,4 @@
+// Modelo Contact: almacena mensajes enviados por usuarios desde el formulario de contacto
 import mongoose from 'mongoose';
 
 const contactSchema = new mongoose.Schema(

@@ -1,3 +1,4 @@
+// Utilidad para subir imágenes a Cloudinary
 import { v2 as cloudinary } from 'cloudinary';
 
 cloudinary.config({

@@ -1,3 +1,4 @@
+// Rutas de favoritos: agregar, consultar y eliminar recetas favoritas
 import express from 'express';
 import {
     agregarFavorito,

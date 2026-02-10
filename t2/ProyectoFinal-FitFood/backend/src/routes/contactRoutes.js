@@ -1,3 +1,4 @@
+// Rutas de contacto: envío, consulta, marcado y eliminación de mensajes
 import express from 'express';
 import {
     enviarMensajeContacto,

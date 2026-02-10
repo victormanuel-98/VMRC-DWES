@@ -1,3 +1,4 @@
+// swagger.js - Configura Swagger para documentación interactiva de la API REST.
 import swaggerUi from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
 

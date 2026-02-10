@@ -1,3 +1,4 @@
+// server.js - Punto de entrada del backend, inicia Express y conecta a la base de datos.
 import dotenv from 'dotenv';
 import app from './app.js';
 import connectDB from './config/db.js';

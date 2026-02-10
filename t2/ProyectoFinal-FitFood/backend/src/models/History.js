@@ -1,3 +1,4 @@
+// Modelo History: registra el historial de alimentos consumidos por usuario y fecha
 import mongoose from 'mongoose';
 
 const historySchema = new mongoose.Schema(

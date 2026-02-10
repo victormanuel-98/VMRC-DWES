@@ -1,3 +1,6 @@
+// Controlador para la integración de IA: gestiona el chat con el asistente FitFood
+// Responde en español, ayuda sobre recetas, nutrición, uso de la app y hábitos saludables
+// No da consejos médicos ni diagnósticos
 const LMSTUDIO_BASE_URL = process.env.LMSTUDIO_BASE_URL || 'http://localhost:1234/v1';
 const LMSTUDIO_MODEL = process.env.LMSTUDIO_MODEL || 'qwen3';
 const LMSTUDIO_TIMEOUT_MS = Number(process.env.LMSTUDIO_TIMEOUT_MS || 20000);

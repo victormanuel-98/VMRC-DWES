@@ -1,3 +1,4 @@
+// Controlador de subida de imágenes: gestiona la subida de imágenes de recetas y perfiles a Cloudinary
 import { subirImagen } from '../utils/cloudinary.js';
 
 export const subirImagenReceta = async (req, res) => {

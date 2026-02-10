@@ -1,3 +1,4 @@
+// socketServer.js - Configura el servidor HTTP y Socket.io para notificaciones en tiempo real.
 import http from 'http';
 import { Server } from 'socket.io';
 import app from './app.js';

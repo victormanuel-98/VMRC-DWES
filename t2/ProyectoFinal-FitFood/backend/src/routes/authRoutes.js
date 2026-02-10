@@ -1,3 +1,4 @@
+// Rutas de autenticación: registro, login y verificación de usuario
 import express from 'express';
 import { registrar, login, verificarToken } from '../controllers/userController.js';
 import { autenticar } from '../middlewares/authMiddleware.js';

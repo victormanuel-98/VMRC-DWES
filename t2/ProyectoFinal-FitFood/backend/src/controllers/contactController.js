@@ -1,3 +1,4 @@
+// Controlador de contacto: gestiona el envío, consulta, marcado y eliminación de mensajes de contacto
 import Contact from '../models/Contact.js';
 
 export const enviarMensajeContacto = async (req, res) => {

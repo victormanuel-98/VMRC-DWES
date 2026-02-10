@@ -1,3 +1,4 @@
+// Modelo Rating: almacena valoraciones de usuarios sobre recetas
 import mongoose from 'mongoose';
 
 const ratingSchema = new mongoose.Schema(

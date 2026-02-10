@@ -1,3 +1,5 @@
+// Controlador de recetas: permite crear, consultar, actualizar y eliminar recetas
+// Calcula valores nutricionales a partir de ingredientes
 import Recipe from '../models/Recipe.js';
 import Ingredient from '../models/Ingredient.js';
 

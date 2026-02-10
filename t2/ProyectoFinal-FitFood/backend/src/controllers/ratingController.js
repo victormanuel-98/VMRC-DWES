@@ -1,3 +1,4 @@
+// Controlador de valoraciones: gestiona la creación, consulta, actualización y eliminación de valoraciones de recetas
 import Rating from '../models/Rating.js';
 import Recipe from '../models/Recipe.js';
 

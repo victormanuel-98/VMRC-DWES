@@ -1,3 +1,4 @@
+// Modelo Ingredient: almacena información nutricional de ingredientes
 import mongoose from 'mongoose';
 
 const ingredientSchema = new mongoose.Schema(
