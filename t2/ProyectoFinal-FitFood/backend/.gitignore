@@ -24,6 +24,8 @@ yarn-debug.log*
 
 # Testing
 coverage/
+coverage/lcov-report/
+coverage/lcov-report/*.html
 
 # Misc
 .cache/
