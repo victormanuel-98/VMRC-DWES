@@ -163,12 +163,12 @@ flowchart TD
 ### Instalación y configuración
 
 1. Instala dependencias:
-   ```bash
+   ```
    cd backend
    npm install
    ```
 2. Crea un archivo `.env` con las variables necesarias:
-   ```env
+   ```
    MONGO_URI=tu_uri_de_mongodb
    JWT_SECRET=tu_secreto_jwt
    CLOUDINARY_CLOUD_NAME=tu_cloud_name
@@ -176,7 +176,7 @@ flowchart TD
    CLOUDINARY_API_SECRET=tu_api_secret
    ```
 3. Ejecuta el servidor:
-   ```bash
+   ```
    npm start
    ```
 
@@ -197,7 +197,7 @@ flowchart TD
 ### Testing y cobertura
 
 - Ejecuta tests:
-  ```bash
+  ```
   npm test
   ```
 - Cobertura >90% con Jest y Supertest.
@@ -227,6 +227,7 @@ flowchart TD
 
 ### Herramientas integradas
 
+```
 - ESLint (estilo y calidad)
 - SonarQube (análisis estático)
 - Swagger (documentación API)
