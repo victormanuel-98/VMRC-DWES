@@ -1,3 +1,28 @@
+// Eliminar usuario autenticado
+export const eliminarUsuario = async (req, res) => {
+    try {
+        const usuarioId = req.usuario.id;
+        const { usuario, contrasena, confirmacion } = req.body;
+        if (!usuario || !contrasena || confirmacion !== true) {
+            return res.status(400).json({ mensaje: 'Debes proporcionar usuario, contraseña y confirmación para eliminar.' });
+        }
+        const usuarioDB = await User.findById(usuarioId).select('+contrasena');
+        if (!usuarioDB) {
+            return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+        }
+        if (usuarioDB.usuario !== usuario) {
+            return res.status(400).json({ mensaje: 'Nombre de usuario incorrecto.' });
+        }
+        const esValida = await usuarioDB.compararContrasena(contrasena);
+        if (!esValida) {
+            return res.status(401).json({ mensaje: 'Contraseña incorrecta.' });
+        }
+        await usuarioDB.deleteOne();
+        res.status(200).json({ mensaje: 'Usuario eliminado correctamente' });
+    } catch (error) {
+        res.status(500).json({ mensaje: 'Error al eliminar usuario', error: error.message });
+    }
+};
 // Controlador de usuarios: gestiona registro, login, perfil, actualización y validaciones de usuario
 import User from '../models/User.js';
 import jwt from 'jsonwebtoken';

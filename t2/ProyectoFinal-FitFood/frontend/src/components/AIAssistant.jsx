@@ -7,7 +7,7 @@ const AIAssistant = () => {
     const [cargando, setCargando] = useState(false);
     const [error, setError] = useState('');
     const [mensajes, setMensajes] = useState([
-        { role: 'assistant', content: 'Hola 👋 Soy tu asistente FitFood. ¿En qué te ayudo hoy?' },
+        { role: 'assistant', content: 'Hola, soy tu asistente FitFood. ¿En qué te ayudo hoy?' },
     ]);
 
     const enviar = async () => {
@@ -58,7 +58,7 @@ const AIAssistant = () => {
                 onClick={() => setAbierto((prev) => !prev)}
                 aria-label="Abrir asistente IA"
             >
-                {abierto ? '✕' : '🤖'}
+                {abierto ? '' : ''}
             </button>
 
             {abierto && (

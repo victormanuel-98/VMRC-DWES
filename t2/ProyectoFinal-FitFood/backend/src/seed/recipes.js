@@ -214,11 +214,11 @@ const seedRecetas = async () => {
 
         await Recipe.insertMany(recetas);
 
-        console.log('✅ Recetas insertadas correctamente');
+        console.log('Recetas insertadas correctamente');
         await mongoose.connection.close();
         process.exit(0);
     } catch (error) {
-        console.error('❌ Error al insertar recetas:', error);
+        console.error('Error al insertar recetas:', error);
         process.exit(1);
     }
 };

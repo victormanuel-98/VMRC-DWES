@@ -36,14 +36,14 @@ app.use('/api/ingredientes', ingredientRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/ai', aiRoutes);
 app.get('/api/health', (req, res) => {
-    res.status(200).json({ mensaje: '✅ Backend de FitFood funcionando correctamente' });
+    res.status(200).json({ mensaje: 'Backend de FitFood funcionando correctamente' });
 });
 app.use((req, res) => {
     res.status(404).json({ mensaje: 'Ruta no encontrada' });
 });
 app.use((error, req, res, next) => {
     if (process.env.NODE_ENV === 'development') {
-        console.error('🔴 Error:', error);
+        console.error('Error:', error);
     }
     res.status(500).json({
         mensaje: 'Error interno del servidor',

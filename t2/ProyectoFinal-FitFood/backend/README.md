@@ -106,7 +106,7 @@ flowchart TD
 2. Usa la raíz del backend como directorio de despliegue.
 3. MongoDB debe ser accesible desde Render.
 
-### Docker
+### Docker (falta implementar)
 
 1. Construye la imagen:
    ```bash
@@ -129,20 +129,6 @@ flowchart TD
 - Jest & Supertest (testing)
 - Socket.io (Websockets)
 
-## Buenas prácticas
-
-- Código modular y comentado.
-- Variables de entorno seguras.
-- Cobertura de tests >90%.
-- Documentación Swagger actualizada.
-- Uso de Docker y Render para despliegue.
-- Integración continua recomendada.
-
-## Contacto
-
-Para dudas o sugerencias, contacta al autor.
-- Cálculo automático de calorías
-- Historial nutricional diario
 ## Características principales
 
 - Autenticación JWT y gestión de roles (usuario, nutricionista, admin)
@@ -159,6 +145,7 @@ Para dudas o sugerencias, contacta al autor.
 - Linter ESLint y análisis SonarQube
 - Arquitectura modular y escalable
 - Valoraciones y comentarios en recetas
+
 ## Herramientas implementadas
 
 - **ESLint**: Linter para mantener calidad de código (`.eslintrc.js`)
@@ -168,6 +155,7 @@ Para dudas o sugerencias, contacta al autor.
 - **Jest & Supertest**: Tests unitarios, integración y M2M (`jest.config.js`, `tests/`)
 - **mongodb-memory-server**: Tests aislados en memoria
 - Base de datos MongoDB
+
 ## Estructura de carpetas
 
 ```text

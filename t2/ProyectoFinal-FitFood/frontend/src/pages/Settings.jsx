@@ -146,7 +146,7 @@ const Settings = () => {
 
         {saved && (
           <div className="success-message">
-            ✓ Cambios guardados correctamente
+            Cambios guardados correctamente
           </div>
         )}
       </div>

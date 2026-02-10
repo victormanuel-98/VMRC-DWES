@@ -106,11 +106,11 @@ const seedIngredientes = async () => {
         await connectDB();
         await Ingredient.deleteMany();
         await Ingredient.insertMany(ingredientes);
-        console.log('✅ Ingredientes insertados correctamente');
+        console.log('Ingredientes insertados correctamente');
         await mongoose.connection.close();
         process.exit(0);
     } catch (error) {
-        console.error('❌ Error al insertar ingredientes:', error);
+        console.error('Error al insertar ingredientes:', error);
         process.exit(1);
     }
 };

@@ -125,7 +125,7 @@ const RecipeDetail = () => {
                             className={`favorite-btn ${isFavorite ? 'active' : ''}`}
                             onClick={handleToggleFavorite}
                         >
-                            {isFavorite ? '❤️' : '🤍'} {isFavorite ? 'En favoritos' : 'Agregar a favoritos'}
+                            {isFavorite ? '' : ''} {isFavorite ? 'En favoritos' : 'Agregar a favoritos'}
                         </button>
                     </div>
 
@@ -134,16 +134,16 @@ const RecipeDetail = () => {
                         
                         <div className="recipe-meta">
                             <span className="meta-item">
-                                👤 {receta.autor?.nombre || 'Anónimo'}
+                                {receta.autor?.nombre || 'Anónimo'}
                             </span>
                             <span className="meta-item">
                                 ⏱️ {receta.tiempoPreparacion} min
                             </span>
                             <span className="meta-item difficulty">
-                                📊 {receta.dificultad || 'Media'}
+                                {receta.dificultad || 'Media'}
                             </span>
                             <span className="meta-item">
-                                🍽️ {receta.categoria || 'General'}
+                                {receta.categoria || 'General'}
                             </span>
                         </div>
 

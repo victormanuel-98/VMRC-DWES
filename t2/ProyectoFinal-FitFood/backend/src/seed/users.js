@@ -54,11 +54,11 @@ const seedUsuarios = async () => {
         await connectDB();
         await User.deleteMany();
         await User.insertMany(usuarios);
-        console.log('✅ Usuarios insertados correctamente');
+        console.log('Usuarios insertados correctamente');
         await mongoose.connection.close();
         process.exit(0);
     } catch (error) {
-        console.error('❌ Error al insertar usuarios:', error);
+        console.error('Error al insertar usuarios:', error);
         process.exit(1);
     }
 };

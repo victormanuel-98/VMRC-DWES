@@ -118,7 +118,7 @@ const Contact = () => {
 
                             {enviado && (
                                 <div className="success-message">
-                                    ✓ Mensaje enviado correctamente. Te contactaremos pronto.
+                                    Mensaje enviado correctamente. Te contactaremos pronto.
                                 </div>
                             )}
                         </form>

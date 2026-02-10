@@ -279,13 +279,13 @@ const Register = () => {
 
           {errors.general && (
             <div className="error-message">
-              ✗ {errors.general}
+              {errors.general}
             </div>
           )}
 
           {submitMessage && (
             <div className="register-success-message">
-              ✓ {submitMessage}
+              {submitMessage}
             </div>
           )}
         </form>

@@ -24,6 +24,6 @@ io.on('connection', (socket) => {
 app.set('io', io);
 
 server.listen(PORT, () => {
-    console.log(`🚀 Servidor FitFood escuchando en puerto ${PORT}`);
-    console.log(`📍 Entorno: ${process.env.NODE_ENV || 'development'}`);
+    console.log(`Servidor FitFood escuchando en puerto ${PORT}`);
+    console.log(`Entorno: ${process.env.NODE_ENV || 'development'}`);
 });

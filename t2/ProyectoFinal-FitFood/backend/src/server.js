@@ -8,6 +8,6 @@ const PORT = process.env.PORT || 5000;
 
 connectDB();
 app.listen(PORT, () => {
-    console.log(`🚀 Servidor FitFood escuchando en puerto ${PORT}`);
-    console.log(`📍 Entorno: ${process.env.NODE_ENV || 'development'}`);
+    console.log(`Servidor FitFood escuchando en puerto ${PORT}`);
+    console.log(`Entorno: ${process.env.NODE_ENV || 'development'}`);
 });

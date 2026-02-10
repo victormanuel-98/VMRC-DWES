@@ -345,7 +345,7 @@ const Profile = () => {
 
           {mensaje.texto && (
             <div className={`message ${mensaje.tipo}`}>
-              {mensaje.tipo === 'success' ? '✓' : '⚠'} {mensaje.texto}
+              {mensaje.texto}
             </div>
           )}
         </form>
