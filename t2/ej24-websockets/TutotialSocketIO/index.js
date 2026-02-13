@@ -23,12 +23,12 @@ io.on('connection', (socket) => {
 
 io.on('connection', (socket) => {
     socket.on('chat message', (msg) => {
-        console.log('mensaje: ' + msg);
+        io.emit('chat message', msg);
     });
 });
 
 // Mensaje de prueba para todos los usuarios que se conecten
-io.emit('hello', 'world'); 
+io.emit('hello', 'world');
 
 server.listen(3000, () => {
     console.log('servidor corriendo en http://localhost:3000');
