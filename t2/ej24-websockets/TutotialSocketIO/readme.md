@@ -1,3 +1,9 @@
+# Conexión localhost mediante WebSockets
+
+url: https://socket.io/es/
+
+---
+
 ## Configuración básica del proyecto
 
 El objetivo es crear una aplicación de chat sencilla usando Node.js, Express y Socket.IO.
